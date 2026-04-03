@@ -91,8 +91,8 @@ export default function Footer() {
             <h4 className={styles.groupTitle}>Kontakt</h4>
             <ul className={styles.linkList}>
               <li>
-                <a href="mailto:hei@anleggtech.no" className={styles.link}>
-                  hei@anleggtech.no
+                <a href="mailto:torstein@anleggtech.no" className={styles.link}>
+                  torstein@anleggtech.no
                 </a>
               </li>
               <li>

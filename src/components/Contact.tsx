@@ -120,12 +120,12 @@ export default function Contact() {
           </p>
 
           <div className={styles.contactInfo}>
-            <a href="mailto:hei@anleggtech.no" className={styles.contactLink}>
+            <a href="mailto:torstein@anleggtech.no" className={styles.contactLink}>
               <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
                 <rect x="2" y="4" width="14" height="10" rx="2" stroke="currentColor" strokeWidth="1.5"/>
                 <path d="M2 6l7 5 7-5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
               </svg>
-              hei@anleggtech.no
+              torstein@anleggtech.no
             </a>
           </div>
         </div>
