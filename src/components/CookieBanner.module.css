@@ -1,0 +1,117 @@
+.banner {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 2000;
+  background: #0d0f14;
+  border-top: 1px solid #1d2235;
+  box-shadow: 0 -4px 32px rgba(0, 0, 0, 0.5);
+  transform: translateY(100%);
+  opacity: 0;
+  transition: transform 380ms cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              opacity 380ms ease;
+}
+
+.visible {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.hiding {
+  transform: translateY(100%);
+  opacity: 0;
+}
+
+.inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1.125rem clamp(1.25rem, 5vw, 2.5rem);
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.text {
+  flex: 1;
+  min-width: 240px;
+  margin: 0;
+  font-size: 0.9375rem;
+  color: #8892a8;
+  line-height: 1.5;
+}
+
+.link {
+  color: #4a9eff;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  transition: color 220ms ease;
+}
+
+.link:hover {
+  color: #7ab8ff;
+}
+
+.actions {
+  display: flex;
+  gap: 0.75rem;
+  flex-shrink: 0;
+  flex-wrap: wrap;
+}
+
+.btnPrimary {
+  background: #f5a623;
+  color: #0d0f14;
+  border: none;
+  border-radius: 8px;
+  padding: 0.6rem 1.375rem;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 220ms ease, transform 220ms ease, box-shadow 220ms ease;
+  white-space: nowrap;
+}
+
+.btnPrimary:hover {
+  background: #d4901e;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 16px rgba(245, 166, 35, 0.3);
+}
+
+.btnSecondary {
+  background: transparent;
+  color: #e2e8f5;
+  border: 1px solid #1d2235;
+  border-radius: 8px;
+  padding: 0.6rem 1.375rem;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: border-color 220ms ease, color 220ms ease, background 220ms ease;
+  white-space: nowrap;
+}
+
+.btnSecondary:hover {
+  border-color: #4a9eff;
+  color: #4a9eff;
+  background: rgba(74, 158, 255, 0.07);
+}
+
+@media (max-width: 560px) {
+  .inner {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1rem;
+  }
+
+  .actions {
+    justify-content: stretch;
+  }
+
+  .btnPrimary,
+  .btnSecondary {
+    flex: 1;
+    text-align: center;
+  }
+}

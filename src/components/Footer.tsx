@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import styles from './Footer.module.css'
 
 const navLinks = [
@@ -46,7 +47,7 @@ export default function Footer() {
             <p className={styles.tagline}>
               Teknologi som jobber like hardt som deg
             </p>
-            <p className={styles.orgNr}>Org.nr: [under registrering]</p>
+            <p className={styles.orgNr}>Org.nr: 936 032 265</p>
           </div>
 
           <div className={styles.linksGroup}>
@@ -84,6 +85,22 @@ export default function Footer() {
                   </a>
                 </li>
               ))}
+            </ul>
+          </div>
+
+          <div className={styles.linksGroup}>
+            <h4 className={styles.groupTitle}>Juridisk</h4>
+            <ul className={styles.linkList}>
+              <li>
+                <Link to="/personvern" className={styles.link}>
+                  Personvernerklæring
+                </Link>
+              </li>
+              <li>
+                <Link to="/personvern" className={styles.link}>
+                  Informasjonskapsler
+                </Link>
+              </li>
             </ul>
           </div>
 
