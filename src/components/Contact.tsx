@@ -138,6 +138,12 @@ export default function Contact() {
               </svg>
               torstein@anleggtech.no
             </a>
+            <a href="tel:+4741155515" className={styles.contactLink}>
+              <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+                <path d="M3 3h4l1.5 4-2 1.5a10 10 0 004 4L12 10.5l4 1.5v4a1 1 0 01-1 1C6.5 17 1 11.5 1 4a1 1 0 011-1z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+              41 15 55 15
+            </a>
           </div>
         </div>
 

@@ -108,6 +108,9 @@ export default function Footer() {
             <h4 className={styles.groupTitle}>Kontakt</h4>
             <ul className={styles.linkList}>
               <li>
+                <a href="tel:+4741155515" className={styles.link}>
+                  41 15 55 15
+                </a>
                 <a href="mailto:torstein@anleggtech.no" className={styles.link}>
                   torstein@anleggtech.no
                 </a>
