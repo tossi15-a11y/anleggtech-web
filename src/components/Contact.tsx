@@ -84,10 +84,21 @@ export default function Contact() {
     if (Object.keys(errs).length > 0) return
 
     setSubmitting(true)
-    setTimeout(() => {
-      setSubmitting(false)
-      setSubmitted(true)
-    }, 800)
+    fetch('/api/contact', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(form),
+    })
+      .then((res) => {
+        if (!res.ok) throw new Error('Feil ved sending')
+        setSubmitted(true)
+      })
+      .catch(() => {
+        alert('Noe gikk galt. Prøv igjen eller send e-post direkte til torstein@anleggtech.no')
+      })
+      .finally(() => {
+        setSubmitting(false)
+      })
   }
 
   const handleReset = () => {
