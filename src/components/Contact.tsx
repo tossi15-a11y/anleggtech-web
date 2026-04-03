@@ -49,7 +49,7 @@ const initialForm: FormData = {
   bedrift: '',
   epost: '',
   telefon: '',
-  melding: '',
+  melding: 'Hei, ønsker møte angående AI-integrering i min bedrift.',
 }
 
 export default function Contact() {
