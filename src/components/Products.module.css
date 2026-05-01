@@ -38,7 +38,7 @@
 /* Cards */
 .cards {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 1.5rem;
 }
 
@@ -166,7 +166,58 @@
   transform: translateX(3px);
 }
 
-@media (max-width: 720px) {
+/* Coming soon */
+.comingSoon {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  padding: 1.5rem 2rem;
+  background: var(--bg-card);
+  border: 1.5px dashed var(--border);
+  border-radius: var(--radius-xl);
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease 0.45s, transform 0.6s ease 0.45s;
+}
+
+.comingSoon.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.comingSoonIcon {
+  width: 48px;
+  height: 48px;
+  min-width: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-muted);
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+}
+
+.comingSoonTitle {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text-secondary);
+  margin-bottom: 0.25rem;
+}
+
+.comingSoonDesc {
+  font-size: 0.875rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+@media (max-width: 960px) {
+  .cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
   .cards {
     grid-template-columns: 1fr;
   }

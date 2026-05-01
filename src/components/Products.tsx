@@ -39,7 +39,29 @@ const products = [
       </svg>
     ),
   },
+  {
+    name: 'aktsomhetsportalen.no',
+    label: 'SaaS Compliance',
+    tagline: 'Komplett verktøy for åpenhetsloven',
+    description:
+      'Hjelper norske bedrifter med å oppfylle kravene i åpenhetsloven. Automatisert aktsomhetsvurdering, risikoanalyse, leverandørkartlegging og ferdig rapport — klart for Forbrukertilsynet.',
+    url: 'https://aktsomhetsportalen.no',
+    features: ['Aktsomhetsvurdering', 'Risikoanalyse', 'Automatisert rapport'],
+    color: '#2ecc71',
+    icon: (
+      <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M18 4L6 10v8c0 7.7 5.1 14.5 12 16 6.9-1.5 12-8.3 12-16v-8L18 4z" stroke="#2ecc71" strokeWidth="2" fill="rgba(46,204,113,0.08)"/>
+        <path d="M13 18l3 3 7-7" stroke="#2ecc71" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
+      </svg>
+    ),
+  },
 ]
+
+const comingSoon = {
+  tagline: 'Flere prosjekter under bygging',
+  description:
+    'Vi utvikler flere digitale verktøy for anleggsbransjen — fra masseberegning og terrenganalyse til prosjektstyring. Følg med.',
+}
 
 export default function Products() {
   const { ref, isVisible } = useScrollAnimation()
@@ -71,6 +93,20 @@ export default function Products() {
           {products.map((product, i) => (
             <ProductCard key={product.name} product={product} delay={i * 0.15} />
           ))}
+        </div>
+
+        <div
+          className={`${styles.comingSoon} ${isVisible ? styles.visible : ''}`}
+        >
+          <div className={styles.comingSoonIcon}>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+            </svg>
+          </div>
+          <div>
+            <p className={styles.comingSoonTitle}>{comingSoon.tagline}</p>
+            <p className={styles.comingSoonDesc}>{comingSoon.description}</p>
+          </div>
         </div>
       </div>
     </section>

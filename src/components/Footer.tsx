@@ -11,6 +11,7 @@ const navLinks = [
 const products = [
   { label: 'lediglass.no', href: 'https://lediglass.no' },
   { label: 'massemarkedet.no', href: 'https://massemarkedet.no' },
+  { label: 'aktsomhetsportalen.no', href: 'https://aktsomhetsportalen.no' },
 ]
 
 const scrollTo = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
