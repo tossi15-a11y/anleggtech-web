@@ -66,7 +66,8 @@ const products: Product[] = [
     tagline: 'Møtereferater med automatisk NS- og HMS-flagging',
     description:
       'Live transkripsjon av byggherre-, bygge- og oppstartsmøter. Genererer profesjonelle referater og flagger automatisk kontrakts­messige forhold (NS 8405–8417), HMS-avvik og forskriftspunkter. Lyd berører aldri serveren.',
-    url: 'https://notert-web.vercel.app',
+    url: '/notert',
+    internal: true,
     features: ['Live transkripsjon', 'NS-kontraktflagging', 'HMS- og forskriftflagg'],
     color: '#f59e0b',
     iconSrc: '/logos/notert.svg',

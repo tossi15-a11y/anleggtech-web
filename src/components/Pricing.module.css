@@ -1,0 +1,232 @@
+.section {
+  padding: 6rem 0;
+  background: #0a0a0a;
+  position: relative;
+}
+
+.section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.08), transparent);
+}
+
+.inner {
+  position: relative;
+}
+
+.header {
+  text-align: center;
+  max-width: 720px;
+  margin: 0 auto 3rem;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.header.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.tiers {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.25rem;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.tier {
+  position: relative;
+  background: #111111;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 1.5rem;
+  padding: 2rem 1.75rem;
+  display: flex;
+  flex-direction: column;
+  transition: border-color 0.2s, transform 0.2s;
+  animation: fadeUp 0.6s ease backwards;
+}
+
+.tier:hover {
+  border-color: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+}
+
+.tierHighlighted {
+  background: linear-gradient(180deg, rgba(34, 197, 94, 0.05), #111111);
+  border-color: var(--pricing-accent, #22c55e);
+  box-shadow: 0 0 0 1px var(--pricing-accent, #22c55e), 0 10px 40px rgba(34, 197, 94, 0.1);
+}
+
+.tierBadge {
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--pricing-accent, #22c55e);
+  color: #0a0a0a;
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 0.25rem 0.75rem;
+  border-radius: 999px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.tierName {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: #fafafa;
+  margin-bottom: 1rem;
+}
+
+.tierPrice {
+  display: flex;
+  align-items: baseline;
+  gap: 0.4rem;
+  margin-bottom: 1rem;
+}
+
+.tierPriceNumber {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #fafafa;
+  letter-spacing: -1px;
+  line-height: 1;
+}
+
+.tierPriceUnit {
+  font-size: 0.85rem;
+  color: #a3a3a3;
+}
+
+.tierDescription {
+  color: #a3a3a3;
+  font-size: 0.9rem;
+  margin-bottom: 1.5rem;
+  line-height: 1.5;
+  min-height: 2.7em;
+}
+
+.tierFeatures {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 2rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  flex: 1;
+}
+
+.tierFeatures li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+  color: #e5e5e5;
+}
+
+.tierFeatures li svg {
+  flex-shrink: 0;
+  color: var(--pricing-accent, #22c55e);
+  margin-top: 3px;
+}
+
+.tierCta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  padding: 0.75rem 1.25rem;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #fafafa;
+  border-radius: 0.75rem;
+  font-weight: 500;
+  font-size: 0.9rem;
+  text-decoration: none;
+  transition: border-color 0.2s, background 0.2s;
+}
+
+.tierCta:hover {
+  border-color: var(--pricing-accent, #22c55e);
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.tierHighlighted .tierCta {
+  background: var(--pricing-accent, #22c55e);
+  color: #0a0a0a;
+  border-color: var(--pricing-accent, #22c55e);
+}
+
+.tierHighlighted .tierCta:hover {
+  background: var(--pricing-accent, #22c55e);
+  filter: brightness(1.1);
+}
+
+.pilotNote {
+  margin: 2.5rem auto 0;
+  max-width: 700px;
+  text-align: center;
+  color: #fafafa;
+  background: rgba(245, 158, 11, 0.08);
+  border: 1px solid rgba(245, 158, 11, 0.3);
+  border-radius: 1rem;
+  padding: 1rem 1.5rem;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+}
+
+.pilotDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #f59e0b;
+  flex-shrink: 0;
+  box-shadow: 0 0 0 4px rgba(245, 158, 11, 0.15);
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { box-shadow: 0 0 0 4px rgba(245, 158, 11, 0.15); }
+  50% { box-shadow: 0 0 0 8px rgba(245, 158, 11, 0.05); }
+}
+
+.footnote {
+  margin: 1.5rem auto 0;
+  text-align: center;
+  color: #737373;
+  font-size: 0.8rem;
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 640px) {
+  .section {
+    padding: 4rem 0;
+  }
+  .tier {
+    padding: 1.75rem 1.5rem;
+  }
+  .tierPriceNumber {
+    font-size: 2.25rem;
+  }
+}

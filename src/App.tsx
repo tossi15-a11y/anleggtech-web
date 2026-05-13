@@ -10,6 +10,7 @@ import CookieBanner from './components/CookieBanner'
 import ScrollToTop from './components/ScrollToTop'
 import Privacy from './pages/Privacy'
 import Programvare from './pages/Programvare'
+import Notert from './pages/Notert'
 
 function Home() {
   return (
@@ -35,6 +36,7 @@ export default function App() {
         <Route path="/" element={<Home />} />
         <Route path="/personvern" element={<Privacy />} />
         <Route path="/programvare" element={<Programvare />} />
+        <Route path="/notert" element={<Notert />} />
       </Routes>
       <CookieBanner />
     </BrowserRouter>

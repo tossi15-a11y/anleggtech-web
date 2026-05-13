@@ -1,7 +1,64 @@
 import { Link } from 'react-router-dom'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
+import Pricing, { type PricingTier } from '../components/Pricing'
 import styles from './Programvare.module.css'
+
+const siteviewTiers: PricingTier[] = [
+  {
+    name: 'Per prosjekt',
+    price: '1 490',
+    unit: 'kr / prosjekt',
+    description: 'For enkeltprosjekter — selges direkte til byggherre eller kalkuleres inn i tilbudet.',
+    features: [
+      'Ubegrenset dokumentasjons-runder',
+      'Lagring i 2 år',
+      'Sluttdokumentasjon som PDF',
+      'Delbar lenke uten innlogging',
+      'Branding fra ditt firma',
+    ],
+    cta: {
+      label: 'Bestill demo',
+      href: 'mailto:torstein@anleggtech.no?subject=SiteView360%20%E2%80%94%20per%20prosjekt%20demo',
+    },
+  },
+  {
+    name: 'Bedrifts­pakke',
+    price: '4 990',
+    unit: 'kr / mnd',
+    description: 'For entreprenører med flere parallelle prosjekter. Inntil 8 aktive prosjekter.',
+    features: [
+      'Inntil 8 aktive prosjekter samtidig',
+      'Ubegrenset dokumentasjons-runder',
+      'Lagring i 5 år',
+      'Custom PDF-mal med firmalogo',
+      'Settings-mal for alle prosjekter',
+      'Prioritert support',
+    ],
+    highlighted: true,
+    badge: 'Best verdi',
+    cta: {
+      label: 'Bestill demo',
+      href: 'mailto:torstein@anleggtech.no?subject=SiteView360%20%E2%80%94%20bedriftspakke%20demo',
+    },
+  },
+  {
+    name: 'Pilot',
+    price: '0',
+    unit: 'kr — 3 prosjekter',
+    description: 'For de første referansekundene som vil hjelpe å forme produktet.',
+    features: [
+      '3 gratis dokumentasjons-prosjekter',
+      'Tett oppfølging fra Anleggtech',
+      'Påvirker produktveikartet direkte',
+      'Krav: lov til å lage case study',
+    ],
+    cta: {
+      label: 'Søk om pilot',
+      href: 'mailto:torstein@anleggtech.no?subject=SiteView360%20Pilot%20%E2%80%94%20s%C3%B8knad',
+    },
+  },
+]
 
 const audiences = [
   {
@@ -171,6 +228,14 @@ export default function Programvare() {
 
           </div>
         </section>
+
+        <Pricing
+          heading="Priser for SiteView360"
+          lead="Velg det som passer ditt prosjektvolum — eller start med en gratis pilot."
+          tiers={siteviewTiers}
+          pilotNote="3 gratis pilot-prosjekter tilgjengelig ut 2026 — perfekt for første dokumentasjons-runde."
+          accentColor="#22d3ee"
+        />
 
         <section className={styles.cta}>
           <div className={`container ${styles.ctaInner}`}>
