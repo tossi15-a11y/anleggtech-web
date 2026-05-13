@@ -17,12 +17,12 @@ type Product = {
 const products: Product[] = [
   {
     name: 'lediglass.no',
-    label: 'Markedsplass',
-    tagline: 'Finn ledige glass og byggematerialer',
+    label: 'B2B-plattform',
+    tagline: 'Norges B2B-marked for transportkapasitet',
     description:
-      'En digital markedsplass for anleggsbransjen som kobler selgere av overskuddsmateriell direkte med kjøpere. Rask, enkel og bransjetilpasset.',
+      'Kobler transportører med ledig lastekapasitet sammen med entreprenører og firma som har transportbehov. Reduserer tomkjøring, øker lønnsomheten og kutter CO₂-utslippene for hele bransjen.',
     url: 'https://lediglass.no',
-    features: ['Direktekjøp', 'Overskuddsmateriell', 'Bransjetilpasset'],
+    features: ['Last-formidling', 'Reduserer tomkjøring', 'Hele Norge'],
     color: '#22C55E',
     iconSrc: '/logos/lediglass.svg',
   },
