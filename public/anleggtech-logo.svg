@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 48" fill="none">
+  <rect width="200" height="48" rx="8" fill="#0d0f14"/>
+  <g transform="translate(10, 10)">
+    <polygon points="14,2 26,8.5 26,19.5 14,26 2,19.5 2,8.5" stroke="#4a9eff" stroke-width="1.8" fill="rgba(74,158,255,0.08)"/>
+    <circle cx="14" cy="14" r="4.5" fill="#f5a623"/>
+    <circle cx="14" cy="14" r="2" fill="#0d0f14"/>
+  </g>
+  <text x="48" y="32" font-family="system-ui, -apple-system, Segoe UI, sans-serif" font-weight="700" font-size="18" fill="#ffffff">AnleggTech <tspan fill="#4a9eff">AS</tspan></text>
+</svg>

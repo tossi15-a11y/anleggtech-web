@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
+  <!-- Notert — halvsirkel VU-meter rundt N -->
+  <rect width="512" height="512" rx="96" fill="#0a0a0a"/>
+
+  <!-- 19 audio-bars i bue (-90° til +90° via toppen) -->
+  <g transform="translate(256 256)">
+    <g transform="rotate(-90)"><rect x="-4" y="-210" width="8" height="20" rx="4" fill="#f59e0b" opacity="0.4"/></g>
+    <g transform="rotate(-80)"><rect x="-4" y="-216" width="8" height="26" rx="4" fill="#f59e0b" opacity="0.5"/></g>
+    <g transform="rotate(-70)"><rect x="-4" y="-222" width="8" height="32" rx="4" fill="#f59e0b" opacity="0.6"/></g>
+    <g transform="rotate(-60)"><rect x="-4" y="-228" width="8" height="38" rx="4" fill="#f59e0b" opacity="0.7"/></g>
+    <g transform="rotate(-50)"><rect x="-4" y="-234" width="8" height="44" rx="4" fill="#f59e0b" opacity="0.8"/></g>
+    <g transform="rotate(-40)"><rect x="-4" y="-230" width="8" height="40" rx="4" fill="#f59e0b" opacity="0.85"/></g>
+    <g transform="rotate(-30)"><rect x="-4" y="-225" width="8" height="35" rx="4" fill="#f59e0b" opacity="0.9"/></g>
+    <g transform="rotate(-20)"><rect x="-4" y="-235" width="8" height="45" rx="4" fill="#f59e0b"/></g>
+    <g transform="rotate(-10)"><rect x="-4" y="-240" width="8" height="50" rx="4" fill="#f59e0b"/></g>
+    <g transform="rotate(0)"><rect x="-4" y="-245" width="8" height="55" rx="4" fill="#f59e0b"/></g>
+    <g transform="rotate(10)"><rect x="-4" y="-240" width="8" height="50" rx="4" fill="#f59e0b"/></g>
+    <g transform="rotate(20)"><rect x="-4" y="-235" width="8" height="45" rx="4" fill="#f59e0b"/></g>
+    <g transform="rotate(30)"><rect x="-4" y="-225" width="8" height="35" rx="4" fill="#f59e0b" opacity="0.9"/></g>
+    <g transform="rotate(40)"><rect x="-4" y="-230" width="8" height="40" rx="4" fill="#f59e0b" opacity="0.85"/></g>
+    <g transform="rotate(50)"><rect x="-4" y="-234" width="8" height="44" rx="4" fill="#f59e0b" opacity="0.8"/></g>
+    <g transform="rotate(60)"><rect x="-4" y="-228" width="8" height="38" rx="4" fill="#f59e0b" opacity="0.7"/></g>
+    <g transform="rotate(70)"><rect x="-4" y="-222" width="8" height="32" rx="4" fill="#f59e0b" opacity="0.6"/></g>
+    <g transform="rotate(80)"><rect x="-4" y="-216" width="8" height="26" rx="4" fill="#f59e0b" opacity="0.5"/></g>
+    <g transform="rotate(90)"><rect x="-4" y="-210" width="8" height="20" rx="4" fill="#f59e0b" opacity="0.4"/></g>
+  </g>
+
+  <!-- Stor N -->
+  <text x="256" y="256"
+        font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif"
+        font-size="220" font-weight="700"
+        fill="#fafafa" text-anchor="middle" dominant-baseline="central"
+        letter-spacing="-10">N</text>
+
+  <!-- Live-dot -->
+  <circle cx="256" cy="400" r="14" fill="#ef4444"/>
+</svg>

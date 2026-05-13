@@ -16,6 +16,9 @@ const services = [
     subtitle: 'for anleggsbransjen',
     description:
       'Profesjonelle nettsider bygget for å konvertere besøkende til kunder — tilpasset din bedrift, din bransje og dine kunder. Vi vet hva som fungerer i anleggsbransjen.',
+    examples: [
+      { name: 'Åsane Hageservice', url: 'https://asanehageservice.no' },
+    ],
   },
   {
     icon: (
@@ -100,6 +103,7 @@ export default function Services() {
 
 function ServiceCard({ svc, delay }: { svc: typeof services[number]; delay: number }) {
   const { ref, isVisible } = useScrollAnimation(0.1)
+  const examples = 'examples' in svc ? svc.examples : undefined
 
   return (
     <div
@@ -113,6 +117,27 @@ function ServiceCard({ svc, delay }: { svc: typeof services[number]; delay: numb
         <span className={styles.cardSubtitle}>{svc.subtitle}</span>
       </div>
       <p className={styles.cardDesc}>{svc.description}</p>
+      {examples && examples.length > 0 && (
+        <div className={styles.examples}>
+          <span className={styles.examplesLabel}>Levert prosjekt</span>
+          <div className={styles.examplesList}>
+            {examples.map((ex) => (
+              <a
+                key={ex.url}
+                href={ex.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={styles.exampleLink}
+              >
+                {ex.name}
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+                  <path d="M4 3h5v5M9 3L3 9" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+              </a>
+            ))}
+          </div>
+        </div>
+      )}
       <div className={styles.cardArrow}>
         <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
           <path d="M3.75 9h10.5M10.5 5.25L14.25 9l-3.75 3.75" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>

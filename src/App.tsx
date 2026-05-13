@@ -7,7 +7,9 @@ import AISection from './components/AISection'
 import Contact from './components/Contact'
 import Footer from './components/Footer'
 import CookieBanner from './components/CookieBanner'
+import ScrollToTop from './components/ScrollToTop'
 import Privacy from './pages/Privacy'
+import Programvare from './pages/Programvare'
 
 function Home() {
   return (
@@ -28,9 +30,11 @@ function Home() {
 export default function App() {
   return (
     <BrowserRouter>
+      <ScrollToTop />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/personvern" element={<Privacy />} />
+        <Route path="/programvare" element={<Programvare />} />
       </Routes>
       <CookieBanner />
     </BrowserRouter>

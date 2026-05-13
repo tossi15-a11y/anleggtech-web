@@ -1,0 +1,370 @@
+.main {
+  background: var(--bg-primary);
+  min-height: 100vh;
+  padding-top: 5rem;
+}
+
+/* ─── Hero ────────────────────────────────────────────────────────────────── */
+.hero {
+  padding: 4rem 0 3rem;
+  border-bottom: 1px solid var(--border);
+  background:
+    radial-gradient(ellipse at top, rgba(74, 158, 255, 0.08), transparent 60%),
+    var(--bg-primary);
+}
+
+.heroInner {
+  max-width: 880px;
+}
+
+.backRow {
+  margin-bottom: 2rem;
+}
+
+.backLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: var(--text-secondary);
+  font-size: 0.9375rem;
+  text-decoration: none;
+  transition: color 220ms ease, gap 220ms ease;
+}
+
+.backLink:hover {
+  color: var(--blue);
+  gap: 0.2rem;
+}
+
+.tag {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--amber);
+  background: var(--amber-dim);
+  border: 1px solid rgba(245, 166, 35, 0.25);
+  border-radius: 100px;
+  padding: 0.35rem 0.875rem;
+  margin-bottom: 1.5rem;
+}
+
+.title {
+  font-size: clamp(2rem, 5.5vw, 3.25rem);
+  font-weight: 800;
+  color: var(--text-primary);
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+  margin: 0 0 1.25rem;
+}
+
+.subtitle {
+  font-size: clamp(1rem, 2vw, 1.1875rem);
+  color: var(--text-secondary);
+  line-height: 1.6;
+  max-width: 640px;
+  margin: 0;
+}
+
+/* ─── Product section ─────────────────────────────────────────────────────── */
+.product {
+  padding: 5rem 0;
+}
+
+.productInner {
+  max-width: 1080px;
+  display: flex;
+  flex-direction: column;
+  gap: 4.5rem;
+}
+
+.productHeader {
+  max-width: 760px;
+}
+
+.productLabel {
+  display: inline-block;
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--blue);
+  background: var(--blue-dim);
+  border: 1px solid rgba(74, 158, 255, 0.25);
+  border-radius: 6px;
+  padding: 0.3rem 0.75rem;
+  margin-bottom: 1.25rem;
+}
+
+.productHeading {
+  font-size: clamp(1.625rem, 4vw, 2.25rem);
+  font-weight: 700;
+  color: var(--text-primary);
+  line-height: 1.2;
+  letter-spacing: -0.015em;
+  margin: 0 0 1.25rem;
+}
+
+.productLead {
+  font-size: 1.0625rem;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  margin: 0;
+}
+
+/* ─── Use cases ───────────────────────────────────────────────────────────── */
+.useCases {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+.useCase {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding: 2rem;
+  background: var(--bg-card);
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-xl);
+  transition: border-color 250ms ease, transform 250ms ease;
+}
+
+.useCase:hover {
+  border-color: var(--blue);
+  transform: translateY(-3px);
+}
+
+.useCaseTitle {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.useCaseTagline {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--blue);
+  margin: 0;
+}
+
+.useCaseDesc {
+  font-size: 0.9375rem;
+  color: var(--text-muted);
+  line-height: 1.65;
+  margin: 0 0 0.5rem;
+}
+
+.useCasePoints {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.625rem;
+}
+
+.useCasePoints li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  line-height: 1.55;
+}
+
+.useCasePoints svg {
+  color: var(--success);
+  flex-shrink: 0;
+  margin-top: 0.2rem;
+}
+
+/* ─── Audience block ──────────────────────────────────────────────────────── */
+.audienceBlock {
+  padding: 3rem;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xl);
+}
+
+.audienceHeading {
+  font-size: clamp(1.375rem, 3vw, 1.75rem);
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0 0 0.75rem;
+}
+
+.audienceLead {
+  font-size: 1rem;
+  color: var(--text-secondary);
+  line-height: 1.65;
+  margin: 0 0 2rem;
+  max-width: 700px;
+}
+
+.audienceGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.25rem;
+}
+
+.audienceCard {
+  padding: 1.5rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  transition: border-color 220ms ease;
+}
+
+.audienceCard:hover {
+  border-color: var(--border-hover);
+}
+
+.audienceCardTitle {
+  font-size: 1.0625rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0 0 0.5rem;
+}
+
+.audienceCardDesc {
+  font-size: 0.9375rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* ─── How block ───────────────────────────────────────────────────────────── */
+.howBlock {
+  max-width: 760px;
+}
+
+.howHeading {
+  font-size: clamp(1.375rem, 3vw, 1.75rem);
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0 0 1.75rem;
+}
+
+.howList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.howList li {
+  display: flex;
+  gap: 1.25rem;
+  align-items: flex-start;
+  padding: 1.5rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+}
+
+.howStep {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  flex-shrink: 0;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--bg-primary);
+  background: var(--amber);
+  border-radius: 50%;
+}
+
+.howList strong {
+  display: block;
+  font-size: 1.0625rem;
+  color: var(--text-primary);
+  margin-bottom: 0.35rem;
+}
+
+.howList p {
+  font-size: 0.9375rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* ─── CTA ─────────────────────────────────────────────────────────────────── */
+.cta {
+  padding: 5rem 0;
+  border-top: 1px solid var(--border);
+  background:
+    radial-gradient(ellipse at center, rgba(245, 166, 35, 0.06), transparent 70%),
+    var(--bg-secondary);
+}
+
+.ctaInner {
+  text-align: center;
+  max-width: 640px;
+}
+
+.ctaHeading {
+  font-size: clamp(1.5rem, 3.5vw, 2rem);
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0 0 0.875rem;
+}
+
+.ctaLead {
+  font-size: 1rem;
+  color: var(--text-secondary);
+  line-height: 1.65;
+  margin: 0 0 2rem;
+}
+
+.ctaButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--bg-primary);
+  background: var(--amber);
+  padding: 0.875rem 1.75rem;
+  border-radius: var(--radius-md);
+  transition: background var(--transition), transform var(--transition), box-shadow var(--transition);
+}
+
+.ctaButton:hover {
+  background: var(--amber-dark);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-glow-amber);
+}
+
+/* ─── Responsive ──────────────────────────────────────────────────────────── */
+@media (max-width: 960px) {
+  .useCases {
+    grid-template-columns: 1fr;
+  }
+  .audienceGrid {
+    grid-template-columns: 1fr;
+  }
+  .audienceBlock {
+    padding: 2rem 1.5rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .product {
+    padding: 3rem 0;
+  }
+  .productInner {
+    gap: 3rem;
+  }
+  .useCase {
+    padding: 1.5rem;
+  }
+  .howList li {
+    padding: 1.25rem;
+    gap: 1rem;
+  }
+}

@@ -1,7 +1,20 @@
+import { Link } from 'react-router-dom'
 import { useScrollAnimation } from '../hooks/useScrollAnimation'
 import styles from './Products.module.css'
 
-const products = [
+type Product = {
+  name: string
+  label: string
+  tagline: string
+  description: string
+  url: string
+  internal?: boolean
+  features: string[]
+  color: string
+  iconSrc: string
+}
+
+const products: Product[] = [
   {
     name: 'lediglass.no',
     label: 'Markedsplass',
@@ -10,15 +23,8 @@ const products = [
       'En digital markedsplass for anleggsbransjen som kobler selgere av overskuddsmateriell direkte med kjøpere. Rask, enkel og bransjetilpasset.',
     url: 'https://lediglass.no',
     features: ['Direktekjøp', 'Overskuddsmateriell', 'Bransjetilpasset'],
-    color: '#4a9eff',
-    icon: (
-      <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        <rect x="4" y="10" width="28" height="20" rx="3" stroke="#4a9eff" strokeWidth="2"/>
-        <path d="M4 16h28" stroke="#4a9eff" strokeWidth="2"/>
-        <rect x="9" y="21" width="18" height="5" rx="1.5" fill="rgba(74,158,255,0.2)" stroke="#4a9eff" strokeWidth="1.5"/>
-        <path d="M12 8V6M18 8V5M24 8V6" stroke="#4a9eff" strokeWidth="2" strokeLinecap="round"/>
-      </svg>
-    ),
+    color: '#22C55E',
+    iconSrc: '/logos/lediglass.svg',
   },
   {
     name: 'massemarkedet.no',
@@ -28,16 +34,8 @@ const products = [
       'Kobler leverandører og kjøpere av masse, stein og grus direkte. Effektiviserer logistikk og innkjøp for hele verdikjeden i grunnanlegg.',
     url: 'https://massemarkedet.no',
     features: ['Masse og stein', 'Leverandørnettverk', 'Hele Norge'],
-    color: '#f5a623',
-    icon: (
-      <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        <path d="M4 28L10 14l6 8 6-10 6 6 4-6v16H4z" stroke="#f5a623" strokeWidth="2" strokeLinejoin="round" fill="rgba(245,166,35,0.1)"/>
-        <circle cx="10" cy="14" r="2" fill="#f5a623"/>
-        <circle cx="16" cy="22" r="2" fill="#f5a623"/>
-        <circle cx="22" cy="12" r="2" fill="#f5a623"/>
-        <circle cx="28" cy="18" r="2" fill="#f5a623"/>
-      </svg>
-    ),
+    color: '#22c55e',
+    iconSrc: '/logos/massemarkedet.svg',
   },
   {
     name: 'aktsomhetsportalen.no',
@@ -47,13 +45,31 @@ const products = [
       'Hjelper norske bedrifter med å oppfylle kravene i åpenhetsloven. Automatisert aktsomhetsvurdering, risikoanalyse, leverandørkartlegging og ferdig rapport — klart for Forbrukertilsynet.',
     url: 'https://aktsomhetsportalen.no',
     features: ['Aktsomhetsvurdering', 'Risikoanalyse', 'Automatisert rapport'],
-    color: '#2ecc71',
-    icon: (
-      <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        <path d="M18 4L6 10v8c0 7.7 5.1 14.5 12 16 6.9-1.5 12-8.3 12-16v-8L18 4z" stroke="#2ecc71" strokeWidth="2" fill="rgba(46,204,113,0.08)"/>
-        <path d="M13 18l3 3 7-7" stroke="#2ecc71" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
-      </svg>
-    ),
+    color: '#5eead4',
+    iconSrc: '/logos/aktsomhetsportalen.svg',
+  },
+  {
+    name: 'SiteView360',
+    label: 'Dokumentasjon',
+    tagline: '360°-dokumentasjon av anleggsprosjekter',
+    description:
+      'Konverterer 360°-video til en navigerbar Street View-opplevelse av byggeplassen. Dokumenter «før»-tilstanden, vis fremdrift til kunden og lever profesjonell sluttdokumentasjon — uten at kunden trenger å reise ut.',
+    url: '/programvare',
+    internal: true,
+    features: ['Før-dokumentasjon', '360° video', 'Fjern-rapportering'],
+    color: '#22d3ee',
+    iconSrc: '/logos/siteview360.svg',
+  },
+  {
+    name: 'Notert',
+    label: 'AI-referent',
+    tagline: 'Møtereferater med automatisk NS- og HMS-flagging',
+    description:
+      'Live transkripsjon av byggherre-, bygge- og oppstartsmøter. Genererer profesjonelle referater og flagger automatisk kontrakts­messige forhold (NS 8405–8417), HMS-avvik og forskriftspunkter. Lyd berører aldri serveren.',
+    url: 'https://notert-web.vercel.app',
+    features: ['Live transkripsjon', 'NS-kontraktflagging', 'HMS- og forskriftflagg'],
+    color: '#f59e0b',
+    iconSrc: '/logos/notert.svg',
   },
 ]
 
@@ -117,7 +133,7 @@ function ProductCard({
   product,
   delay,
 }: {
-  product: typeof products[number]
+  product: Product
   delay: number
 }) {
   const { ref, isVisible } = useScrollAnimation(0.1)
@@ -132,7 +148,14 @@ function ProductCard({
       } as React.CSSProperties}
     >
       <div className={styles.cardTop}>
-        <div className={styles.cardIconWrap}>{product.icon}</div>
+        <div className={styles.cardIconWrap}>
+          <img
+            src={product.iconSrc}
+            alt={`${product.name} logo`}
+            className={styles.cardIconImg}
+            loading="lazy"
+          />
+        </div>
         <span className={styles.cardLabel}>{product.label}</span>
       </div>
 
@@ -153,17 +176,26 @@ function ProductCard({
         </div>
       </div>
 
-      <a
-        href={product.url}
-        target="_blank"
-        rel="noopener noreferrer"
-        className={styles.cardLink}
-      >
-        Besøk {product.name}
-        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-          <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
-        </svg>
-      </a>
+      {product.internal ? (
+        <Link to={product.url} className={styles.cardLink}>
+          Les mer om {product.name}
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+            <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
+          </svg>
+        </Link>
+      ) : (
+        <a
+          href={product.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          className={styles.cardLink}
+        >
+          Besøk {product.name}
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+            <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
+          </svg>
+        </a>
+      )}
     </div>
   )
 }
