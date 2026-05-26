@@ -3,8 +3,7 @@ import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import styles from './Programvare.module.css'
 
-const RELEASE_BASE = 'https://github.com/tossi15-a11y/mini5planner/releases/latest'
-const DMG_URL = `${RELEASE_BASE}/download/Mini5Planner.dmg`
+const ORDER_MAILTO = 'mailto:torstein@anleggtech.no?subject=Mini5Planner%20%E2%80%94%20bestill%20nedlasting&body=Hei%2C%0A%0AJeg%20vil%20gjerne%20laste%20ned%20Mini5Planner.%0A%0ANavn%3A%20___%0AFirma%3A%20___%0ADrone-modell%3A%20___%0AOperativsystem%3A%20Mac%20%2F%20Windows%0AHva%20vil%20du%20bruke%20det%20til%3A%20___%0A%0AHilsen%2C%0A___'
 
 const audiences = [
   {
@@ -102,13 +101,12 @@ export default function Mini5planner() {
             </p>
             <div className={styles.heroCtas}>
               <a
-                href={DMG_URL}
+                href={ORDER_MAILTO}
                 className={styles.ctaPrimary}
-                rel="noopener noreferrer"
               >
-                Last ned for Mac (gratis)
+                Bestill nedlasting
                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-                  <path d="M8 3v8m0 0l-3-3m3 3l3-3M3 13h10" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
+                  <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
                 </svg>
               </a>
               <a href="#droner" className={styles.ctaSecondary}>
@@ -116,7 +114,8 @@ export default function Mini5planner() {
               </a>
             </div>
             <p className={styles.heroSubnote}>
-              Signert + notarisert av Apple. Ingen Gatekeeper-popup. Windows-bygg kommer.
+              Send oss en e-post med drone-modell og bruksområde, så får du tilgang
+              til Mac- eller Windows-versjonen. Gratis å bruke.
             </p>
           </div>
         </section>
@@ -195,8 +194,8 @@ export default function Mini5planner() {
                 <li>
                   <span className={styles.howStep}>1</span>
                   <div>
-                    <strong>Last ned og installer</strong>
-                    <p>Dra DMG-en til Applications-mappen. Ingen kjøp, ingen aktivering.</p>
+                    <strong>Bestill via e-post</strong>
+                    <p>Send oss drone-modell og bruksområde. Vi sender deg en lenke til Mac- eller Windows-versjonen.</p>
                   </div>
                 </li>
                 <li>
@@ -275,8 +274,8 @@ export default function Mini5planner() {
                 <li>
                   <span className={styles.howStep}>?</span>
                   <div>
-                    <strong>Windows-versjon?</strong>
-                    <p>Bygd, men ikke signert med Authenticode ennå. Si fra hvis du trenger den, så prioriterer vi.</p>
+                    <strong>Mac eller Windows?</strong>
+                    <p>Begge støttes. Si i bestillings-mailen hvilket operativsystem du bruker, så sender vi riktig versjon.</p>
                   </div>
                 </li>
                 <li>
