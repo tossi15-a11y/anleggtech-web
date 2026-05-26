@@ -3,7 +3,8 @@ import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import styles from './Programvare.module.css'
 
-const ORDER_MAILTO = 'mailto:torstein@anleggtech.no?subject=Mini5Planner%20%E2%80%94%20bestill%20nedlasting&body=Hei%2C%0A%0AJeg%20vil%20gjerne%20laste%20ned%20Mini5Planner.%0A%0ANavn%3A%20___%0AFirma%3A%20___%0ADrone-modell%3A%20___%0AOperativsystem%3A%20Mac%20%2F%20Windows%0AHva%20vil%20du%20bruke%20det%20til%3A%20___%0A%0AHilsen%2C%0A___'
+const ORDER_MAC = 'mailto:torstein@anleggtech.no?subject=Mini5Planner%20%E2%80%94%20bestill%20Mac-versjon&body=Hei%2C%0A%0AJeg%20vil%20gjerne%20laste%20ned%20Mini5Planner%20for%20Mac.%0A%0ANavn%3A%20___%0AFirma%3A%20___%0ADrone-modell%3A%20___%0AHva%20vil%20du%20bruke%20det%20til%3A%20___%0A%0AHilsen%2C%0A___'
+const ORDER_WIN = 'mailto:torstein@anleggtech.no?subject=Mini5Planner%20%E2%80%94%20bestill%20Windows-versjon&body=Hei%2C%0A%0AJeg%20vil%20gjerne%20laste%20ned%20Mini5Planner%20for%20Windows.%0A%0ANavn%3A%20___%0AFirma%3A%20___%0ADrone-modell%3A%20___%0AHva%20vil%20du%20bruke%20det%20til%3A%20___%0A%0AHilsen%2C%0A___'
 
 const audiences = [
   {
@@ -101,10 +102,19 @@ export default function Mini5planner() {
             </p>
             <div className={styles.heroCtas}>
               <a
-                href={ORDER_MAILTO}
+                href={ORDER_MAC}
                 className={styles.ctaPrimary}
               >
-                Bestill nedlasting
+                Bestill for Mac
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                  <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+              </a>
+              <a
+                href={ORDER_WIN}
+                className={styles.ctaPrimary}
+              >
+                Bestill for Windows
                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
                   <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
                 </svg>
@@ -115,7 +125,7 @@ export default function Mini5planner() {
             </div>
             <p className={styles.heroSubnote}>
               Send oss en e-post med drone-modell og bruksområde, så får du tilgang
-              til Mac- eller Windows-versjonen. Gratis å bruke.
+              til riktig versjon. Gratis å bruke.
             </p>
           </div>
         </section>
