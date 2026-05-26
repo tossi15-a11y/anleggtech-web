@@ -256,6 +256,31 @@ export default function Programvare() {
           </div>
         </section>
 
+        <section id="mini5planner" className={styles.product}>
+          <div className={`container ${styles.productInner}`}>
+            <div className={styles.productHeader}>
+              <span className={styles.productLabel}>Mini5Planner</span>
+              <h2 className={styles.productHeading}>
+                Gratis drone-fotogrammetri-planlegger for DJI
+              </h2>
+              <p className={styles.productLead}>
+                Native Mac- og Windows-app som lager KMZ-flyveruter for 7 DJI-modeller.
+                Tegn område på kart, velg anleggsbransje-preset (Tomt / Byggegrop /
+                Grustak / Fasade / Veitrasé), eksporter rett til DJI RC 2. Gratis,
+                Apple-notarisert, åpen kildekode.
+              </p>
+            </div>
+            <div className={styles.heroCtas} style={{ marginTop: '1rem' }}>
+              <Link to="/mini5planner" className={styles.ctaPrimary}>
+                Les mer om Mini5Planner
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                  <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+              </Link>
+            </div>
+          </div>
+        </section>
+
       </main>
       <Footer />
     </>

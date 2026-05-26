@@ -78,6 +78,13 @@
   margin-top: 2rem;
 }
 
+.heroSubnote {
+  margin-top: 1rem;
+  font-size: 0.8125rem;
+  color: var(--text-secondary);
+  opacity: 0.75;
+}
+
 .ctaPrimary {
   display: inline-flex;
   align-items: center;

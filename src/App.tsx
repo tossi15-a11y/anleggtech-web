@@ -11,6 +11,7 @@ import ScrollToTop from './components/ScrollToTop'
 import Privacy from './pages/Privacy'
 import Programvare from './pages/Programvare'
 import Notert from './pages/Notert'
+import Mini5planner from './pages/Mini5planner'
 
 function Home() {
   return (
@@ -37,6 +38,7 @@ export default function App() {
         <Route path="/personvern" element={<Privacy />} />
         <Route path="/programvare" element={<Programvare />} />
         <Route path="/notert" element={<Notert />} />
+        <Route path="/mini5planner" element={<Mini5planner />} />
       </Routes>
       <CookieBanner />
     </BrowserRouter>
