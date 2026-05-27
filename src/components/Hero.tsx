@@ -42,22 +42,14 @@ export default function Hero() {
         <div className={styles.scanBar} />
       </div>
 
-      {/* HUD-koordinater i hjørner (sci-fi tech feel) */}
-      <div className={`${styles.hudCorner} ${styles.hudTL}`} aria-hidden="true">
-        <div><span className={styles.hudKey}>[LIVE]</span> <span className={styles.hudVal}>SYS · ONLINE</span></div>
-        <div className={styles.hudDim}>AnleggTech · v2026.05</div>
-      </div>
-      <div className={`${styles.hudCorner} ${styles.hudTR}`} aria-hidden="true">
-        <div><span className={styles.hudVal}>60.1833° N · 5.4667° E</span></div>
-        <div className={styles.hudDim}>Bjørnafjorden · NO</div>
-      </div>
+      {/* HUD-koordinater i bunn-hjørner (topp-rad fjernet pga navbar-kollisjon) */}
       <div className={`${styles.hudCorner} ${styles.hudBL}`} aria-hidden="true">
         <div><span className={styles.hudKey}>AI</span> <span className={styles.hudVal}>5 SYSTEMER</span></div>
         <div className={styles.hudDim}>Helix · Notert · Mini5 · SiteView · Aktsom</div>
       </div>
       <div className={`${styles.hudCorner} ${styles.hudBR}`} aria-hidden="true">
         <div><span className={styles.hudKey}>UPTIME</span> <span className={styles.hudVal}>99.97%</span></div>
-        <div className={styles.hudDim}>prosessering &lt; 8 ms</div>
+        <div className={styles.hudDim}>prosessering &lt; 8 ms · 60.18° N · 5.47° E</div>
       </div>
 
       {/* Holografisk side-panel (skjules på mobil for plassens skyld) */}
