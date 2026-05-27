@@ -12,6 +12,8 @@ import Privacy from './pages/Privacy'
 import Programvare from './pages/Programvare'
 import Notert from './pages/Notert'
 import Mini5planner from './pages/Mini5planner'
+import PortalPrivacy from './pages/PortalPrivacy'
+import PortalTerms from './pages/PortalTerms'
 
 function Home() {
   return (
@@ -39,6 +41,8 @@ export default function App() {
         <Route path="/programvare" element={<Programvare />} />
         <Route path="/notert" element={<Notert />} />
         <Route path="/mini5planner" element={<Mini5planner />} />
+        <Route path="/portal/personvern" element={<PortalPrivacy />} />
+        <Route path="/portal/vilkar" element={<PortalTerms />} />
       </Routes>
       <CookieBanner />
     </BrowserRouter>
