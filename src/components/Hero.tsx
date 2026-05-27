@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react'
 import styles from './Hero.module.css'
 
 const scrollTo = (href: string) => {
@@ -5,13 +6,75 @@ const scrollTo = (href: string) => {
   if (el) el.scrollIntoView({ behavior: 'smooth' })
 }
 
+const VIDEOS = ['/video/hero-city.mp4', '/video/hero-matrix.mp4']
+
 export default function Hero() {
+  const [activeIndex, setActiveIndex] = useState(0)
+
+  useEffect(() => {
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    if (reducedMotion) return
+    const id = setInterval(() => {
+      setActiveIndex((i) => (i + 1) % VIDEOS.length)
+    }, 10000)
+    return () => clearInterval(id)
+  }, [])
+
   return (
     <section className={styles.hero} id="hero">
-      <div className={styles.gridBg} aria-hidden="true" />
-      <div className={styles.glowBlue} aria-hidden="true" />
-      <div className={styles.glowAmber} aria-hidden="true" />
+      {/* Sci-fi video-bakgrunn — crossfader mellom to klipp */}
+      <div className={styles.videoStage} aria-hidden="true">
+        {VIDEOS.map((src, i) => (
+          <video
+            key={src}
+            className={`${styles.videoLayer} ${i === activeIndex ? styles.videoActive : ''}`}
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload={i === 0 ? 'auto' : 'metadata'}
+          >
+            <source src={src} type="video/mp4" />
+          </video>
+        ))}
+        <div className={styles.videoOverlay} />
+        <div className={styles.scanlines} />
+        <div className={styles.scanBar} />
+      </div>
 
+      {/* HUD-koordinater i hjørner (sci-fi tech feel) */}
+      <div className={`${styles.hudCorner} ${styles.hudTL}`} aria-hidden="true">
+        <div><span className={styles.hudKey}>[LIVE]</span> <span className={styles.hudVal}>SYS · ONLINE</span></div>
+        <div className={styles.hudDim}>AnleggTech · v2026.05</div>
+      </div>
+      <div className={`${styles.hudCorner} ${styles.hudTR}`} aria-hidden="true">
+        <div><span className={styles.hudVal}>60.1833° N · 5.4667° E</span></div>
+        <div className={styles.hudDim}>Bjørnafjorden · NO</div>
+      </div>
+      <div className={`${styles.hudCorner} ${styles.hudBL}`} aria-hidden="true">
+        <div><span className={styles.hudKey}>AI</span> <span className={styles.hudVal}>5 SYSTEMER</span></div>
+        <div className={styles.hudDim}>Helix · Notert · Mini5 · SiteView · Aktsom</div>
+      </div>
+      <div className={`${styles.hudCorner} ${styles.hudBR}`} aria-hidden="true">
+        <div><span className={styles.hudKey}>UPTIME</span> <span className={styles.hudVal}>99.97%</span></div>
+        <div className={styles.hudDim}>prosessering &lt; 8 ms</div>
+      </div>
+
+      {/* Holografisk side-panel (skjules på mobil for plassens skyld) */}
+      <div className={styles.holoPanel} aria-hidden="true">
+        <div className={styles.holoHeader}>
+          <span>// AI-SYSTEMER</span>
+          <span className={styles.holoLive}>● LIVE</span>
+        </div>
+        <div className={styles.holoRow}><span className={styles.holoKey}>notert</span><span className={styles.holoVal}>live</span></div>
+        <div className={styles.holoRow}><span className={styles.holoKey}>mini5p</span><span className={styles.holoVal}>v1.2.1</span></div>
+        <div className={styles.holoRow}><span className={styles.holoKey}>helix</span><span className={styles.holoVal}>14 cron</span></div>
+        <div className={styles.holoRow}><span className={styles.holoKey}>siteview</span><span className={styles.holoVal}>2.0 beta</span></div>
+        <div className={styles.holoRow}><span className={styles.holoKey}>aktsom</span><span className={styles.holoVal}>v1.0</span></div>
+        <div className={styles.holoBar} />
+      </div>
+
+      {/* Original innhold beholdt */}
       <div className={`${styles.content} container`}>
         <div className={styles.badge}>
           <span className={styles.badgeDot} />

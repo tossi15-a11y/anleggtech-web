@@ -190,3 +190,239 @@
   .stats { gap: 1.25rem; }
   .scrollIndicator { display: none; }
 }
+
+/* ============================================================
+   SCI-FI VIDEO BACKGROUND + HUD
+   ============================================================ */
+
+.videoStage {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.videoLayer {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 1.6s ease-in-out;
+  will-change: opacity;
+}
+
+.videoActive {
+  opacity: 0.55;
+}
+
+.videoOverlay {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at center, rgba(7, 12, 22, 0.35) 0%, rgba(7, 12, 22, 0.85) 75%, rgba(7, 12, 22, 0.95) 100%),
+    linear-gradient(180deg, rgba(7, 12, 22, 0.5) 0%, rgba(7, 12, 22, 0.2) 40%, rgba(7, 12, 22, 0.85) 100%);
+  pointer-events: none;
+}
+
+.scanlines {
+  position: absolute;
+  inset: 0;
+  background-image: repeating-linear-gradient(
+    0deg,
+    rgba(74, 158, 255, 0.06) 0px,
+    rgba(74, 158, 255, 0.06) 1px,
+    transparent 1px,
+    transparent 3px
+  );
+  mix-blend-mode: overlay;
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+.scanBar {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 120px;
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    rgba(74, 158, 255, 0.04) 30%,
+    rgba(74, 158, 255, 0.12) 50%,
+    rgba(74, 158, 255, 0.04) 70%,
+    transparent 100%
+  );
+  pointer-events: none;
+  animation: scanSweep 8s linear infinite;
+  will-change: transform;
+}
+
+@keyframes scanSweep {
+  0% { transform: translateY(-30vh); }
+  100% { transform: translateY(120vh); }
+}
+
+/* HUD-corners */
+.hudCorner {
+  position: absolute;
+  z-index: 2;
+  font-family: 'SF Mono', 'JetBrains Mono', Menlo, Consolas, monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(123, 196, 255, 0.85);
+  pointer-events: none;
+  line-height: 1.5;
+  animation: hudPulse 4s ease-in-out infinite;
+}
+
+.hudTL { top: 1.25rem; left: 1.5rem; text-align: left; }
+.hudTR { top: 1.25rem; right: 1.5rem; text-align: right; }
+.hudBL { bottom: 1.25rem; left: 1.5rem; text-align: left; }
+.hudBR { bottom: 1.25rem; right: 1.5rem; text-align: right; }
+
+.hudKey {
+  color: var(--blue);
+  font-weight: 700;
+  text-shadow: 0 0 6px rgba(74, 158, 255, 0.5);
+}
+
+.hudVal {
+  color: rgba(255, 255, 255, 0.9);
+  font-weight: 500;
+}
+
+.hudDim {
+  color: rgba(123, 196, 255, 0.45);
+  font-size: 0.65rem;
+  margin-top: 0.15rem;
+}
+
+@keyframes hudPulse {
+  0%, 100% { opacity: 0.9; }
+  50% { opacity: 0.65; }
+}
+
+/* Holografisk side-panel */
+.holoPanel {
+  position: absolute;
+  top: 50%;
+  right: 2rem;
+  transform: translateY(-50%);
+  z-index: 2;
+  min-width: 220px;
+  padding: 0.9rem 1rem;
+  background: rgba(7, 12, 22, 0.55);
+  border: 1px solid rgba(74, 158, 255, 0.25);
+  border-radius: 4px;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  box-shadow:
+    0 0 24px rgba(74, 158, 255, 0.12),
+    inset 0 0 16px rgba(74, 158, 255, 0.04);
+  font-family: 'SF Mono', 'JetBrains Mono', Menlo, Consolas, monospace;
+  font-size: 0.72rem;
+  pointer-events: none;
+  animation: hologramFlicker 6s ease-in-out infinite;
+}
+
+.holoHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 700;
+  color: var(--blue);
+  letter-spacing: 0.1em;
+  margin-bottom: 0.65rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid rgba(74, 158, 255, 0.18);
+  font-size: 0.68rem;
+}
+
+.holoLive {
+  color: #4ade80;
+  font-size: 0.6rem;
+  font-weight: 600;
+  text-shadow: 0 0 6px rgba(74, 222, 128, 0.6);
+  animation: holoTick 1.4s ease-in-out infinite;
+}
+
+.holoRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.25rem 0;
+  border-bottom: 1px solid rgba(74, 158, 255, 0.06);
+}
+
+.holoRow:last-of-type {
+  border-bottom: none;
+}
+
+.holoKey {
+  color: rgba(123, 196, 255, 0.7);
+  letter-spacing: 0.05em;
+}
+
+.holoVal {
+  color: rgba(255, 255, 255, 0.95);
+  font-weight: 600;
+}
+
+.holoBar {
+  margin-top: 0.6rem;
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    var(--blue) 20%,
+    #7bc4ff 50%,
+    var(--blue) 80%,
+    transparent 100%
+  );
+  border-radius: 2px;
+  opacity: 0.6;
+  animation: holoBarPulse 3s ease-in-out infinite;
+}
+
+@keyframes hologramFlicker {
+  0%, 100% { opacity: 1; }
+  3% { opacity: 0.85; }
+  6% { opacity: 1; }
+  47% { opacity: 0.92; }
+  50% { opacity: 1; }
+}
+
+@keyframes holoTick {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(0.92); }
+}
+
+@keyframes holoBarPulse {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 0.8; }
+}
+
+/* Mobil: skjul holo-panel + flytt HUD-corners inn */
+@media (max-width: 900px) {
+  .holoPanel { display: none; }
+}
+
+@media (max-width: 600px) {
+  .hudCorner { font-size: 0.6rem; letter-spacing: 0.05em; }
+  .hudTL, .hudBL { left: 0.75rem; }
+  .hudTR, .hudBR { right: 0.75rem; }
+  .hudDim { font-size: 0.55rem; }
+}
+
+/* Reduced motion: stopp animasjoner, hold ett still-frame */
+@media (prefers-reduced-motion: reduce) {
+  .videoLayer { transition: none; }
+  .scanBar { animation: none; display: none; }
+  .hudCorner { animation: none; }
+  .holoPanel { animation: none; }
+  .holoLive { animation: none; }
+  .holoBar { animation: none; }
+}
