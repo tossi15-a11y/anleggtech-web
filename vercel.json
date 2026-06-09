@@ -1,3 +1,9 @@
 {
-  "rewrites": [{ "source": "/(.*)", "destination": "/index.html" }]
+  "rewrites": [
+    { "source": "/portal/personvern", "destination": "/portal/personvern.html" },
+    { "source": "/portal/privacy", "destination": "/portal/personvern.html" },
+    { "source": "/portal/vilkar", "destination": "/portal/vilkar.html" },
+    { "source": "/portal/terms", "destination": "/portal/vilkar.html" },
+    { "source": "/(.*)", "destination": "/index.html" }
+  ]
 }
