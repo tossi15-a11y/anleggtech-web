@@ -4,6 +4,7 @@ import Hero from './components/Hero'
 import Services from './components/Services'
 import Products from './components/Products'
 import AISection from './components/AISection'
+import Referanser from './components/Referanser'
 import Contact from './components/Contact'
 import Footer from './components/Footer'
 import CookieBanner from './components/CookieBanner'
@@ -22,6 +23,7 @@ function Home() {
         <Services />
         <Products />
         <AISection />
+        <Referanser />
         <Contact />
       </main>
       <Footer />
