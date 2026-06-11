@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import Navbar from '../components/Navbar'
+import Seo from '../components/Seo'
 import Footer from '../components/Footer'
 import styles from './Programvare.module.css'
 
@@ -78,6 +79,22 @@ const drones = [
 export default function Mini5planner() {
   return (
     <>
+      <Seo
+        title="Mini5Planner – Gratis flyveplan-app for DJI-droner | AnleggTech AS"
+        description="Lag KMZ-flyveruter for 7 DJI-modeller på 30 sekunder. Tegn område på kart, velg anleggsbransje-preset, eksporter rett til DJI RC 2. Gratis, Apple-notarisert Mac- og Windows-app."
+        path="/mini5planner"
+        jsonLd={{
+          '@context': 'https://schema.org',
+          '@type': 'SoftwareApplication',
+          name: 'Mini5Planner',
+          applicationCategory: 'UtilitiesApplication',
+          operatingSystem: 'macOS, Windows',
+          offers: { '@type': 'Offer', price: '0', priceCurrency: 'NOK' },
+          description:
+            'Gratis flyveplan-app som lager KMZ-flyveruter for DJI-droner med presets for anleggsbransjen.',
+          publisher: { '@type': 'Organization', name: 'AnleggTech AS', url: 'https://www.anleggtech.no' },
+        }}
+      />
       <Navbar />
       <main className={styles.main}>
 
@@ -98,7 +115,7 @@ export default function Mini5planner() {
             <p className={styles.subtitle}>
               Mini5Planner er en gratis Mac- og Windows-app som lager KMZ-flyveruter
               for DJI-droner. Tegn et område på kartet, velg en preset, eksporter til
-              fjernkontrollen — og fly. Bygget i Bergen av Anleggtech AS.
+              fjernkontrollen — og fly. Bygget i Bergen av AnleggTech AS.
             </p>
             <div className={styles.heroCtas}>
               <a
@@ -299,7 +316,7 @@ export default function Mini5planner() {
                   <span className={styles.howStep}>?</span>
                   <div>
                     <strong>Hvem står bak?</strong>
-                    <p>Anleggtech AS i Bergen. Vi bygger programvare for anleggsbransjen og driver vår egen pipeline med drone, WebODM og terrengbehandling.</p>
+                    <p>AnleggTech AS i Bergen. Vi bygger programvare for anleggsbransjen og driver vår egen pipeline med drone, WebODM og terrengbehandling.</p>
                   </div>
                 </li>
               </ol>

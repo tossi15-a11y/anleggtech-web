@@ -29,6 +29,17 @@ export default function Navbar() {
     return () => window.removeEventListener('resize', onResize)
   }, [])
 
+  // Lås bakgrunns-scroll mens mobilmenyen er åpen
+  useEffect(() => {
+    const value = menuOpen ? 'hidden' : ''
+    document.documentElement.style.overflow = value
+    document.body.style.overflow = value
+    return () => {
+      document.documentElement.style.overflow = ''
+      document.body.style.overflow = ''
+    }
+  }, [menuOpen])
+
   const scrollTo = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault()
     setMenuOpen(false)

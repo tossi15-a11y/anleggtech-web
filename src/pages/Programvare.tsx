@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import Navbar from '../components/Navbar'
+import Seo from '../components/Seo'
 import Footer from '../components/Footer'
 import Pricing, { type PricingTier } from '../components/Pricing'
 import styles from './Programvare.module.css'
@@ -49,7 +50,7 @@ const siteviewTiers: PricingTier[] = [
     description: 'For de første referansekundene som vil hjelpe å forme produktet.',
     features: [
       '3 gratis dokumentasjons-prosjekter',
-      'Tett oppfølging fra Anleggtech',
+      'Tett oppfølging fra AnleggTech',
       'Påvirker produktveikartet direkte',
       'Krav: lov til å lage case study',
     ],
@@ -122,6 +123,11 @@ const useCases = [
 export default function Programvare() {
   return (
     <>
+      <Seo
+        title="Programvare for anleggsbransjen – SiteView360 og mer | AnleggTech AS"
+        description="Digital dokumentasjon av anleggsprosjekter: SiteView360 konverterer 360°-video til navigerbar Street View-opplevelse av byggeplassen. Se programvaren vi utvikler."
+        path="/programvare"
+      />
       <Navbar />
       <main className={styles.main}>
 

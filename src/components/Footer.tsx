@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 import styles from './Footer.module.css'
 
 const navLinks = [
@@ -9,19 +9,28 @@ const navLinks = [
 ]
 
 const products = [
-  { label: 'lediglass.no', href: 'https://lediglass.no' },
-  { label: 'massemarkedet.no', href: 'https://massemarkedet.no' },
-  { label: 'aktsomhetsportalen.no', href: 'https://aktsomhetsportalen.no' },
+  { label: 'lediglass.no', href: 'https://lediglass.no', external: true },
+  { label: 'massemarkedet.no', href: 'https://massemarkedet.no', external: true },
+  { label: 'aktsomhetsportalen.no', href: 'https://aktsomhetsportalen.no', external: true },
+  { label: 'SiteView360', href: '/programvare', external: false },
+  { label: 'Notert', href: '/notert', external: false },
+  { label: 'Mini5Planner', href: '/mini5planner', external: false },
 ]
-
-const scrollTo = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
-  e.preventDefault()
-  const el = document.querySelector(href)
-  if (el) el.scrollIntoView({ behavior: 'smooth' })
-}
 
 export default function Footer() {
   const year = new Date().getFullYear()
+  const location = useLocation()
+  const navigate = useNavigate()
+
+  // Anker-lenker fungerer kun på forsiden — naviger dit først fra undersider
+  const scrollTo = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    e.preventDefault()
+    if (location.pathname === '/') {
+      document.querySelector(href)?.scrollIntoView({ behavior: 'smooth' })
+    } else {
+      navigate('/' + href)
+    }
+  }
 
   return (
     <footer className={styles.footer}>
@@ -73,17 +82,23 @@ export default function Footer() {
             <ul className={styles.linkList}>
               {products.map((p) => (
                 <li key={p.href}>
-                  <a
-                    href={p.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={styles.link}
-                  >
-                    {p.label}
-                    <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
-                      <path d="M2 10L10 2M5 2h5v5" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round"/>
-                    </svg>
-                  </a>
+                  {p.external ? (
+                    <a
+                      href={p.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={styles.link}
+                    >
+                      {p.label}
+                      <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+                        <path d="M2 10L10 2M5 2h5v5" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round"/>
+                      </svg>
+                    </a>
+                  ) : (
+                    <Link to={p.href} className={styles.link}>
+                      {p.label}
+                    </Link>
+                  )}
                 </li>
               ))}
             </ul>

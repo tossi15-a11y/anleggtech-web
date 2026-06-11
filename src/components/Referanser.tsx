@@ -16,6 +16,19 @@ type Project = {
   image_url: string | null
 }
 
+// Statisk berikelse for kjente leveranser: live-lenke + skjermbilde-fallback
+// når portal-prosjektet mangler bilde. Nøkkel matches mot tittel.
+const PROJECT_EXTRAS: { match: string; url: string; fallbackImage: string }[] = [
+  {
+    match: 'Åsane Hageservice',
+    url: 'https://asanehageservice.no',
+    fallbackImage: '/referanser/asane-hageservice.jpg',
+  },
+]
+
+const extrasFor = (title: string) =>
+  PROJECT_EXTRAS.find((e) => title.toLowerCase().includes(e.match.toLowerCase()))
+
 export default function Referanser() {
   const { ref, isVisible } = useScrollAnimation()
   const [projects, setProjects] = useState<Project[]>([])
@@ -55,27 +68,61 @@ export default function Referanser() {
           </span>
           <h2 className="section-heading">Nylige leveranser</h2>
           <p className="section-subtext">
-            Prosjekter vi har levert — publisert direkte fra Anleggtech Portal,
+            Prosjekter vi har levert — publisert direkte fra AnleggTech Portal,
             samme verktøy kundene våre bruker til å holde sine egne nettsider
             levende.
           </p>
         </div>
 
         <div className={styles.grid}>
-          {projects.map((p) => (
-            <article key={p.id} className={styles.card}>
-              {p.image_url && (
-                <div className={styles.imageWrap}>
-                  <img src={p.image_url} alt={p.title} loading="lazy" />
+          {projects.map((p) => {
+            const extras = extrasFor(p.title)
+            const image = p.image_url || extras?.fallbackImage
+            return (
+              <article key={p.id} className={styles.card}>
+                {image && (
+                  <div className={styles.imageWrap}>
+                    <img src={image} alt={p.title} loading="lazy" />
+                  </div>
+                )}
+                <div className={styles.cardBody}>
+                  {p.tag && <span className={styles.tag}>{p.tag}</span>}
+                  <h3 className={styles.title}>{p.title}</h3>
+                  <p className={styles.description}>{p.description}</p>
+                  {extras && (
+                    <a
+                      className={styles.visitLink}
+                      href={extras.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      Se nettsiden
+                      <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                        <path d="M4 12L12 4M6 4h6v6" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
+                      </svg>
+                    </a>
+                  )}
                 </div>
-              )}
-              <div className={styles.cardBody}>
-                {p.tag && <span className={styles.tag}>{p.tag}</span>}
-                <h3 className={styles.title}>{p.title}</h3>
-                <p className={styles.description}>{p.description}</p>
-              </div>
-            </article>
-          ))}
+              </article>
+            )
+          })}
+        </div>
+
+        <div className={styles.ctaRow}>
+          <p className={styles.ctaText}>Vil du ha en lignende nettside for din bedrift?</p>
+          <a
+            href="#kontakt"
+            className={styles.ctaLink}
+            onClick={(e) => {
+              e.preventDefault()
+              document.querySelector('#kontakt')?.scrollIntoView({ behavior: 'smooth' })
+            }}
+          >
+            Ta kontakt
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+          </a>
         </div>
       </div>
     </section>

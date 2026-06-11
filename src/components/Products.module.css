@@ -35,10 +35,11 @@
   transform: translateY(0);
 }
 
-/* Cards */
+/* Cards — 3 kolonner på desktop gir 3×2 med 6 produkter,
+   og nok bredde til at domenenavn ikke trenger orddeling */
 .cards {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(330px, 100%), 1fr));
   gap: 1.5rem;
 }
 
@@ -118,13 +119,14 @@
 }
 
 .cardName {
-  font-size: clamp(1.25rem, 1.6vw, 1.625rem);
+  font-size: clamp(1.2rem, 1.5vw, 1.5rem);
   font-weight: 800;
   color: #fff;
   letter-spacing: -0.02em;
-  overflow-wrap: break-word;
-  word-break: break-word;
-  hyphens: auto;
+  /* Merkenavn skal aldri orddeles */
+  hyphens: none;
+  overflow-wrap: normal;
+  word-break: keep-all;
 }
 
 .cardTagline {

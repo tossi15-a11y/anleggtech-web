@@ -32,10 +32,18 @@
   transform: translateY(0);
 }
 
+/* auto-fit + maks kortbredde: få kort fyller raden pent i stedet for
+   å etterlate ett lite kort alene i et stort tomt felt */
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr));
   gap: 1.25rem;
+  max-width: 100%;
+}
+
+.grid:has(> :only-child) {
+  grid-template-columns: minmax(min(320px, 100%), 480px);
+  justify-content: center;
 }
 
 .card {
@@ -98,6 +106,55 @@
   font-size: 0.92rem;
   color: var(--text-secondary);
   line-height: 1.6;
+}
+
+.visitLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: 0.75rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--blue);
+  transition: color var(--transition), gap var(--transition);
+}
+
+.visitLink:hover {
+  color: #7bc4ff;
+  gap: 0.6rem;
+}
+
+.ctaRow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+  padding-top: 0.5rem;
+}
+
+.ctaText {
+  font-size: 1rem;
+  color: var(--text-secondary);
+}
+
+.ctaLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.6rem 1.4rem;
+  font-size: 0.9375rem;
+  font-weight: 700;
+  color: #0d0f14;
+  background: var(--amber);
+  border-radius: var(--radius-md);
+  transition: background var(--transition), transform var(--transition), box-shadow var(--transition);
+}
+
+.ctaLink:hover {
+  background: var(--amber-dark);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 16px rgba(245, 166, 35, 0.3);
 }
 
 @media (max-width: 640px) {

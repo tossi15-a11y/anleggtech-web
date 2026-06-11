@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import Navbar from '../components/Navbar'
+import Seo from '../components/Seo'
 import Footer from '../components/Footer'
 import Pricing, { type PricingTier } from '../components/Pricing'
 import styles from './Programvare.module.css'
@@ -109,7 +110,7 @@ const notertTiers: PricingTier[] = [
     description: 'For de 5 første firmaene som vil bli referansekunder.',
     features: [
       '90 dagers gratis bruk',
-      'Tett oppfølging fra Anleggtech',
+      'Tett oppfølging fra AnleggTech',
       'Påvirker produktveikartet direkte',
       'Krav: jevnlig bruk + ærlig feedback',
       'Lov til å lage anonymisert case study',
@@ -124,6 +125,21 @@ const notertTiers: PricingTier[] = [
 export default function NotertPage() {
   return (
     <>
+      <Seo
+        title="Notert – AI-møtereferat med NS- og HMS-flagging | AnleggTech AS"
+        description="Notert transkriberer byggemøter live og flagger automatisk NS 8405–8417-forhold, HMS-avvik og forskriftspunkter. Lyd berører aldri serveren. Bygget for anleggsbransjen."
+        path="/notert"
+        jsonLd={{
+          '@context': 'https://schema.org',
+          '@type': 'SoftwareApplication',
+          name: 'Notert',
+          applicationCategory: 'BusinessApplication',
+          operatingSystem: 'Web',
+          description:
+            'AI-referent for byggebransjen: live transkripsjon av byggemøter med automatisk flagging av NS-kontraktsforhold og HMS-avvik.',
+          publisher: { '@type': 'Organization', name: 'AnleggTech AS', url: 'https://www.anleggtech.no' },
+        }}
+      />
       <Navbar />
       <main className={styles.main}>
         <section className={styles.hero}>
@@ -133,7 +149,7 @@ export default function NotertPage() {
                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
                   <path d="M11 4L7 8l4 4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
                 </svg>
-                Tilbake til Anleggtech
+                Tilbake til AnleggTech
               </Link>
             </div>
             <span className={styles.tag}>AI-referent</span>
@@ -252,7 +268,7 @@ export default function NotertPage() {
           heading="Enkel pris, ingen overraskelser"
           lead="Ubegrenset møter inkludert. Faktureres månedlig, oppsigelse 1 måned."
           tiers={notertTiers}
-          pilotNote="Fortsatt 5 piloter tilgjengelig — Anleggtech følger personlig opp alle piloter de første 90 dagene."
+          pilotNote="Fortsatt 5 piloter tilgjengelig — AnleggTech følger personlig opp alle piloter de første 90 dagene."
           accentColor="#f59e0b"
         />
 

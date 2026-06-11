@@ -137,13 +137,24 @@
   position: fixed;
   inset: 0;
   z-index: 999;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  animation: overlayFadeIn 250ms ease;
+}
+
+@keyframes overlayFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
 /* ─── Mobile ──────────────────────────────────────────────────────────────── */
 @media (max-width: 767px) {
   .hamburger {
     display: flex;
+    /* Over draweren slik at krysset er synlig og klikkbart når menyen er åpen */
+    position: relative;
+    z-index: 1002;
   }
 
   .overlay {

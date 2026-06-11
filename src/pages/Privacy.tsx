@@ -1,11 +1,17 @@
 import { Link } from 'react-router-dom'
 import Navbar from '../components/Navbar'
+import Seo from '../components/Seo'
 import Footer from '../components/Footer'
 import styles from './Privacy.module.css'
 
 export default function Privacy() {
   return (
     <>
+      <Seo
+        title="Personvernerklæring – AnleggTech AS"
+        description="Personvernerklæring og informasjon om bruk av informasjonskapsler på anleggtech.no."
+        path="/personvern"
+      />
       <Navbar />
       <main className={styles.main}>
         <div className={styles.container}>

@@ -9,6 +9,7 @@ import Contact from './components/Contact'
 import Footer from './components/Footer'
 import CookieBanner from './components/CookieBanner'
 import ScrollToTop from './components/ScrollToTop'
+import Seo from './components/Seo'
 import Privacy from './pages/Privacy'
 import Programvare from './pages/Programvare'
 import Notert from './pages/Notert'
@@ -17,6 +18,11 @@ import Mini5planner from './pages/Mini5planner'
 function Home() {
   return (
     <>
+      <Seo
+        title="AnleggTech AS – Teknologi som jobber like hardt som deg"
+        description="AnleggTech AS – AI og digital innovasjon for anleggsbransjen. Skreddersydde nettsider, AI-assistenter, markedsplasser og digitale verktøy for entreprenører i hele Norge."
+        path="/"
+      />
       <Navbar />
       <main>
         <Hero />

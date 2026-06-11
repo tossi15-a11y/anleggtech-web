@@ -10,33 +10,42 @@ const VIDEOS = ['/video/hero-city.mp4', '/video/hero-matrix.mp4']
 
 export default function Hero() {
   const [activeIndex, setActiveIndex] = useState(0)
+  // Video nr. 2 monteres først etter at siden har roet seg — sparer ~1 MB på initial load
+  const [secondaryReady, setSecondaryReady] = useState(false)
 
   useEffect(() => {
     const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
     if (reducedMotion) return
+    const bootId = setTimeout(() => setSecondaryReady(true), 4000)
     const id = setInterval(() => {
       setActiveIndex((i) => (i + 1) % VIDEOS.length)
     }, 10000)
-    return () => clearInterval(id)
+    return () => {
+      clearTimeout(bootId)
+      clearInterval(id)
+    }
   }, [])
 
   return (
     <section className={styles.hero} id="hero">
       {/* Sci-fi video-bakgrunn — crossfader mellom to klipp */}
       <div className={styles.videoStage} aria-hidden="true">
-        {VIDEOS.map((src, i) => (
-          <video
-            key={src}
-            className={`${styles.videoLayer} ${i === activeIndex ? styles.videoActive : ''}`}
-            autoPlay
-            muted
-            loop
-            playsInline
-            preload={i === 0 ? 'auto' : 'metadata'}
-          >
-            <source src={src} type="video/mp4" />
-          </video>
-        ))}
+        {VIDEOS.map((src, i) => {
+          if (i > 0 && !secondaryReady) return null
+          return (
+            <video
+              key={src}
+              className={`${styles.videoLayer} ${i === activeIndex ? styles.videoActive : ''}`}
+              autoPlay
+              muted
+              loop
+              playsInline
+              preload={i === 0 ? 'auto' : 'metadata'}
+            >
+              <source src={src} type="video/mp4" />
+            </video>
+          )
+        })}
         <div className={styles.videoOverlay} />
         <div className={styles.scanlines} />
         <div className={styles.scanBar} />
@@ -74,8 +83,8 @@ export default function Hero() {
         </div>
 
         <h1 className={styles.headline}>
-          Teknologi som jobber<br />
-          <span className={styles.headlineAccent}>like hardt som deg</span>
+          <span className={styles.headlineLine}>Teknologi som jobber</span>
+          <span className={`${styles.headlineLine} ${styles.headlineAccent}`}>like hardt som deg</span>
         </h1>
 
         <p className={styles.subtext}>
@@ -114,8 +123,8 @@ export default function Hero() {
           </div>
           <div className={styles.statDivider} aria-hidden="true" />
           <div className={styles.stat}>
-            <span className={styles.statNum}>2+</span>
-            <span className={styles.statLabel}>Live produkter i bransjen</span>
+            <span className={styles.statNum}>6</span>
+            <span className={styles.statLabel}>Egne produkter for bransjen</span>
           </div>
         </div>
       </div>
