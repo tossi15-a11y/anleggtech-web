@@ -150,6 +150,21 @@
   transform: translateY(-1px);
 }
 
+.cardLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--blue);
+  text-decoration: none;
+  transition: gap var(--transition), color var(--transition);
+}
+
+.cardLink:hover {
+  gap: 0.65rem;
+}
+
 .cardArrow {
   align-self: flex-end;
   color: var(--text-muted);

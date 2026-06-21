@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import { useScrollAnimation } from '../hooks/useScrollAnimation'
 import styles from './Services.module.css'
 
@@ -16,6 +17,7 @@ const services = [
     subtitle: 'for anleggsbransjen',
     description:
       'Profesjonelle nettsider bygget for å konvertere besøkende til kunder — tilpasset din bedrift, din bransje og dine kunder. Vi vet hva som fungerer i anleggsbransjen.',
+    href: '/nettsider',
     examples: [
       { name: 'Åsane Hageservice', url: 'https://asanehageservice.no' },
     ],
@@ -104,6 +106,7 @@ export default function Services() {
 function ServiceCard({ svc, delay }: { svc: typeof services[number]; delay: number }) {
   const { ref, isVisible } = useScrollAnimation(0.1)
   const examples = 'examples' in svc ? svc.examples : undefined
+  const href = 'href' in svc ? svc.href : undefined
 
   return (
     <div
@@ -137,6 +140,14 @@ function ServiceCard({ svc, delay }: { svc: typeof services[number]; delay: numb
             ))}
           </div>
         </div>
+      )}
+      {href && (
+        <Link to={href} className={styles.cardLink}>
+          Les mer om nettsider
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+            <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
+          </svg>
+        </Link>
       )}
       <div className={styles.cardArrow}>
         <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">

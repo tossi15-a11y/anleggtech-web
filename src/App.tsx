@@ -12,6 +12,7 @@ import ScrollToTop from './components/ScrollToTop'
 import Seo from './components/Seo'
 import Privacy from './pages/Privacy'
 import Programvare from './pages/Programvare'
+import Nettsider from './pages/Nettsider'
 import Notert from './pages/Notert'
 import Mini5planner from './pages/Mini5planner'
 
@@ -45,6 +46,7 @@ export default function App() {
         <Route path="/" element={<Home />} />
         <Route path="/personvern" element={<Privacy />} />
         <Route path="/programvare" element={<Programvare />} />
+        <Route path="/nettsider" element={<Nettsider />} />
         <Route path="/notert" element={<Notert />} />
         <Route path="/mini5planner" element={<Mini5planner />} />
       </Routes>
