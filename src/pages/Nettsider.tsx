@@ -97,6 +97,10 @@ const faqs = [
     a: 'Du. Domenet kjøpes på ditt firmanavn, og innholdet er ditt. Vi drifter den tekniske infrastrukturen, men du sitter aldri fast hos oss.',
   },
   {
+    q: 'Kan jeg oppdatere nettsiden selv?',
+    a: 'Ja. Du får tilgang til en enkel portal der du legger inn nye referanseprosjekter rett fra mobilen, og endrer åpningstider, tjenester og kontaktinfo når du vil. Endringene er live på sekunder — uten at du trenger å kunne noe teknisk. Vil du heller at vi gjør det, ordner vi det også.',
+  },
+  {
     q: 'Hvor lang tid tar det?',
     a: 'Demoen er som regel klar i løpet av få dager. Etter at du har godkjent, er siden vanligvis live innen en uke — avhengig av hvor raskt vi får bilder og tekst fra deg.',
   },
@@ -252,6 +256,40 @@ export default function Nettsider() {
                   </li>
                 ))}
               </ol>
+            </div>
+
+            {/* Kundeportal — selvbetjent oppdatering */}
+            <div className={local.portalBlock}>
+              <div className={local.portalText}>
+                <span className={styles.productLabel}>Din egen portal</span>
+                <h2 className={local.portalHeading}>
+                  Hold nettsiden <span className={styles.accent}>levende</span> — helt selv
+                </h2>
+                <p className={local.portalLead}>
+                  Du får tilgang til en enkel portal der du legger inn nye referanseprosjekter
+                  rett fra mobilen ute på jobb. Du kan også oppdatere åpningstider, tjenester og
+                  kontaktinfo når som helst — ingen koding, ingen e-post fram og tilbake.
+                </p>
+                <p className={local.portalNote}>
+                  De fleste nettsider ser like døde ut neste år. Din holder seg fersk — og en
+                  oppdatert side med ekte prosjekter rangerer bedre på Google og overbeviser flere kunder.
+                </p>
+              </div>
+              <div className={local.portalFlow}>
+                {[
+                  { n: '1', t: 'Ta et bilde på jobb', d: 'Ferdig med et prosjekt? Knips et bilde med mobilen.' },
+                  { n: '2', t: 'Skriv to setninger', d: 'Kort om hva du gjorde og hvor. Det er alt.' },
+                  { n: '3', t: 'Live på sekunder', d: 'Prosjektet dukker opp på nettsiden din med en gang.' },
+                ].map((s) => (
+                  <div key={s.n} className={local.portalStep}>
+                    <span className={local.portalStepNum}>{s.n}</span>
+                    <div>
+                      <strong>{s.t}</strong>
+                      <p>{s.d}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
             </div>
 
             {/* Referanse */}

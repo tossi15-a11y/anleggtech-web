@@ -174,6 +174,87 @@
   margin: 0;
 }
 
+/* ─── Kundeportal ─────────────────────────────────────────────────────────── */
+.portalBlock {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 2.5rem;
+  align-items: center;
+  padding: 3rem;
+  background:
+    radial-gradient(ellipse at bottom right, rgba(74, 158, 255, 0.1), transparent 65%),
+    var(--bg-secondary);
+  border: 1.5px solid rgba(74, 158, 255, 0.25);
+  border-radius: var(--radius-xl);
+}
+
+.portalHeading {
+  font-size: clamp(1.5rem, 3.5vw, 2.1rem);
+  font-weight: 800;
+  color: var(--text-primary);
+  line-height: 1.15;
+  letter-spacing: -0.015em;
+  margin: 0 0 1rem;
+}
+
+.portalLead {
+  font-size: 1.0625rem;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  margin: 0 0 1rem;
+}
+
+.portalNote {
+  font-size: 0.9375rem;
+  color: var(--text-muted);
+  line-height: 1.65;
+  margin: 0;
+}
+
+.portalFlow {
+  display: flex;
+  flex-direction: column;
+  gap: 0.875rem;
+}
+
+.portalStep {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+  padding: 1.25rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+}
+
+.portalStepNum {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+  font-size: 0.9375rem;
+  font-weight: 700;
+  color: #fff;
+  background: var(--blue);
+  border-radius: 50%;
+}
+
+.portalStep strong {
+  display: block;
+  font-size: 1rem;
+  color: var(--text-primary);
+  margin-bottom: 0.2rem;
+}
+
+.portalStep p {
+  font-size: 0.875rem;
+  color: var(--text-muted);
+  line-height: 1.55;
+  margin: 0;
+}
+
 /* ─── Referanse ───────────────────────────────────────────────────────────── */
 .refBlock {
   display: grid;
@@ -289,6 +370,10 @@
     grid-template-columns: 1fr;
     gap: 1.75rem;
   }
+  .portalBlock {
+    grid-template-columns: 1fr;
+    gap: 1.75rem;
+  }
 }
 
 @media (max-width: 640px) {
@@ -299,6 +384,9 @@
     grid-template-columns: 1fr;
   }
   .refBlock {
+    padding: 1.75rem 1.5rem;
+  }
+  .portalBlock {
     padding: 1.75rem 1.5rem;
   }
 }
