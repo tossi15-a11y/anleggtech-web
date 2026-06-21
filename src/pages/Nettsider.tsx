@@ -90,7 +90,7 @@ const audiences = [
 const faqs = [
   {
     q: 'Hva koster det?',
-    a: 'Prisen avhenger av omfanget — en enkel presentasjonsside koster mindre enn en side med booking, fagsider og mange undersider. Du får et fast tilbud før vi begynner, helt uten overraskelser. Ta kontakt så regner vi på akkurat din bedrift.',
+    a: 'En komplett nettside koster fra 13 990 kr første år (design, oppsett, lansering og domene), deretter 4 990 kr/år for drift og hosting. Endelig pris avhenger av omfanget — en enkel presentasjonsside koster mindre, en side med booking og mange undersider mer. Du får alltid et fast tilbud før vi begynner, helt uten overraskelser.',
   },
   {
     q: 'Hvem eier nettsiden?',
@@ -333,6 +333,67 @@ export default function Nettsider() {
                     <p className={styles.audienceCardDesc}>{a.description}</p>
                   </div>
                 ))}
+              </div>
+            </div>
+
+            {/* Pris */}
+            <div className={local.priceBlock}>
+              <div className={local.priceMain}>
+                <span className={styles.productLabel}>Hva koster en nettside?</span>
+                <h2 className={local.priceHeading}>
+                  Fra <span className={styles.accent}>13 990 kr</span> første år
+                </h2>
+                <p className={local.priceSub}>
+                  Inkluderer design, oppsett, lansering og domene på ditt firmanavn. Deretter{' '}
+                  <strong>4 990 kr/år</strong> for drift, hosting, sikkerhet og småendringer.
+                </p>
+                <p className={local.priceNote}>
+                  Endelig pris avhenger av omfang — en enkel presentasjonsside koster mindre, en
+                  side med booking, fagsider og mange undersider mer. Du får alltid et fast tilbud
+                  før vi begynner, helt uten overraskelser.
+                </p>
+                <a href={MAILTO} className={styles.ctaPrimary}>
+                  Få et tilbud
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                    <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
+                </a>
+              </div>
+
+              <div className={local.priceExample}>
+                <span className={local.priceExampleTag}>Eksempel</span>
+                <h3 className={local.priceExampleTitle}>Åsane Hageservice</h3>
+                <ul className={local.priceExampleList}>
+                  {[
+                    '5 sider med lokale bydels-undersider',
+                    'Booking-skjema rett til innboksen',
+                    'Lokal SEO + Google Bedriftsprofil',
+                    'Mobiltilpasset og rask på alle skjermer',
+                  ].map((f) => (
+                    <li key={f}>
+                      <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+                        <path d="M2 7l3 3 7-7" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
+                      </svg>
+                      {f}
+                    </li>
+                  ))}
+                </ul>
+                <div className={local.priceExamplePrice}>
+                  <span className={local.priceExamplePriceMain}>13 990 kr</span>
+                  <span className={local.priceExamplePriceUnit}>første år</span>
+                </div>
+                <div className={local.priceExamplePriceSub}>+ 4 990 kr/år drift &amp; hosting</div>
+                <a
+                  href="https://asanehageservice.no"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={styles.ctaSecondary}
+                >
+                  Se nettsiden live
+                  <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                    <path d="M4 12L12 4M6 4h6v6" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
+                </a>
               </div>
             </div>
 
