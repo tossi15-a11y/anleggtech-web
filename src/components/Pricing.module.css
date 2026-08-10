@@ -106,6 +106,15 @@
   color: #a3a3a3;
 }
 
+.tierPriceNote {
+  color: var(--pricing-accent, #22c55e);
+  font-size: 0.8rem;
+  font-weight: 600;
+  margin: -0.5rem 0 0.85rem 0;
+  line-height: 1.4;
+  min-height: 2.8em;
+}
+
 .tierDescription {
   color: #a3a3a3;
   font-size: 0.9rem;

@@ -14,6 +14,7 @@ const products = [
   { label: 'aktsomhetsportalen.no', href: 'https://aktsomhetsportalen.no', external: true },
   { label: 'SiteView360', href: '/programvare', external: false },
   { label: 'Notert', href: '/notert', external: false },
+  { label: 'Notert Takst', href: '/notert-takst', external: false },
   { label: 'Mini5Planner', href: '/mini5planner', external: false },
 ]
 

@@ -14,6 +14,7 @@ import Privacy from './pages/Privacy'
 import Programvare from './pages/Programvare'
 import Nettsider from './pages/Nettsider'
 import Notert from './pages/Notert'
+import NotertTakst from './pages/NotertTakst'
 import Mini5planner from './pages/Mini5planner'
 
 function Home() {
@@ -48,6 +49,7 @@ export default function App() {
         <Route path="/programvare" element={<Programvare />} />
         <Route path="/nettsider" element={<Nettsider />} />
         <Route path="/notert" element={<Notert />} />
+        <Route path="/notert-takst" element={<NotertTakst />} />
         <Route path="/mini5planner" element={<Mini5planner />} />
       </Routes>
       <CookieBanner />

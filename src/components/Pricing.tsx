@@ -5,6 +5,8 @@ export type PricingTier = {
   name: string
   price: string
   unit: string
+  /** Valgfri regnestykke-linje rett under prisen, f.eks. omregning til pris per enhet */
+  priceNote?: string
   description: string
   features: string[]
   highlighted?: boolean
@@ -51,6 +53,7 @@ export default function Pricing({
                 <span className={styles.tierPriceNumber}>{tier.price}</span>
                 <span className={styles.tierPriceUnit}>{tier.unit}</span>
               </div>
+              {tier.priceNote && <p className={styles.tierPriceNote}>{tier.priceNote}</p>}
               <p className={styles.tierDescription}>{tier.description}</p>
               <ul className={styles.tierFeatures}>
                 {tier.features.map((f) => (

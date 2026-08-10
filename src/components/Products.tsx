@@ -73,6 +73,18 @@ const products: Product[] = [
     iconSrc: '/logos/notert.svg',
   },
   {
+    name: 'Notert Takst',
+    label: 'AI-befaringsassistent',
+    tagline: 'Befaringsnotat med automatisk avviksflagging',
+    description:
+      'Live transkripsjon av boligsalgsbefaringer, skadetakst og våtromskontroll. Flagger fuktavvik, dokumentasjons­mangler og kandidater til TG2/TG3 mot NS 3600, NS 3424 og våtromsnormen. Du setter tilstandsgraden — Notert peker bare på det som bør vurderes.',
+    url: '/notert-takst',
+    internal: true,
+    features: ['NS 3600 og BVN', 'TG-kandidater', 'Fukt- og skadetakst'],
+    color: '#3b82f6',
+    iconSrc: '/logos/notert-takst.svg',
+  },
+  {
     name: 'Mini5Planner',
     label: 'Drone-fotogrammetri',
     tagline: 'Gratis flyveplan-app for DJI-droner',
