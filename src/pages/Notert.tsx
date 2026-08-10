@@ -88,9 +88,9 @@ const notertTiers: PricingTier[] = [
   },
   {
     name: 'Standard',
-    price: '990',
+    price: '499',
     unit: 'kr / bruker / mnd',
-    priceNote: 'Under 100 kr per møte ved 10 byggemøter i måneden',
+    priceNote: 'Under 50 kr per møte ved 10 byggemøter i måneden',
     description: 'For anleggs- og prosjektledere som vil ha automatisk referat fra alle møter.',
     features: [
       'Ubegrenset møter',
@@ -107,9 +107,9 @@ const notertTiers: PricingTier[] = [
   },
   {
     name: 'Bedrift',
-    price: '2 990',
+    price: '1 990',
     unit: 'kr / firma / mnd',
-    priceNote: 'Tilsvarer 598 kr per bruker ved fem brukere',
+    priceNote: 'Tilsvarer 398 kr per bruker ved fem brukere',
     description: 'For entreprenører med flere prosjektledere, felles maler og egen profil på referatene.',
     features: [
       'Alt i Standard for inntil 5 brukere',

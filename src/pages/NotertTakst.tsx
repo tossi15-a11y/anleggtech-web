@@ -88,9 +88,9 @@ const takstTiers: PricingTier[] = [
   },
   {
     name: 'Standard',
-    price: '990',
+    price: '499',
     unit: 'kr / bruker / mnd',
-    priceNote: 'Under 50 kr per befaring ved 20 befaringer i måneden',
+    priceNote: 'Under 25 kr per befaring ved 20 befaringer i måneden',
     description: 'For takstmenn som vil ha strukturert befaringsnotat fra hver eneste befaring.',
     features: [
       'Ubegrenset befaringer',
@@ -107,9 +107,9 @@ const takstTiers: PricingTier[] = [
   },
   {
     name: 'Kontor',
-    price: '2 990',
+    price: '1 990',
     unit: 'kr / kontor / mnd',
-    priceNote: 'Tilsvarer 598 kr per bruker ved fem takstmenn',
+    priceNote: 'Tilsvarer 398 kr per bruker ved fem takstmenn',
     description: 'For takstkontor med flere takstmenn, felles fagspråk og egne rapportmaler.',
     features: [
       'Alt i Standard for inntil 5 brukere',
