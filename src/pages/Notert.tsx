@@ -66,9 +66,31 @@ const useCases = [
 
 const notertTiers: PricingTier[] = [
   {
+    name: 'Pilot',
+    price: '0',
+    unit: 'kr i 90 dager',
+    priceNote: 'Dette er den eneste planen som er åpen akkurat nå',
+    description: 'For de 5 første firmaene som vil bli referansekunder.',
+    features: [
+      '90 dagers gratis bruk',
+      'Full tilgang til alt i Standard',
+      'Tett oppfølging fra AnleggTech',
+      'Påvirker produktveikartet direkte',
+      'Krav: jevnlig bruk + ærlig feedback',
+      'Lov til å lage anonymisert case study',
+    ],
+    highlighted: true,
+    badge: 'Pilotprogram',
+    cta: {
+      label: 'Søk om pilot',
+      href: 'mailto:torstein@anleggtech.no?subject=Notert%20Pilot%20%E2%80%94%20s%C3%B8knad',
+    },
+  },
+  {
     name: 'Standard',
     price: '990',
     unit: 'kr / bruker / mnd',
+    priceNote: 'Under 100 kr per møte ved 10 byggemøter i måneden',
     description: 'For anleggs- og prosjektledere som vil ha automatisk referat fra alle møter.',
     features: [
       'Ubegrenset møter',
@@ -78,46 +100,28 @@ const notertTiers: PricingTier[] = [
       'Discord-varsel ved nytt referat',
       'PDF- og Markdown-eksport',
     ],
-    highlighted: true,
-    badge: 'Mest populært',
     cta: {
       label: 'Bestill 15-min demo',
       href: 'mailto:torstein@anleggtech.no?subject=Notert%20Standard%20%E2%80%94%20demo',
     },
   },
   {
-    name: 'Pro',
-    price: '1 490',
-    unit: 'kr / bruker / mnd',
-    description: 'For større firma med behov for tilpassing og integrasjoner.',
+    name: 'Bedrift',
+    price: '2 990',
+    unit: 'kr / firma / mnd',
+    priceNote: 'Tilsvarer 598 kr per bruker ved fem brukere',
+    description: 'For entreprenører med flere prosjektledere, felles maler og egen profil på referatene.',
     features: [
-      'Alt i Standard',
+      'Alt i Standard for inntil 5 brukere',
+      'Felles fagvokabular for hele firmaet',
       'Egendefinerte mal-prompts',
       'Branding på PDF (logo, signatur)',
       'CRM-eksport (på forespørsel)',
-      'Prioritert support',
-      'Brukerstøtte i Microsoft Teams',
+      'Prioritert support og Teams-brukerstøtte',
     ],
     cta: {
       label: 'Ta kontakt',
-      href: 'mailto:torstein@anleggtech.no?subject=Notert%20Pro%20%E2%80%94%20info',
-    },
-  },
-  {
-    name: 'Pilot',
-    price: '0',
-    unit: 'kr i 90 dager',
-    description: 'For de 5 første firmaene som vil bli referansekunder.',
-    features: [
-      '90 dagers gratis bruk',
-      'Tett oppfølging fra AnleggTech',
-      'Påvirker produktveikartet direkte',
-      'Krav: jevnlig bruk + ærlig feedback',
-      'Lov til å lage anonymisert case study',
-    ],
-    cta: {
-      label: 'Søk om pilot',
-      href: 'mailto:torstein@anleggtech.no?subject=Notert%20Pilot%20%E2%80%94%20s%C3%B8knad',
+      href: 'mailto:torstein@anleggtech.no?subject=Notert%20Bedrift%20%E2%80%94%20info',
     },
   },
 ]
@@ -266,7 +270,7 @@ export default function NotertPage() {
 
         <Pricing
           heading="Enkel pris, ingen overraskelser"
-          lead="Ubegrenset møter inkludert. Faktureres månedlig, oppsigelse 1 måned."
+          lead="Ubegrenset møter i alle planer. Pilot er inngangen i dag — de betalte planene gjelder fra lansering."
           tiers={notertTiers}
           pilotNote="Fortsatt 5 piloter tilgjengelig — AnleggTech følger personlig opp alle piloter de første 90 dagene."
           accentColor="#f59e0b"
