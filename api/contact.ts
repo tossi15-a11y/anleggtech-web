@@ -1,14 +1,27 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node'
 
+function escapeHtml(value: string) {
+  return value.replace(/[&<>"']/g, (character) => ({
+    '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;',
+  })[character]!)
+}
+
 export default async function handler(req: VercelRequest, res: VercelResponse) {
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method not allowed' })
   }
 
+  if (!req.body || typeof req.body !== 'object' || Array.isArray(req.body)) {
+    return res.status(400).json({ error: 'Ugyldig forespørsel' })
+  }
+
   const { navn, bedrift, epost, telefon, melding } = req.body
 
-  if (!navn || !epost || !melding) {
+  if ([navn, epost, melding].some((value) => typeof value !== 'string' || !value.trim())) {
     return res.status(400).json({ error: 'Mangler påkrevde felt' })
+  }
+  if ([bedrift, telefon].some((value) => value != null && typeof value !== 'string')) {
+    return res.status(400).json({ error: 'Ugyldige kontaktopplysninger' })
   }
 
   const apiKey = process.env.RESEND_API_KEY
@@ -28,13 +41,13 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       subject: `Ny henvendelse fra ${navn}${bedrift ? ` (${bedrift})` : ''}`,
       html: `
         <h2>Ny henvendelse via anleggtech.no</h2>
-        <p><strong>Navn:</strong> ${navn}</p>
-        ${bedrift ? `<p><strong>Bedrift:</strong> ${bedrift}</p>` : ''}
-        <p><strong>E-post:</strong> ${epost}</p>
-        ${telefon ? `<p><strong>Telefon:</strong> ${telefon}</p>` : ''}
+        <p><strong>Navn:</strong> ${escapeHtml(navn)}</p>
+        ${bedrift ? `<p><strong>Bedrift:</strong> ${escapeHtml(bedrift)}</p>` : ''}
+        <p><strong>E-post:</strong> ${escapeHtml(epost)}</p>
+        ${telefon ? `<p><strong>Telefon:</strong> ${escapeHtml(telefon)}</p>` : ''}
         <hr />
         <p><strong>Melding:</strong></p>
-        <p>${melding.replace(/\n/g, '<br />')}</p>
+        <p>${escapeHtml(melding).replace(/\n/g, '<br />')}</p>
       `,
       reply_to: epost,
     }),

@@ -33,11 +33,11 @@ const useCases = [
     title: 'Live byggemøter',
     tagline: 'Transkriberer mens dere snakker',
     description:
-      'Sett mobilen på bordet, trykk start. Notert tar opp, transkriberer live med Deepgram norsk, og produserer ferdig referat når møtet er over. Lyden lagres aldri på server.',
+      'Sett mobilen på bordet og trykk start. Lyden strømmer via Noterts relé i RAM til Deepgram for live transkripsjon. Notert lagrer ingen avspillbar lydfil.',
     points: [
       'Sanntids-transkripsjon med diarization',
       'Fungerer på 2-timers byggemøter med flere talere',
-      'Lyd berører aldri server — kun transkripsjon og ferdig referat',
+      'Ingen avspillbar lydfil lagres hos Notert',
     ],
   },
   {
@@ -131,7 +131,7 @@ export default function NotertPage() {
     <>
       <Seo
         title="Notert – AI-møtereferat med NS- og HMS-flagging | AnleggTech AS"
-        description="Notert transkriberer byggemøter live og flagger automatisk NS 8405–8417-forhold, HMS-avvik og forskriftspunkter. Lyd berører aldri serveren. Bygget for anleggsbransjen."
+        description="Notert transkriberer byggemøter live og flagger NS 8405–8417-forhold og HMS-avvik. Ingen avspillbar lydfil lagres hos Notert."
         path="/notert"
         jsonLd={{
           '@context': 'https://schema.org',
@@ -164,7 +164,8 @@ export default function NotertPage() {
               Notert er en AI-referent bygget for anleggsbransjen. Live transkripsjon
               av byggemøter, befaringer og vernerunder, med automatisk flagging av
               kontraktsmessige forhold (NS 8405–8417), HMS-avvik og forskriftspunkter.
-              Lyd berører aldri serveren.
+              Lyden strømmer via Noterts relé til tale-til-tekst; Notert lagrer ingen
+              avspillbar lydfil.
             </p>
             <div className={styles.heroCtas}>
               <a
@@ -252,7 +253,7 @@ export default function NotertPage() {
                   <span className={styles.howStep}>2</span>
                   <div>
                     <strong>Trykk start</strong>
-                    <p>Mobil på bordet, live transkripsjon strømmer direkte til Deepgram. Lyd lagres aldri på server.</p>
+                    <p>Mobil på bordet. Lyden strømmer via Noterts relé til Deepgram for live transkripsjon; Notert lagrer ingen avspillbar lydfil.</p>
                   </div>
                 </li>
                 <li>

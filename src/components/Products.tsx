@@ -65,7 +65,7 @@ const products: Product[] = [
     label: 'AI-referent',
     tagline: 'Møtereferater med automatisk NS- og HMS-flagging',
     description:
-      'Live transkripsjon av byggherre-, bygge- og oppstartsmøter. Genererer profesjonelle referater og flagger automatisk kontrakts­messige forhold (NS 8405–8417), HMS-avvik og forskriftspunkter. Lyd berører aldri serveren.',
+      'Live transkripsjon av byggherre-, bygge- og oppstartsmøter. Genererer profesjonelle referater og flagger automatisk kontrakts­messige forhold (NS 8405–8417), HMS-avvik og forskriftspunkter. Notert lagrer ingen avspillbar lydfil.',
     url: '/notert',
     internal: true,
     features: ['Live transkripsjon', 'NS-kontraktflagging', 'HMS- og forskriftflagg'],
