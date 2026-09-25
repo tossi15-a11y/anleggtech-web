@@ -83,7 +83,8 @@ export default function Pricing({
         )}
 
         <p className={styles.footnote}>
-          Alle priser er eks. mva · faktureres månedlig · oppsigelsestid 1 måned
+          Prisene er uten merverdiavgift · Anleggtech AS er ikke mva-registrert, så
+          ingenting kommer i tillegg · faktureres månedlig · oppsigelsestid 1 måned
         </p>
       </div>
     </section>
