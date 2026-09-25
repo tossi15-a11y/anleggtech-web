@@ -182,6 +182,14 @@ export default function NotertPage() {
               <a href="#priser" className={styles.ctaSecondary}>
                 Se priser
               </a>
+              <a
+                href="https://notert-web.vercel.app/last-ned"
+                className={styles.ctaSecondary}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Last ned Android-appen
+              </a>
             </div>
           </div>
         </section>
