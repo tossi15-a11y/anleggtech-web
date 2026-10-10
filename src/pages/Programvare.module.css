@@ -397,9 +397,70 @@
   box-shadow: var(--shadow-glow-amber);
 }
 
+/* ─── Pro (Mini5Planner) ──────────────────────────────────────────────────── */
+.cardPoints {
+  margin-top: 1rem;
+}
+
+.proSection {
+  border-top: 1px solid var(--border);
+  background:
+    radial-gradient(ellipse at top, rgba(245, 166, 35, 0.06), transparent 60%),
+    var(--bg-primary);
+}
+
+.proGrid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 1.5rem;
+  align-items: start;
+}
+
+.proCard {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.875rem;
+  padding: 2rem;
+  background: var(--bg-card);
+  border: 1.5px solid var(--amber);
+  border-radius: var(--radius-xl);
+}
+
+.proPrice {
+  font-size: 1.0625rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  line-height: 1.4;
+  margin: 0;
+}
+
+.proAmount {
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--amber);
+  letter-spacing: -0.01em;
+}
+
+.proPriceSmall {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+.proNote {
+  font-size: 0.8125rem;
+  color: var(--text-secondary);
+  line-height: 1.55;
+  margin: 0;
+}
+
 /* ─── Responsive ──────────────────────────────────────────────────────────── */
 @media (max-width: 960px) {
   .useCases {
+    grid-template-columns: 1fr;
+  }
+  .proGrid {
     grid-template-columns: 1fr;
   }
   .audienceGrid {

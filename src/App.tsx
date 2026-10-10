@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { BrowserRouter, Routes, Route, Navigate, useLocation } from 'react-router-dom'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
 import Services from './components/Services'
@@ -39,6 +39,12 @@ function Home() {
   )
 }
 
+// Appen lenker til /programvare/mini5planner#pro og #prosessering
+function Mini5plannerRedirect() {
+  const { search, hash } = useLocation()
+  return <Navigate to={{ pathname: '/mini5planner', search, hash }} replace />
+}
+
 export default function App() {
   return (
     <BrowserRouter>
@@ -51,6 +57,7 @@ export default function App() {
         <Route path="/notert" element={<Notert />} />
         <Route path="/notert-takst" element={<NotertTakst />} />
         <Route path="/mini5planner" element={<Mini5planner />} />
+        <Route path="/programvare/mini5planner" element={<Mini5plannerRedirect />} />
       </Routes>
       <CookieBanner />
     </BrowserRouter>

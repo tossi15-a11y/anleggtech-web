@@ -4,8 +4,36 @@ import Seo from '../components/Seo'
 import Footer from '../components/Footer'
 import styles from './Programvare.module.css'
 
-const ORDER_MAC = 'mailto:torstein@anleggtech.no?subject=Mini5Planner%20%E2%80%94%20bestill%20Mac-versjon&body=Hei%2C%0A%0AJeg%20vil%20gjerne%20laste%20ned%20Mini5Planner%20for%20Mac.%0A%0ANavn%3A%20___%0AFirma%3A%20___%0ADrone-modell%3A%20___%0AHva%20vil%20du%20bruke%20det%20til%3A%20___%0A%0AHilsen%2C%0A___'
-const ORDER_WIN = 'mailto:torstein@anleggtech.no?subject=Mini5Planner%20%E2%80%94%20bestill%20Windows-versjon&body=Hei%2C%0A%0AJeg%20vil%20gjerne%20laste%20ned%20Mini5Planner%20for%20Windows.%0A%0ANavn%3A%20___%0AFirma%3A%20___%0ADrone-modell%3A%20___%0AHva%20vil%20du%20bruke%20det%20til%3A%20___%0A%0AHilsen%2C%0A___'
+const DOWNLOAD_URL = 'https://github.com/tossi15-a11y/mini5planner-releases/releases/latest'
+const BUY_PRO_URL = 'https://mini5planner-lisens.vercel.app/api/kjop'
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'SoftwareApplication',
+  name: 'Mini5Planner',
+  applicationCategory: 'UtilitiesApplication',
+  operatingSystem: 'macOS, Windows',
+  downloadUrl: DOWNLOAD_URL,
+  offers: [
+    {
+      '@type': 'Offer',
+      name: 'Mini5Planner',
+      price: '0',
+      priceCurrency: 'NOK',
+    },
+    {
+      '@type': 'Offer',
+      name: 'Mini5Planner Pro',
+      description: 'Livstidslisens som engangskjøp: terrengfølging og batterideling. Mva inkludert.',
+      price: '199',
+      priceCurrency: 'NOK',
+      url: 'https://www.anleggtech.no/mini5planner#pro',
+    },
+  ],
+  description:
+    'Gratis flyveplan-app som lager KMZ-flyveruter for DJI-droner med presets for anleggsbransjen. Pro med terrengfølging og batterideling er et engangskjøp.',
+  publisher: { '@type': 'Organization', name: 'AnleggTech AS', url: 'https://www.anleggtech.no' },
+}
 
 const audiences = [
   {
@@ -66,6 +94,36 @@ const useCases = [
   },
 ]
 
+const newFeatures = [
+  {
+    title: 'Kalibrer / kontroller flyging',
+    description:
+      'Velg bildemappa etter flygingen. Appen leser EXIF-dataene i bildene og viser hvordan flygingen faktisk ble.',
+    points: [
+      'Faktisk bildeintervall',
+      'Kameraprofil fra bildene',
+      'Frontoverlapp for hvert bildepar',
+      'Svake steder vises på kartet',
+    ],
+  },
+  {
+    title: 'Flyttbart lettepunkt (H)',
+    description:
+      'Dra H-markøren dit dronen faktisk står. Terrengfølgingen regner høydene ut fra dette punktet.',
+    points: [
+      'Bekreft punktet, så låses det',
+      'Med terrengfølging venter eksporten til punktet er bekreftet',
+    ],
+  },
+]
+
+const proFeatures = [
+  'Terrengfølging med Kartverkets høydedata (DTM1) i Norge. Dronen holder samme høyde over bakken, også i kupert terreng.',
+  'Batterideling. Store oppdrag deles i etapper som passer til ett batteri hver.',
+  'Oppdateringer i v1.x er inkludert.',
+  'Livstidslisens. Ingen abonnement.',
+]
+
 const drones = [
   { name: 'DJI Mini 5 Pro', sensor: '1" CMOS', class: 'C0 — 249 g' },
   { name: 'DJI Mini 4 Pro', sensor: '1/1.3" CMOS', class: 'C0 — 249 g' },
@@ -76,24 +134,30 @@ const drones = [
   { name: 'DJI Mavic 4 Pro', sensor: '4/3" 100 MP', class: 'C2' },
 ]
 
+function Arrow() {
+  return (
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+      <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
+    </svg>
+  )
+}
+
+function Check() {
+  return (
+    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+      <path d="M2 7l3 3 7-7" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
+    </svg>
+  )
+}
+
 export default function Mini5planner() {
   return (
     <>
       <Seo
         title="Mini5Planner – Gratis flyveplan-app for DJI-droner | AnleggTech AS"
-        description="Lag KMZ-flyveruter for 7 DJI-modeller på 30 sekunder. Tegn område på kart, velg anleggsbransje-preset, eksporter rett til DJI RC 2. Gratis, Apple-notarisert Mac- og Windows-app."
+        description="Gratis Mac- og Windows-app som lager KMZ-flyveruter for 7 DJI-droner. Pro gir terrengfølging med Kartverkets høydedata og batterideling, som engangskjøp."
         path="/mini5planner"
-        jsonLd={{
-          '@context': 'https://schema.org',
-          '@type': 'SoftwareApplication',
-          name: 'Mini5Planner',
-          applicationCategory: 'UtilitiesApplication',
-          operatingSystem: 'macOS, Windows',
-          offers: { '@type': 'Offer', price: '0', priceCurrency: 'NOK' },
-          description:
-            'Gratis flyveplan-app som lager KMZ-flyveruter for DJI-droner med presets for anleggsbransjen.',
-          publisher: { '@type': 'Organization', name: 'AnleggTech AS', url: 'https://www.anleggtech.no' },
-        }}
+        jsonLd={jsonLd}
       />
       <Navbar />
       <main className={styles.main}>
@@ -118,31 +182,25 @@ export default function Mini5planner() {
               fjernkontrollen — og fly. Bygget i Bergen av AnleggTech AS.
             </p>
             <div className={styles.heroCtas}>
-              <a
-                href={ORDER_MAC}
-                className={styles.ctaPrimary}
-              >
-                Bestill for Mac
-                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-                  <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
-                </svg>
+              <a href={DOWNLOAD_URL} className={styles.ctaPrimary} target="_blank" rel="noopener noreferrer">
+                Last ned for Mac
+                <Arrow />
               </a>
-              <a
-                href={ORDER_WIN}
-                className={styles.ctaPrimary}
-              >
-                Bestill for Windows
-                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-                  <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
-                </svg>
+              <a href={DOWNLOAD_URL} className={styles.ctaPrimary} target="_blank" rel="noopener noreferrer">
+                Last ned for Windows
+                <Arrow />
               </a>
-              <a href="#droner" className={styles.ctaSecondary}>
-                Se støttede droner
+              <a href="#pro" className={styles.ctaSecondary}>
+                Se Mini5Planner Pro
               </a>
             </div>
             <p className={styles.heroSubnote}>
-              Send oss en e-post med drone-modell og bruksområde, så får du tilgang
-              til riktig versjon. Gratis å bruke.
+              Gratis å laste ned og bruke. På nedlastingssiden velger du Mini5Planner.dmg
+              for Mac (Apple-notarisert) eller filen som slutter på Setup.exe for Windows.
+            </p>
+            <p className={styles.heroSubnote}>
+              Windows viser en SmartScreen-advarsel første gang. Klikk «Mer info» og
+              deretter «Kjør likevel».
             </p>
           </div>
         </section>
@@ -170,9 +228,7 @@ export default function Mini5planner() {
                   <ul className={styles.useCasePoints}>
                     {uc.points.map((p) => (
                       <li key={p}>
-                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
-                          <path d="M2 7l3 3 7-7" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
-                        </svg>
+                        <Check />
                         {p}
                       </li>
                     ))}
@@ -181,11 +237,34 @@ export default function Mini5planner() {
               ))}
             </div>
 
+            <div className={styles.audienceBlock}>
+              <h2 className={styles.audienceHeading}>Nytt i appen – gratis for alle</h2>
+              <p className={styles.audienceLead}>
+                To nye verktøy som følger med gratisversjonen.
+              </p>
+              <div className={styles.audienceGrid}>
+                {newFeatures.map((f) => (
+                  <div key={f.title} className={styles.audienceCard}>
+                    <h3 className={styles.audienceCardTitle}>{f.title}</h3>
+                    <p className={styles.audienceCardDesc}>{f.description}</p>
+                    <ul className={`${styles.useCasePoints} ${styles.cardPoints}`}>
+                      {f.points.map((p) => (
+                        <li key={p}>
+                          <Check />
+                          {p}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                ))}
+              </div>
+            </div>
+
             <div id="droner" className={styles.audienceBlock}>
               <h2 className={styles.audienceHeading}>Støttede DJI-droner</h2>
               <p className={styles.audienceLead}>
-                7 modeller med riktige kamera-specs og maks-fart per drone — appen
-                regner GSD og footprint automatisk basert på det du har.
+                7 modeller, alle gratis. Riktige kamera-specs og maks-fart per drone —
+                appen regner GSD og footprint automatisk basert på det du har.
               </p>
               <div className={styles.audienceGrid}>
                 {drones.map((d) => (
@@ -221,8 +300,8 @@ export default function Mini5planner() {
                 <li>
                   <span className={styles.howStep}>1</span>
                   <div>
-                    <strong>Bestill via e-post</strong>
-                    <p>Send oss drone-modell og bruksområde. Vi sender deg en lenke til Mac- eller Windows-versjonen.</p>
+                    <strong>Last ned appen</strong>
+                    <p>Velg Mac eller Windows øverst på siden. Appen er gratis.</p>
                   </div>
                 </li>
                 <li>
@@ -252,6 +331,74 @@ export default function Mini5planner() {
           </div>
         </section>
 
+        <section id="pro" className={`${styles.product} ${styles.proSection}`}>
+          <div className={`container ${styles.productInner}`}>
+            <div className={styles.productHeader}>
+              <span className={styles.productLabel}>Mini5Planner Pro</span>
+              <h2 className={styles.productHeading}>Pro: terrengfølging og batterideling</h2>
+              <p className={styles.productLead}>
+                Gratisversjonen dekker det meste. Pro er for deg som flyr i kupert terreng
+                eller over store områder. Du betaler én gang.
+              </p>
+            </div>
+
+            <div className={styles.proGrid}>
+              <article className={styles.useCase}>
+                <h3 className={styles.useCaseTitle}>Dette får du med Pro</h3>
+                <ul className={styles.useCasePoints}>
+                  {proFeatures.map((p) => (
+                    <li key={p}>
+                      <Check />
+                      {p}
+                    </li>
+                  ))}
+                </ul>
+              </article>
+
+              <div className={styles.proCard}>
+                <p className={styles.proPrice}>
+                  <span className={styles.proAmount}>199 kr</span> – engangskjøp, mva inkludert
+                </p>
+                <p className={styles.proPriceSmall}>Andre valutaer: €19 / $19 / £17</p>
+                <a href={BUY_PRO_URL} className={styles.ctaPrimary} target="_blank" rel="noopener noreferrer">
+                  Kjøp Pro
+                  <Arrow />
+                </a>
+                <p className={styles.proNote}>
+                  Betalingen håndteres av Stripe/Link, som også tar seg av mva.
+                </p>
+              </div>
+            </div>
+
+            <div className={styles.howBlock}>
+              <h2 className={styles.howHeading}>Slik aktiverer du</h2>
+              <ol className={styles.howList}>
+                <li>
+                  <span className={styles.howStep}>1</span>
+                  <div>
+                    <strong>Kjøp Pro</strong>
+                    <p>Trykk «Kjøp Pro» og betal. Etterpå ser du lisensnøkkelen på skjermen, og du får den på e-post.</p>
+                  </div>
+                </li>
+                <li>
+                  <span className={styles.howStep}>2</span>
+                  <div>
+                    <strong>Åpne innstillingene</strong>
+                    <p>Start Mini5Planner og gå til Innstillinger → Pro-lisens.</p>
+                  </div>
+                </li>
+                <li>
+                  <span className={styles.howStep}>3</span>
+                  <div>
+                    <strong>Lim inn nøkkelen</strong>
+                    <p>Lim inn lisensnøkkelen og trykk «Aktiver». Pro-funksjonene er klare med en gang.</p>
+                  </div>
+                </li>
+              </ol>
+            </div>
+          </div>
+        </section>
+
         <section id="prosessering" className={styles.cta}>
           <div className={`container ${styles.ctaInner}`}>
             <h2 className={styles.ctaHeading}>Trenger du punktsky etterpå?</h2>
@@ -268,9 +415,7 @@ export default function Mini5planner() {
               className={styles.ctaButton}
             >
               Be om tilbud
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-                <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
-              </svg>
+              <Arrow />
             </a>
           </div>
         </section>
@@ -295,21 +440,21 @@ export default function Mini5planner() {
                   <span className={styles.howStep}>?</span>
                   <div>
                     <strong>Er det virkelig gratis?</strong>
-                    <p>Ja. Mini5Planner er gratis å laste ned og bruke kommersielt. Vi tjener penger på prosesserings-tjenestene rundt — ikke på selve verktøyet.</p>
+                    <p>Ja. Appen er gratis å laste ned og bruke, også kommersielt, og alle 7 droner er med. Terrengfølging og batterideling krever Pro, som er et engangskjøp.</p>
                   </div>
                 </li>
                 <li>
                   <span className={styles.howStep}>?</span>
                   <div>
                     <strong>Mac eller Windows?</strong>
-                    <p>Begge støttes. Si i bestillings-mailen hvilket operativsystem du bruker, så sender vi riktig versjon.</p>
+                    <p>Begge støttes. Last ned Mini5Planner.dmg for Mac eller Setup.exe-filen for Windows fra nedlastingssiden.</p>
                   </div>
                 </li>
                 <li>
                   <span className={styles.howStep}>?</span>
                   <div>
                     <strong>Sender appen data noe sted?</strong>
-                    <p>Nei — alt arbeid skjer lokalt på din maskin. Eneste nettverkskall: Geonorge-adressesøk og automatisk versjonssjekk mot GitHub Releases.</p>
+                    <p>Nei. Planene og bildene dine blir på maskinen din. Appen henter kart, adresser, høydedata og kraftledninger, og sjekker om det finnes oppdateringer. Lisensnøkkelen sjekkes lokalt.</p>
                   </div>
                 </li>
                 <li>

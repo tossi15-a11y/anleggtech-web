@@ -272,8 +272,9 @@ export default function Programvare() {
               <p className={styles.productLead}>
                 Native Mac- og Windows-app som lager KMZ-flyveruter for 7 DJI-modeller.
                 Tegn område på kart, velg anleggsbransje-preset (Tomt / Byggegrop /
-                Grustak / Fasade / Veitrasé), eksporter rett til DJI RC 2. Gratis,
-                Apple-notarisert, åpen kildekode.
+                Grustak / Fasade / Veitrasé), eksporter rett til DJI RC 2. Appen er
+                gratis og Apple-notarisert. Pro med terrengfølging og batterideling er
+                et engangskjøp.
               </p>
             </div>
             <div className={styles.heroCtas} style={{ marginTop: '1rem' }}>

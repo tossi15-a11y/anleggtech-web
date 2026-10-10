@@ -89,10 +89,10 @@ const products: Product[] = [
     label: 'Drone-fotogrammetri',
     tagline: 'Gratis flyveplan-app for DJI-droner',
     description:
-      'Native Mac- og Windows-app som lager KMZ-flyveruter for 7 DJI-modeller. Tegn område på kart, velg anleggsbransje-preset (Tomt, Byggegrop, Grustak, Fasade, Veitrasé), eksporter rett til DJI RC 2. Apple-notarisert.',
+      'Native Mac- og Windows-app som lager KMZ-flyveruter for 7 DJI-modeller. Tegn område på kart, velg anleggsbransje-preset (Tomt, Byggegrop, Grustak, Fasade, Veitrasé), eksporter rett til DJI RC 2. Apple-notarisert. Appen er gratis, og Pro med terrengfølging er et engangskjøp.',
     url: '/mini5planner',
     internal: true,
-    features: ['7 DJI-droner', 'KMZ til DJI RC 2', 'Gratis'],
+    features: ['7 DJI-droner', 'KMZ til DJI RC 2', 'Gratis + Pro'],
     color: '#FF6B1A',
     iconSrc: '/logos/mini5planner.svg',
   },
