@@ -68,7 +68,7 @@ export default function Hero() {
           <span className={styles.holoLive}>● LIVE</span>
         </div>
         <div className={styles.holoRow}><span className={styles.holoKey}>notert</span><span className={styles.holoVal}>live</span></div>
-        <div className={styles.holoRow}><span className={styles.holoKey}>mini5p</span><span className={styles.holoVal}>v1.2.1</span></div>
+        <div className={styles.holoRow}><span className={styles.holoKey}>mini5p</span><span className={styles.holoVal}>v1.3.0</span></div>
         <div className={styles.holoRow}><span className={styles.holoKey}>helix</span><span className={styles.holoVal}>14 cron</span></div>
         <div className={styles.holoRow}><span className={styles.holoKey}>siteview</span><span className={styles.holoVal}>2.0 beta</span></div>
         <div className={styles.holoRow}><span className={styles.holoKey}>aktsom</span><span className={styles.holoVal}>v1.0</span></div>
