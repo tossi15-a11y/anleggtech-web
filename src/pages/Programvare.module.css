@@ -78,6 +78,24 @@
   margin-top: 2rem;
 }
 
+.downloadCtas {
+  align-items: flex-start;
+}
+
+.downloadOption {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.4rem;
+  max-width: 18rem;
+}
+
+.downloadNote {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  opacity: 0.75;
+}
+
 .heroSubnote {
   margin-top: 1rem;
   font-size: 0.8125rem;

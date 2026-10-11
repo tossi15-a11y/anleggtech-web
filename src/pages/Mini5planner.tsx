@@ -4,7 +4,9 @@ import Seo from '../components/Seo'
 import Footer from '../components/Footer'
 import styles from './Programvare.module.css'
 
-const DOWNLOAD_URL = 'https://github.com/tossi15-a11y/mini5planner-releases/releases/latest'
+const RELEASES_URL = 'https://github.com/tossi15-a11y/mini5planner-releases/releases/latest'
+const DOWNLOAD_MAC_URL = '/api/mini5planner-last-ned?plattform=mac'
+const DOWNLOAD_WINDOWS_URL = '/api/mini5planner-last-ned?plattform=windows'
 const BUY_PRO_URL = 'https://mini5planner-lisens.vercel.app/api/kjop'
 
 const jsonLd = {
@@ -13,7 +15,7 @@ const jsonLd = {
   name: 'Mini5Planner',
   applicationCategory: 'UtilitiesApplication',
   operatingSystem: 'macOS, Windows',
-  downloadUrl: DOWNLOAD_URL,
+  downloadUrl: RELEASES_URL,
   offers: [
     {
       '@type': 'Offer',
@@ -39,17 +41,12 @@ const audiences = [
   {
     title: 'Tomte-oppmålere',
     description:
-      'Få nøyaktig fotogrammetri av tomter på 30 sekunder. Tegn polygon, eksporter KMZ, fly — punktsky klar for masseberegning.',
+      'Planlegg flygingen over tomta. Bildene kan bearbeides til punktsky for masseberegning.',
   },
   {
     title: 'Anleggsentreprenører',
     description:
       'Dokumenter byggegroper, fyllinger og masseuttak før, under og etter. Drone gjør jobben mens du driver maskinen.',
-  },
-  {
-    title: 'Eiendomsutviklere',
-    description:
-      'Vis fram tomten i 3D for investorer og kjøpere. Profesjonelle punktskyer fra Mini 5 Pro — du trenger ikke leie inn drone-konsulent.',
   },
   {
     title: 'Drone-piloter',
@@ -66,7 +63,7 @@ const useCases = [
       'Mini5Planner regner ut linjeavstand og fotointervall basert på dronens sensor-specs og din valgte høyde. 80 % front-overlapp og 70 % side-overlapp er bare ett klikk unna.',
     points: [
       'Live GSD- og footprint-beregning per drone',
-      'Single grid, double grid (crosshatch) eller orbit',
+      'Enkelt rutenett eller kryssrutenett',
       'Justerbar gimbal-vinkel (-90° / -75° / -45°) for fasader',
     ],
   },
@@ -89,7 +86,7 @@ const useCases = [
     points: [
       'WPML 1.0.2 — samme format som DJI Pilot 2 bruker',
       'Støtter 7 DJI-modeller (Mini 5 Pro, Mini 4 Pro, Air 3/3S, Mavic 3/3 Pro/4 Pro)',
-      'Auto-update via GitHub Releases — du får bug-fixer og nye droner automatisk',
+      'Du får oppdateringer automatisk',
     ],
   },
 ]
@@ -201,33 +198,38 @@ export default function Mini5planner() {
             </div>
             <span className={styles.tag}>Drone-fotogrammetri</span>
             <h1 className={styles.title}>
-              Planlegg drone-oppdrag <span className={styles.accent}>på 30 sekunder</span>
+              Tegn området. <span className={styles.accent}>Fly ruta i DJI Fly.</span>
             </h1>
             <p className={styles.subtitle}>
               Mini5Planner er en gratis Mac- og Windows-app som lager KMZ-flyveruter
               for DJI-droner. Tegn et område på kartet, velg en preset, eksporter til
-              fjernkontrollen — og fly. Bygget i Bergen av AnleggTech AS.
+              fjernkontrollen — og fly. Laget av AnleggTech AS i Bjørnafjorden.
             </p>
-            <div className={styles.heroCtas}>
-              <a href={DOWNLOAD_URL} className={styles.ctaPrimary} target="_blank" rel="noopener noreferrer">
-                Last ned for Mac
-                <Arrow />
-              </a>
-              <a href={DOWNLOAD_URL} className={styles.ctaPrimary} target="_blank" rel="noopener noreferrer">
-                Last ned for Windows
-                <Arrow />
-              </a>
+            <div className={`${styles.heroCtas} ${styles.downloadCtas}`}>
+              <div className={styles.downloadOption}>
+                <a href={DOWNLOAD_MAC_URL} className={styles.ctaPrimary}>
+                  Last ned for Mac
+                  <Arrow />
+                </a>
+                <p className={styles.downloadNote}>Apple-notarisert DMG.</p>
+              </div>
+              <div className={styles.downloadOption}>
+                <a href={DOWNLOAD_WINDOWS_URL} className={styles.ctaPrimary}>
+                  Last ned for Windows
+                  <Arrow />
+                </a>
+                <p className={styles.downloadNote}>
+                  Windows viser en SmartScreen-advarsel første gang. Klikk «Mer info» og
+                  deretter «Kjør likevel».
+                </p>
+              </div>
               <a href="#pro" className={styles.ctaSecondary}>
                 Se Mini5Planner Pro
               </a>
             </div>
             <p className={styles.heroSubnote}>
-              Gratis å laste ned og bruke. På nedlastingssiden velger du Mini5Planner.dmg
-              for Mac (Apple-notarisert) eller filen som slutter på Setup.exe for Windows.
-            </p>
-            <p className={styles.heroSubnote}>
-              Windows viser en SmartScreen-advarsel første gang. Klikk «Mer info» og
-              deretter «Kjør likevel».
+              Gratis å laste ned og bruke. Alle versjoner ligger på{' '}
+              <a href={RELEASES_URL} target="_blank" rel="noopener noreferrer">GitHub</a>.
             </p>
           </div>
         </section>
@@ -238,11 +240,11 @@ export default function Mini5planner() {
             <div className={styles.productHeader}>
               <span className={styles.productLabel}>Slik bruker du det</span>
               <h2 className={styles.productHeading}>
-                Tegn område → eksporter KMZ → fly → punktsky
+                Tegn område → eksporter KMZ → fly
               </h2>
               <p className={styles.productLead}>
-                Mini5Planner er front-enden til en komplett drone-til-punktsky-flyt.
-                Du planlegger og flyr, vi prosesserer hvis du vil.
+                Mini5Planner lager flyruta. Trenger du volum, ortofoto eller punktsky
+                etterpå, kan du sende oss bildene, så bearbeider vi dem i Kubatur.
               </p>
             </div>
 
@@ -348,8 +350,8 @@ export default function Mini5planner() {
                 <li>
                   <span className={styles.howStep}>4</span>
                   <div>
-                    <strong>(Valgfritt) Få punktsky</strong>
-                    <p>Send oss bildene — vi prosesserer punktsky og leverer LAS/LAZ-fil + 3D-modell.</p>
+                    <strong>(Valgfritt) Få bildene bearbeidet</strong>
+                    <p>Send oss bildene, så bearbeider vi dem i Kubatur. Se <a href="#prosessering">bearbeiding</a> under.</p>
                   </div>
                 </li>
               </ol>
@@ -470,7 +472,7 @@ export default function Mini5planner() {
                   <span className={styles.howStep}>?</span>
                   <div>
                     <strong>Krever det DJI RC 2?</strong>
-                    <p>Anbefalt. KMZ-overføringen via USB-C funker best med RC 2 eller RC Pro. Andre fjernkontroller kan fortsatt bruke KMZ-filen med tredjeparts-verktøy som WaypointMap.</p>
+                    <p>Overføringsveiviseren er laget for DJI RC 2 og viser stegene via USB-C. Andre fjernkontroller har vi ikke testet.</p>
                   </div>
                 </li>
                 <li>
@@ -484,7 +486,7 @@ export default function Mini5planner() {
                   <span className={styles.howStep}>?</span>
                   <div>
                     <strong>Mac eller Windows?</strong>
-                    <p>Begge støttes. Last ned Mini5Planner.dmg for Mac eller Setup.exe-filen for Windows fra nedlastingssiden.</p>
+                    <p>Begge støttes. Knappene øverst på siden laster ned riktig fil for Mac eller Windows.</p>
                   </div>
                 </li>
                 <li>
@@ -498,7 +500,7 @@ export default function Mini5planner() {
                   <span className={styles.howStep}>?</span>
                   <div>
                     <strong>Hvem står bak?</strong>
-                    <p>AnleggTech AS i Bergen. Vi bygger programvare for anleggsbransjen og driver vår egen pipeline med drone, WebODM og terrengbehandling.</p>
+                    <p>AnleggTech AS i Bjørnafjorden. Vi lager programvare for anleggsbransjen, flyr drone selv og bearbeider bildene i Kubatur.</p>
                   </div>
                 </li>
               </ol>
