@@ -445,7 +445,7 @@ export default function Mini5planner() {
               ))}
             </ul>
             <p className={styles.ctaNote}>
-              Uten fastmerker ligger volumet innenfor ca. ±2 % når du flyr kryss og
+              Uten fastmerker er volumet normalt innenfor ca. ±2 % når du flyr kryss og
               skråpass. Eiendomsgrensene er veiledende og erstatter ikke oppmåling.
               Punktskyen er ikke grunnlag for stikning.
             </p>
