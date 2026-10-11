@@ -397,6 +397,19 @@
   box-shadow: var(--shadow-glow-amber);
 }
 
+.ctaList {
+  text-align: left;
+  max-width: 520px;
+  margin: 0 auto 1.5rem;
+}
+
+.ctaNote {
+  font-size: 0.8125rem;
+  color: var(--text-secondary);
+  line-height: 1.55;
+  margin: 0 0 1.25rem;
+}
+
 /* ─── Pro (Mini5Planner) ──────────────────────────────────────────────────── */
 .cardPoints {
   margin-top: 1rem;

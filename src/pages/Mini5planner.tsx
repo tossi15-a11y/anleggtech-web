@@ -124,6 +124,33 @@ const proFeatures = [
   'Livstidslisens. Ingen abonnement.',
 ]
 
+const processingDeliveries = [
+  {
+    title: 'Volum av masselager og hauger',
+    description: 'PDF-rapport med volum mot en grunnflate som følger foten av haugen.',
+  },
+  {
+    title: 'Ortofoto med eiendomsgrenser',
+    description: 'GeoTIFF og JPG med grensene fra Kartverkets matrikkel lagt oppå.',
+  },
+  {
+    title: 'Punktsky (LAZ) og 3D-modell',
+    description: 'Til visning, volum og relative mål.',
+  },
+]
+
+const PROCESSING_MAILTO =
+  'mailto:post@anleggtech.no?subject=' +
+  encodeURIComponent('[Mini5Planner] Bearbeiding') +
+  '&body=' +
+  encodeURIComponent(
+    'Hei,\n\nJeg har fløyet med Mini5Planner og ønsker tilbud på bearbeiding i Kubatur.\n\n' +
+      'Hva trenger du (volum, ortofoto med eiendomsgrenser, punktsky/3D-modell): ___\n' +
+      'Sted/adresse: ___\n' +
+      'Antall bilder: ___\n\n' +
+      'Hilsen,\n___',
+  )
+
 const drones = [
   { name: 'DJI Mini 5 Pro', sensor: '1" CMOS', class: 'C0 — 249 g' },
   { name: 'DJI Mini 4 Pro', sensor: '1/1.3" CMOS', class: 'C0 — 249 g' },
@@ -401,20 +428,30 @@ export default function Mini5planner() {
 
         <section id="prosessering" className={styles.cta}>
           <div className={`container ${styles.ctaInner}`}>
-            <h2 className={styles.ctaHeading}>Trenger du punktsky etterpå?</h2>
+            <h2 className={styles.ctaHeading}>Trenger du volum eller kart etterpå?</h2>
             <p className={styles.ctaLead}>
-              Vi prosesserer drone-bildene dine til ferdig punktsky, 3D-modell eller
-              digital terrengmodell. Du trenger ikke å investere i WebODM-server eller
-              Pix4D-lisens — du leverer bare bildene, vi tar resten.
+              Send oss bildene fra flygingen, så bearbeider vi dem i Kubatur, vårt eget
+              program for masseberegning. Du trenger ikke egen server eller lisens på
+              fotogrammetriprogram.
             </p>
-            <p className={styles.ctaLead}>
-              Pris tilpasses prosjektets omfang. Ta kontakt for tilbud.
+            <ul className={`${styles.useCasePoints} ${styles.ctaList}`}>
+              {processingDeliveries.map((d) => (
+                <li key={d.title}>
+                  <Check />
+                  <span>
+                    <strong>{d.title}.</strong> {d.description}
+                  </span>
+                </li>
+              ))}
+            </ul>
+            <p className={styles.ctaNote}>
+              Uten fastmerker ligger volumet innenfor ca. ±2 % når du flyr kryss og
+              skråpass. Eiendomsgrensene er veiledende og erstatter ikke oppmåling.
+              Punktskyen er ikke grunnlag for stikning.
             </p>
-            <a
-              href="mailto:post@anleggtech.no?subject=Punktsky-prosessering%20etter%20Mini5Planner&body=Hei%2C%0A%0AJeg%20har%20brukt%20Mini5Planner%20til%20%C3%A5%20planlegge%20et%20oppdrag%20og%20%C3%B8nsker%20pris%20p%C3%A5%20punktsky-prosessering.%0A%0AOmfang%2Fkommentar%3A%20___%0A%0AHilsen%2C%0A___"
-              className={styles.ctaButton}
-            >
-              Be om tilbud
+            <p className={styles.ctaLead}>Pris etter omfang. Du får tilbud på e-post.</p>
+            <a href={PROCESSING_MAILTO} className={styles.ctaButton}>
+              Få tilbud
               <Arrow />
             </a>
           </div>
