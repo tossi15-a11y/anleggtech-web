@@ -422,6 +422,7 @@
   .hudTL, .hudBL { left: 0.75rem; }
   .hudTR, .hudBR { right: 0.75rem; }
   .hudDim { font-size: 0.55rem; }
+  .hudCorner .hudDim { display: none; }
 }
 
 /* Reduced motion: stopp animasjoner, hold ett still-frame */

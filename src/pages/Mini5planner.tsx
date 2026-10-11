@@ -33,7 +33,7 @@ const jsonLd = {
     },
   ],
   description:
-    'Gratis flyveplan-app som lager KMZ-flyveruter for DJI-droner med presets for anleggsbransjen. Pro med terrengfølging og batterideling er et engangskjøp.',
+    'Gratis flyveplan-app som lager KMZ-flyveruter for DJI-droner med maler for anleggsbransjen. Pro med terrengfølging og batterideling er et engangskjøp.',
   publisher: { '@type': 'Organization', name: 'AnleggTech AS', url: 'https://www.anleggtech.no' },
 }
 
@@ -46,7 +46,7 @@ const audiences = [
   {
     title: 'Anleggsentreprenører',
     description:
-      'Dokumenter byggegroper, fyllinger og masseuttak før, under og etter. Drone gjør jobben mens du driver maskinen.',
+      'Dokumenter byggegroper, fyllinger og masseuttak før, under og etter. Dronen flyr ruta selv, og du følger med fra bakken.',
   },
   {
     title: 'Drone-piloter',
@@ -57,25 +57,25 @@ const audiences = [
 
 const useCases = [
   {
-    title: 'Lawnmower-grid for fotogrammetri',
+    title: 'Rutenett for fotogrammetri',
     tagline: 'Riktig overlapp uten å regne selv',
     description:
-      'Mini5Planner regner ut linjeavstand og fotointervall basert på dronens sensor-specs og din valgte høyde. 80 % front-overlapp og 70 % side-overlapp er bare ett klikk unna.',
+      'Mini5Planner regner ut linjeavstand og fotointervall fra kameraet på dronen og høyden du velger. Du setter frontoverlapp og sideoverlapp selv, for eksempel 80\u00a0% og 70\u00a0%.',
     points: [
-      'Live GSD- og footprint-beregning per drone',
+      'GSD og fotavtrykk regnes ut mens du justerer',
       'Enkelt rutenett eller kryssrutenett',
-      'Justerbar gimbal-vinkel (-90° / -75° / -45°) for fasader',
+      'Gimbal rett ned (-90°) eller på skrå (-70° eller -45°), for eksempel mot fasader',
     ],
   },
   {
-    title: 'Anleggsbransje-presets',
-    tagline: 'Tomt, byggegrop, grustak, fasade, veitrasé',
+    title: 'Maler for anleggsoppdrag',
+    tagline: 'Tomt, byggegrop, grustak, bygningsfasade, veitrasé',
     description:
-      'Fem ferdige misjonsmaler tilpasset typiske anleggsoppdrag. Velg presetten, juster om du vil — eller stol på at vi har gjort matten for deg.',
+      'Fem ferdige maler for typiske anleggsoppdrag. Velg en mal og juster om du vil.',
     points: [
-      'Optimaliserte parametere for hver oppdragstype',
-      'Skiller seg fra generiske drone-verktøy',
-      'Norsk UI med Geonorge-adressesøk',
+      'Høyde, overlapp, fart og gimbal-vinkel er satt for hver oppdragstype',
+      'Byggegrop flys som kryssrutenett med skrå gimbal',
+      'Norsk grensesnitt med adressesøk fra Geonorge',
     ],
   },
   {
@@ -106,10 +106,10 @@ const newFeatures = [
   {
     title: 'Flyttbart lettepunkt (H)',
     description:
-      'Dra H-markøren dit dronen faktisk står. Terrengfølgingen regner høydene ut fra dette punktet.',
+      'Dra H-markøren dit dronen faktisk letter. Batteriberegningen og terrengfølgingen (Pro) regner ut fra dette punktet.',
     points: [
-      'Bekreft punktet, så låses det',
-      'Med terrengfølging venter eksporten til punktet er bekreftet',
+      'Et lettepunkt du har flyttet selv, blir stående',
+      'Med terrengfølging må punktet bekreftes før eksport',
     ],
   },
 ]
@@ -202,7 +202,7 @@ export default function Mini5planner() {
             </h1>
             <p className={styles.subtitle}>
               Mini5Planner er en gratis Mac- og Windows-app som lager KMZ-flyveruter
-              for DJI-droner. Tegn et område på kartet, velg en preset, eksporter til
+              for DJI-droner. Tegn et område på kartet, velg en mal, eksporter til
               fjernkontrollen — og fly. Laget av AnleggTech AS i Bjørnafjorden.
             </p>
             <div className={`${styles.heroCtas} ${styles.downloadCtas}`}>
@@ -228,7 +228,7 @@ export default function Mini5planner() {
               </a>
             </div>
             <p className={styles.heroSubnote}>
-              Gratis å laste ned og bruke. Alle versjoner ligger på{' '}
+              Gratis å laste ned og bruke. Filene ligger også på{' '}
               <a href={RELEASES_URL} target="_blank" rel="noopener noreferrer">GitHub</a>.
             </p>
           </div>
@@ -292,8 +292,9 @@ export default function Mini5planner() {
             <div id="droner" className={styles.audienceBlock}>
               <h2 className={styles.audienceHeading}>Støttede DJI-droner</h2>
               <p className={styles.audienceLead}>
-                7 modeller, alle gratis. Riktige kamera-specs og maks-fart per drone —
-                appen regner GSD og footprint automatisk basert på det du har.
+                7 modeller, alle gratis. Appen kjenner kameraet og maksfarten til hver
+                drone og regner ut GSD og fotavtrykk. Farten settes etter hvor fort
+                kameraet lagrer bildene. Foreløpig er det bare målt på Mini 5 Pro.
               </p>
               <div className={styles.audienceGrid}>
                 {drones.map((d) => (
@@ -310,8 +311,8 @@ export default function Mini5planner() {
             <div className={styles.audienceBlock}>
               <h2 className={styles.audienceHeading}>Hvem er dette for?</h2>
               <p className={styles.audienceLead}>
-                Folk som trenger pålitelig fotogrammetri uten å lære enterprise-verktøy
-                som UgCS eller binde seg til subscriptions.
+                For deg som vil planlegge fotogrammetri uten å lære tunge verktøy som
+                UgCS eller betale abonnement.
               </p>
               <div className={styles.audienceGrid}>
                 {audiences.map((a) => (
@@ -337,7 +338,7 @@ export default function Mini5planner() {
                   <span className={styles.howStep}>2</span>
                   <div>
                     <strong>Tegn område + eksporter</strong>
-                    <p>Velg en preset (Tomt, Byggegrop, Grustak, Fasade, Veitrasé) eller juster selv. Lagre KMZ.</p>
+                    <p>Velg en mal (Tomt, Byggegrop, Grustak, Bygningsfasade, Veitrasé) eller juster selv. Lagre KMZ.</p>
                   </div>
                 </li>
                 <li>

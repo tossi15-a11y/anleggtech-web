@@ -103,6 +103,10 @@
   opacity: 0.75;
 }
 
+.heroSubnote a {
+  text-decoration: underline;
+}
+
 .ctaPrimary {
   display: inline-flex;
   align-items: center;
@@ -503,6 +507,15 @@
 }
 
 @media (max-width: 640px) {
+  .downloadCtas > * {
+    width: 100%;
+    max-width: none;
+  }
+  .downloadCtas .ctaPrimary,
+  .downloadCtas .ctaSecondary {
+    width: 100%;
+    justify-content: center;
+  }
   .product {
     padding: 3rem 0;
   }
