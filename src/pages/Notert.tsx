@@ -14,7 +14,7 @@ const audiences = [
   {
     title: 'Prosjektledere',
     description:
-      'Du holder mange møter parallelt. Notert fanger NS 8405–8417-forhold du ellers ville glemt — og varsler om frister så du ikke bommer på 21-dagersregelen.',
+      'Du holder mange møter parallelt. Notert fanger NS 8405–8417-forhold du ellers ville glemt, og merker dem mens det fortsatt er tid til å varsle.',
   },
   {
     title: 'Byggherrekontakter',
@@ -35,20 +35,20 @@ const useCases = [
     description:
       'Sett mobilen på bordet og trykk start. Lyden strømmer via Noterts relé i RAM til Deepgram for live transkripsjon. Notert lagrer ingen avspillbar lydfil.',
     points: [
-      'Sanntids-transkripsjon med diarization',
+      'Sanntids-transkripsjon som skiller mellom talerne',
       'Fungerer på 2-timers byggemøter med flere talere',
       'Ingen avspillbar lydfil lagres hos Notert',
     ],
   },
   {
     title: 'NS-kontrakt-flagging',
-    tagline: 'Aldri miss en 21-dagersfrist',
+    tagline: 'Se varslingspliktige forhold mens det er tid',
     description:
-      'Notert lytter etter mulige endringer, fristforlengelser, vederlagsjusteringer og avvik fra spesifikasjon. Hvert flagg viser hva som ble sagt, av hvem, og hvilken paragraf det treffer i din valgte kontrakt.',
+      'Notert lytter etter mulige endringer, fristforlengelser, vederlagsjusteringer og avvik fra spesifikasjon. Hvert flagg viser hva som ble sagt og hvilket punkt det kan treffe i den valgte kontrakten. Du kontrollerer og avgjør.',
     points: [
       'Støtter NS 8405, 8406, 8407, 8408, 8415, 8416, 8417',
-      'Paragraph-referanser per flagg (f.eks. "NS 8407 pkt. 31")',
-      'Resolve-flyt med fritekst-notat for sporbarhet',
+      'Punkthenvisning per flagg (f.eks. «NS 8405 pkt. 24.4»)',
+      'Lukk flagg med notat, så det er sporbart hva som ble gjort',
     ],
   },
   {
@@ -83,7 +83,7 @@ const notertTiers: PricingTier[] = [
     badge: 'Pilotprogram',
     cta: {
       label: 'Søk om pilot',
-      href: 'mailto:torstein@anleggtech.no?subject=Notert%20Pilot%20%E2%80%94%20s%C3%B8knad',
+      href: 'https://notert-web.vercel.app/pilot',
     },
   },
   {
@@ -97,8 +97,8 @@ const notertTiers: PricingTier[] = [
       'Alle NS-standarder (8405–8417)',
       'HMS- og forskriftsflagging',
       'Live transkripsjon på norsk',
-      'Discord-varsel ved nytt referat',
-      'PDF- og Markdown-eksport',
+      'Referatet på e-post rett etter møtet',
+      'Aksjonsliste som føres videre fra møte til møte',
     ],
     cta: {
       label: 'Bestill 15-min demo',
@@ -114,10 +114,9 @@ const notertTiers: PricingTier[] = [
     features: [
       'Alt i Standard for inntil 5 brukere',
       'Felles fagvokabular for hele firmaet',
-      'Egendefinerte mal-prompts',
-      'Branding på PDF (logo, signatur)',
-      'CRM-eksport (på forespørsel)',
-      'Prioritert support og Teams-brukerstøtte',
+      'Felles oppgaveliste og flaggoversikt på tvers av prosjekter',
+      'Referatvarsel til Slack eller Discord for teamet',
+      'Prioritert support',
     ],
     cta: {
       label: 'Ta kontakt',
@@ -169,12 +168,12 @@ export default function NotertPage() {
             </p>
             <div className={styles.heroCtas}>
               <a
-                href="https://notert-web.vercel.app"
+                href="https://notert-web.vercel.app/pilot"
                 className={styles.ctaPrimary}
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                Se appen
+                Søk om gratis pilot
                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
                   <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
                 </svg>
@@ -203,10 +202,9 @@ export default function NotertPage() {
                 Live transkripsjon → automatisk flagging → ferdig referat
               </h2>
               <p className={styles.productLead}>
-                Notert lytter på møtet via mikrofon eller opplastet transkripsjon,
-                kjenner igjen norsk fagspråk, og produserer profesjonelt referat med
-                strukturert flagging av hva som krever oppfølging — alt før dere går
-                fra møtet.
+                Notert lytter på møtet via mikrofonen på telefonen eller PCen, kjenner
+                igjen norsk fagspråk, og lager et referatutkast med strukturert flagging
+                av hva som krever oppfølging, få minutter etter at møtet er slutt.
               </p>
             </div>
 
@@ -268,7 +266,7 @@ export default function NotertPage() {
                   <span className={styles.howStep}>3</span>
                   <div>
                     <strong>Få ferdig referat</strong>
-                    <p>Etter møtet får du strukturert referat med flagg gruppert per kategori. Discord-varsel og PDF-eksport.</p>
+                    <p>Etter møtet får du et strukturert referatutkast på e-post, med flagg gruppert per kategori. Du kontrollerer det før det sendes videre.</p>
                   </div>
                 </li>
               </ol>

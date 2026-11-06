@@ -98,7 +98,7 @@ const takstTiers: PricingTier[] = [
       'Flagging mot NS 3600, NS 3424 og BVN',
       'Live transkripsjon på norsk',
       'Fuktavvik og dokumentasjonsmangler',
-      'PDF- og Markdown-eksport',
+      'Befaringsnotat på e-post rett etter befaringen',
     ],
     cta: {
       label: 'Bestill 15-min demo',
@@ -110,13 +110,10 @@ const takstTiers: PricingTier[] = [
     price: '1 990',
     unit: 'kr / kontor / mnd',
     priceNote: 'Tilsvarer 398 kr per bruker ved fem takstmenn',
-    description: 'For takstkontor med flere takstmenn, felles fagspråk og egne rapportmaler.',
+    description: 'For takstkontor med flere takstmenn og felles fagspråk.',
     features: [
       'Alt i Standard for inntil 5 brukere',
       'Felles fagvokabular for hele kontoret',
-      'Egendefinerte mal-prompts',
-      'Branding på PDF (logo, signatur)',
-      'Eksport til takstsystem (på forespørsel)',
       'Prioritert support',
     ],
     cta: {
