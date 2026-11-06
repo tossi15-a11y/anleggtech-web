@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import { track } from '@vercel/analytics'
 import Navbar from '../components/Navbar'
 import Seo from '../components/Seo'
 import Footer from '../components/Footer'
@@ -207,14 +208,14 @@ export default function Mini5planner() {
             </p>
             <div className={`${styles.heroCtas} ${styles.downloadCtas}`}>
               <div className={styles.downloadOption}>
-                <a href={DOWNLOAD_MAC_URL} className={styles.ctaPrimary}>
+                <a href={DOWNLOAD_MAC_URL} className={styles.ctaPrimary} onClick={() => track('Nedlasting', { plattform: 'mac' })}>
                   Last ned for Mac
                   <Arrow />
                 </a>
                 <p className={styles.downloadNote}>Apple-notarisert DMG.</p>
               </div>
               <div className={styles.downloadOption}>
-                <a href={DOWNLOAD_WINDOWS_URL} className={styles.ctaPrimary}>
+                <a href={DOWNLOAD_WINDOWS_URL} className={styles.ctaPrimary} onClick={() => track('Nedlasting', { plattform: 'windows' })}>
                   Last ned for Windows
                   <Arrow />
                 </a>
@@ -390,7 +391,7 @@ export default function Mini5planner() {
                   <span className={styles.proAmount}>199 kr</span> – engangskjøp, mva inkludert
                 </p>
                 <p className={styles.proPriceSmall}>Andre valutaer: €19 / $19 / £17</p>
-                <a href={BUY_PRO_URL} className={styles.ctaPrimary} target="_blank" rel="noopener noreferrer">
+                <a href={BUY_PRO_URL} className={styles.ctaPrimary} target="_blank" rel="noopener noreferrer" onClick={() => track('Kjøp Pro')}>
                   Kjøp Pro
                   <Arrow />
                 </a>

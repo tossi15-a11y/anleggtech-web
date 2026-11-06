@@ -1,4 +1,5 @@
 import { BrowserRouter, Routes, Route, Navigate, useLocation } from 'react-router-dom'
+import { Analytics } from '@vercel/analytics/react'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
 import Services from './components/Services'
@@ -7,7 +8,7 @@ import AISection from './components/AISection'
 import Referanser from './components/Referanser'
 import Contact from './components/Contact'
 import Footer from './components/Footer'
-import CookieBanner from './components/CookieBanner'
+import CookieBanner, { analyseAvslatt } from './components/CookieBanner'
 import ScrollToTop from './components/ScrollToTop'
 import Seo from './components/Seo'
 import Privacy from './pages/Privacy'
@@ -60,6 +61,7 @@ export default function App() {
         <Route path="/programvare/mini5planner" element={<Mini5plannerRedirect />} />
       </Routes>
       <CookieBanner />
+      <Analytics beforeSend={(event) => (analyseAvslatt() ? null : event)} />
     </BrowserRouter>
   )
 }

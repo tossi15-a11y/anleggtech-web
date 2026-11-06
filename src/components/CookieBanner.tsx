@@ -4,6 +4,14 @@ import styles from './CookieBanner.module.css'
 
 const STORAGE_KEY = 'anleggtech_cookie_consent'
 
+export function analyseAvslatt() {
+  try {
+    return localStorage.getItem(STORAGE_KEY) === 'necessary'
+  } catch {
+    return false
+  }
+}
+
 export default function CookieBanner() {
   const [visible, setVisible] = useState(false)
   const [hiding, setHiding] = useState(false)

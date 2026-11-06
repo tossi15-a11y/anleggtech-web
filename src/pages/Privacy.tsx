@@ -144,6 +144,13 @@ export default function Privacy() {
                 Du kan trekke tilbake samtykket til analysecookies når som helst ved å
                 slette informasjonskapslene i nettleseren din.
               </p>
+              <p>
+                <strong>Besøksstatistikk:</strong> Vi bruker Vercel Web Analytics til å telle
+                sidevisninger og klikk på nedlasting og kjøp. Den setter ingen
+                informasjonskapsler og lagrer ingenting på enheten din. Besøk telles samlet,
+                uten at vi kan se hvem du er eller følge deg til andre nettsteder. Velger du
+                «Kun nødvendige» i banneret, blir du ikke telt.
+              </p>
             </section>
 
             <section className={styles.section}>
