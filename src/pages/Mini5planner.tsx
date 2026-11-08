@@ -121,7 +121,7 @@ const newFeatures = [
 ]
 
 const proFeatures = [
-  'Terrengfølging med Kartverkets høydedata (DTM1) i Norge. Dronen holder samme høyde over bakken, også i kupert terreng.',
+  'Terrengfølging med Kartverkets høydedata (DTM1) i Norge og Copernicus GLO-30 (30 m) i resten av verden. Dronen holder samme høyde over bakken, også i kupert terreng.',
   'Batterideling. Store oppdrag deles i etapper som passer til ett batteri hver.',
   'Oppdateringer i v1.x er inkludert.',
   'Livstidslisens. Ingen abonnement.',

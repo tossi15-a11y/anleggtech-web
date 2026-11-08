@@ -44,7 +44,7 @@ const faq = [
   },
   {
     q: 'Does it work outside Norway?',
-    a: 'Yes. The map (OpenStreetMap and satellite) and route planning work anywhere, and terrain following uses a global 30 m elevation model outside Norway. Address search and the power line layer only cover Norway, so elsewhere you find your site by moving the map.',
+    a: 'Yes. The map (OpenStreetMap and satellite) and route planning work anywhere, and terrain following uses the global Copernicus GLO-30 elevation model (30 m) outside Norway. Address search and the power line layer only cover Norway, so elsewhere you find your site by moving the map.',
   },
   {
     q: 'Does the app send my data anywhere?',
@@ -186,7 +186,7 @@ const audiences = [
 ]
 
 const proFeatures = [
-  'Terrain following with Kartverket’s 1 m elevation model in Norway and a global 30 m elevation model elsewhere. The drone keeps the same height above the ground, also in hilly terrain.',
+  'Terrain following with Kartverket’s 1 m elevation model in Norway and the Copernicus GLO-30 model (30 m) everywhere else. The drone keeps the same height above the ground, also in hilly terrain. In steep terrain, keep a good margin: 30 m data can be off by 10–30 m.',
   'Battery split. Large missions are divided into legs that fit one battery each.',
   'Updates in v1.x are included.',
   'Lifetime license. No subscription.',
