@@ -83,7 +83,7 @@ const notertTiers: PricingTier[] = [
     badge: 'Pilotprogram',
     cta: {
       label: 'Søk om pilot',
-      href: 'https://notert-web.vercel.app/pilot',
+      href: 'https://notert.anleggtech.no/pilot',
     },
   },
   {
@@ -168,7 +168,7 @@ export default function NotertPage() {
             </p>
             <div className={styles.heroCtas}>
               <a
-                href="https://notert-web.vercel.app/pilot"
+                href="https://notert.anleggtech.no/pilot"
                 className={styles.ctaPrimary}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -182,7 +182,7 @@ export default function NotertPage() {
                 Se priser
               </a>
               <a
-                href="https://notert-web.vercel.app/last-ned"
+                href="https://notert.anleggtech.no/last-ned"
                 className={styles.ctaSecondary}
                 target="_blank"
                 rel="noopener noreferrer"
