@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://www.anleggtech.no/</loc>
     <lastmod>2026-06-11</lastmod>
@@ -32,9 +32,33 @@
   </url>
   <url>
     <loc>https://www.anleggtech.no/mini5planner</loc>
-    <lastmod>2026-10-10</lastmod>
+    <lastmod>2026-11-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="nb" href="https://www.anleggtech.no/mini5planner" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.anleggtech.no/en/mini5planner" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.anleggtech.no/en/mini5planner" />
+  </url>
+  <url>
+    <loc>https://www.anleggtech.no/en/mini5planner</loc>
+    <lastmod>2026-11-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="nb" href="https://www.anleggtech.no/mini5planner" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.anleggtech.no/en/mini5planner" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.anleggtech.no/en/mini5planner" />
+  </url>
+  <url>
+    <loc>https://www.anleggtech.no/en/mini5planner/guides/mini-5-pro-skipped-photos</loc>
+    <lastmod>2026-11-08</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.anleggtech.no/en/mini5planner/guides/mini-5-pro-grid-mapping-dji-fly</loc>
+    <lastmod>2026-11-08</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.anleggtech.no/personvern</loc>

@@ -4,6 +4,10 @@
     { "source": "/portal/privacy", "destination": "/portal/personvern.html" },
     { "source": "/portal/vilkar", "destination": "/portal/vilkar.html" },
     { "source": "/portal/terms", "destination": "/portal/vilkar.html" },
+    { "source": "/mini5planner", "destination": "/mini5planner/index.html" },
+    { "source": "/en/mini5planner", "destination": "/en/mini5planner/index.html" },
+    { "source": "/en/mini5planner/guides/mini-5-pro-skipped-photos", "destination": "/en/mini5planner/guides/mini-5-pro-skipped-photos/index.html" },
+    { "source": "/en/mini5planner/guides/mini-5-pro-grid-mapping-dji-fly", "destination": "/en/mini5planner/guides/mini-5-pro-grid-mapping-dji-fly/index.html" },
     { "source": "/(.*)", "destination": "/index.html" }
   ]
 }

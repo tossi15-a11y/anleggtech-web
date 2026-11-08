@@ -21,6 +21,14 @@
   margin-bottom: 2rem;
 }
 
+.backRowSplit {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
 .backLink {
   display: inline-flex;
   align-items: center;

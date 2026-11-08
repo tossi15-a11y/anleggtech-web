@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import styles from './CookieBanner.module.css'
 
 const STORAGE_KEY = 'anleggtech_cookie_consent'
@@ -13,6 +13,7 @@ export function analyseAvslatt() {
 }
 
 export default function CookieBanner() {
+  const english = useLocation().pathname.startsWith('/en/')
   const [visible, setVisible] = useState(false)
   const [hiding, setHiding] = useState(false)
 
@@ -34,24 +35,31 @@ export default function CookieBanner() {
   if (!visible) return null
 
   return (
-    <div className={`${styles.banner} ${hiding ? styles.hiding : styles.visible}`} role="dialog" aria-label="Informasjonskapsler">
+    <div className={`${styles.banner} ${hiding ? styles.hiding : styles.visible}`} role="dialog" aria-label={english ? 'Cookies' : 'Informasjonskapsler'}>
       <div className={styles.inner}>
-        <p className={styles.text}>
-          Vi bruker informasjonskapsler for å forbedre brukeropplevelsen. Ved å bruke anleggtech.no godtar du vår{' '}
-          <Link to="/personvern" className={styles.link}>personvernerklæring</Link>.
-        </p>
+        {english ? (
+          <p className={styles.text}>
+            We use cookies to improve your experience. By using anleggtech.no you accept our{' '}
+            <Link to="/personvern" className={styles.link} hrefLang="nb">privacy policy</Link> (in Norwegian).
+          </p>
+        ) : (
+          <p className={styles.text}>
+            Vi bruker informasjonskapsler for å forbedre brukeropplevelsen. Ved å bruke anleggtech.no godtar du vår{' '}
+            <Link to="/personvern" className={styles.link}>personvernerklæring</Link>.
+          </p>
+        )}
         <div className={styles.actions}>
           <button
             className={styles.btnSecondary}
             onClick={() => dismiss('necessary')}
           >
-            Kun nødvendige
+            {english ? 'Necessary only' : 'Kun nødvendige'}
           </button>
           <button
             className={styles.btnPrimary}
             onClick={() => dismiss('all')}
           >
-            Godta alle
+            {english ? 'Accept all' : 'Godta alle'}
           </button>
         </div>
       </div>

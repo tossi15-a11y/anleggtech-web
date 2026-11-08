@@ -1,20 +1,44 @@
 import { useState, useEffect } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
+import { EN_PATH } from '../lib/mini5planner'
 import styles from './Navbar.module.css'
 
-const navLinks = [
-  { label: 'Tjenester', href: '#tjenester' },
-  { label: 'Produkter', href: '#produkter' },
-  { label: 'AI', href: '#ai' },
-  { label: 'Kontakt', href: '#kontakt' },
-]
+const NAV = {
+  nb: {
+    base: '/',
+    links: [
+      { label: 'Tjenester', href: '#tjenester' },
+      { label: 'Produkter', href: '#produkter' },
+      { label: 'AI', href: '#ai' },
+      { label: 'Kontakt', href: '#kontakt' },
+    ],
+    cta: { label: 'Kom i gang', href: '#kontakt' },
+    openMenu: 'Åpne meny',
+    closeMenu: 'Lukk meny',
+  },
+  en: {
+    base: EN_PATH,
+    links: [
+      { label: 'Features', href: '#features' },
+      { label: 'Pro', href: '#pro' },
+      { label: 'Guides', href: '#guides' },
+      { label: 'FAQ', href: '#faq' },
+    ],
+    cta: { label: 'Download', href: '#download' },
+    openMenu: 'Open menu',
+    closeMenu: 'Close menu',
+  },
+}
 
-export default function Navbar() {
+export default function Navbar({ lang = 'nb' }: { lang?: 'nb' | 'en' }) {
   const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
   const location = useLocation()
   const navigate = useNavigate()
-  const onHome = location.pathname === '/'
+  const nav = NAV[lang]
+  const onHome = location.pathname === nav.base
+  // Engelske lenker får full sti, så de virker uten JavaScript og fra artiklene
+  const hrefFor = (hash: string) => (lang === 'en' ? nav.base + hash : hash)
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 60)
@@ -47,7 +71,7 @@ export default function Navbar() {
       const el = document.querySelector(href)
       if (el) el.scrollIntoView({ behavior: 'smooth' })
     } else {
-      navigate('/' + href)
+      navigate(nav.base + href)
     }
   }
 
@@ -57,7 +81,7 @@ export default function Navbar() {
     if (onHome) {
       window.scrollTo({ top: 0, behavior: 'smooth' })
     } else {
-      navigate('/')
+      navigate(nav.base)
     }
   }
 
@@ -65,7 +89,7 @@ export default function Navbar() {
     <>
       <nav className={`${styles.nav} ${scrolled ? styles.scrolled : ''}`}>
         <div className={`${styles.inner} container`}>
-          <a href="#" className={styles.logo} onClick={scrollToTop}>
+          <a href={lang === 'en' ? nav.base : '#'} className={styles.logo} onClick={scrollToTop}>
             <span className={styles.logoMark}>
               <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <polygon points="14,2 26,8.5 26,19.5 14,26 2,19.5 2,8.5" stroke="#4a9eff" strokeWidth="1.8" fill="rgba(74,158,255,0.08)"/>
@@ -79,10 +103,10 @@ export default function Navbar() {
           </a>
 
           <ul className={`${styles.links} ${menuOpen ? styles.open : ''}`}>
-            {navLinks.map((link) => (
+            {nav.links.map((link) => (
               <li key={link.href}>
                 <a
-                  href={link.href}
+                  href={hrefFor(link.href)}
                   className={styles.link}
                   onClick={(e) => scrollTo(e, link.href)}
                 >
@@ -92,11 +116,11 @@ export default function Navbar() {
             ))}
             <li>
               <a
-                href="#kontakt"
+                href={hrefFor(nav.cta.href)}
                 className={styles.ctaBtn}
-                onClick={(e) => scrollTo(e, '#kontakt')}
+                onClick={(e) => scrollTo(e, nav.cta.href)}
               >
-                Kom i gang
+                {nav.cta.label}
               </a>
             </li>
           </ul>
@@ -104,7 +128,7 @@ export default function Navbar() {
           <button
             className={`${styles.hamburger} ${menuOpen ? styles.hamburgerOpen : ''}`}
             onClick={() => setMenuOpen(!menuOpen)}
-            aria-label={menuOpen ? 'Lukk meny' : 'Åpne meny'}
+            aria-label={menuOpen ? nav.closeMenu : nav.openMenu}
             aria-expanded={menuOpen}
           >
             <span />

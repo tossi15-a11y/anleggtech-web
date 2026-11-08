@@ -1,0 +1,327 @@
+.main {
+  background: var(--bg-primary);
+  min-height: 100vh;
+  padding-top: 5rem;
+}
+
+.article {
+  max-width: 760px;
+  padding-top: 3rem;
+  padding-bottom: 5rem;
+}
+
+.breadcrumb {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  margin-bottom: 1.75rem;
+}
+
+.breadcrumb a:hover {
+  color: var(--blue);
+}
+
+.header {
+  padding-bottom: 2rem;
+  margin-bottom: 2.5rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.title {
+  font-size: clamp(1.875rem, 5vw, 2.75rem);
+  font-weight: 800;
+  line-height: 1.12;
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
+  margin-bottom: 1rem;
+}
+
+.meta {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  margin-bottom: 1.5rem;
+}
+
+.lead p {
+  font-size: clamp(1.0625rem, 2vw, 1.1875rem);
+  line-height: 1.7;
+  color: var(--text-primary);
+}
+
+.lead p + p {
+  margin-top: 1rem;
+}
+
+/* ─── Brødtekst ─────────────────────────────────────────────────────────── */
+.prose {
+  font-size: 1.0625rem;
+  line-height: 1.75;
+  color: var(--text-secondary);
+  overflow-wrap: break-word;
+}
+
+.prose > * + * {
+  margin-top: 1.1rem;
+}
+
+.prose h2 {
+  font-size: clamp(1.375rem, 3vw, 1.75rem);
+  font-weight: 700;
+  line-height: 1.25;
+  color: var(--text-primary);
+  margin-top: 2.75rem;
+}
+
+.prose h3 {
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-top: 1.75rem;
+}
+
+.prose strong {
+  color: var(--text-primary);
+}
+
+.prose a {
+  color: var(--blue);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.prose ul,
+.prose ol {
+  padding-left: 1.4rem;
+}
+
+.prose ul {
+  list-style: disc;
+}
+
+.prose ol {
+  list-style: decimal;
+}
+
+.prose li + li {
+  margin-top: 0.5rem;
+}
+
+.prose li::marker {
+  color: var(--amber);
+}
+
+.prose code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.875em;
+  color: var(--text-primary);
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 0.1em 0.4em;
+  overflow-wrap: anywhere;
+}
+
+.codeBlock {
+  display: block;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.875rem;
+  line-height: 1.6;
+  color: var(--text-primary);
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 1rem 1.25rem;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.callout {
+  padding: 1.25rem 1.5rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--amber);
+  border-radius: var(--radius-md);
+  color: var(--text-primary);
+}
+
+.callout p + p {
+  margin-top: 0.75rem;
+}
+
+.formula {
+  padding: 1.25rem 1.5rem;
+  background: var(--amber-dim);
+  border: 1px solid rgba(245, 166, 35, 0.3);
+  border-radius: var(--radius-md);
+  color: var(--text-primary);
+  font-weight: 700;
+  font-size: clamp(1.0625rem, 2.5vw, 1.25rem);
+  text-align: center;
+}
+
+.tableWrap {
+  overflow-x: auto;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+}
+
+.prose table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9375rem;
+  line-height: 1.5;
+}
+
+.prose th,
+.prose td {
+  text-align: left;
+  padding: 0.7rem 0.9rem;
+  border-bottom: 1px solid var(--border);
+  vertical-align: top;
+}
+
+.prose thead th {
+  color: var(--text-primary);
+  background: var(--bg-card);
+  font-weight: 700;
+}
+
+.prose tbody th {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+.prose tr:last-child th,
+.prose tr:last-child td {
+  border-bottom: 0;
+}
+
+/* ─── Nedlasting og neste artikkel ──────────────────────────────────────── */
+.ctaBox {
+  margin-top: 3.5rem;
+  padding: 2rem;
+  background: var(--bg-card);
+  border: 1.5px solid var(--amber);
+  border-radius: var(--radius-xl);
+  color: var(--text-secondary);
+  line-height: 1.65;
+}
+
+.ctaTitle {
+  font-size: clamp(1.25rem, 3vw, 1.5rem);
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 0.75rem;
+}
+
+.ctaButtons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin: 1.5rem 0 1.25rem;
+}
+
+.ctaPrimary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: var(--amber);
+  color: #0a0a0a;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.75rem;
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: filter 0.2s, gap 0.2s;
+}
+
+.ctaPrimary:hover {
+  filter: brightness(1.08);
+  gap: 0.7rem;
+}
+
+.ctaLink,
+.relatedLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: var(--blue);
+  font-weight: 600;
+  transition: gap 0.2s;
+}
+
+.ctaLink:hover,
+.relatedLink:hover {
+  gap: 0.65rem;
+}
+
+.related {
+  margin-top: 2.5rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--border);
+}
+
+.relatedLabel {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  margin-bottom: 0.5rem;
+}
+
+.relatedLink {
+  font-size: 1.0625rem;
+  line-height: 1.5;
+}
+
+.relatedLink svg {
+  flex-shrink: 0;
+}
+
+@media (max-width: 640px) {
+  .article {
+    padding-top: 2rem;
+    padding-bottom: 3.5rem;
+  }
+  .ctaBox {
+    padding: 1.5rem 1.25rem;
+  }
+  .ctaPrimary {
+    width: 100%;
+    justify-content: center;
+  }
+  .prose th,
+  .prose td {
+    padding: 0.6rem 0.7rem;
+  }
+  /* Malene har fem kolonner: på mobil blir hver rad et eget kort */
+  .stackTable thead {
+    display: none;
+  }
+  .stackTable tr {
+    display: block;
+    border-bottom: 1px solid var(--border);
+    padding: 0.5rem 0;
+  }
+  .stackTable tr:last-child {
+    border-bottom: 0;
+  }
+  .stackTable tbody th,
+  .stackTable td {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    border-bottom: 0;
+    padding: 0.3rem 0.9rem;
+  }
+  .stackTable td::before {
+    content: attr(data-label);
+    color: var(--text-muted);
+  }
+  .stackTable td {
+    text-align: right;
+  }
+}

@@ -1,0 +1,55 @@
+.maker {
+  font-size: 0.9375rem;
+  color: var(--text-secondary);
+}
+
+.blockList {
+  margin-bottom: 1.5rem;
+  max-width: 700px;
+}
+
+.textLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: var(--blue);
+  font-weight: 600;
+  font-size: 0.9375rem;
+  transition: gap 200ms ease;
+}
+
+.textLink:hover {
+  gap: 0.65rem;
+}
+
+.guideCard {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.guideCard:hover {
+  border-color: var(--blue);
+}
+
+.guideCard:hover .textLink {
+  gap: 0.65rem;
+}
+
+.faqSection {
+  border-top: 1px solid var(--border);
+}
+
+.faqQuestion {
+  font-size: 1.0625rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0 0 0.35rem;
+  line-height: 1.4;
+}
+
+.inline {
+  color: var(--blue);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}

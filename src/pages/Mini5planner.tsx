@@ -3,12 +3,17 @@ import { track } from '@vercel/analytics'
 import Navbar from '../components/Navbar'
 import Seo from '../components/Seo'
 import Footer from '../components/Footer'
+import LangSwitch from '../components/LangSwitch'
+import { Arrow, Check } from '../components/Icons'
+import {
+  BUY_PRO_URL,
+  DOWNLOAD_MAC_URL,
+  DOWNLOAD_WINDOWS_URL,
+  LANDING_ALTERNATES,
+  NB_PATH,
+  RELEASES_URL,
+} from '../lib/mini5planner'
 import styles from './Programvare.module.css'
-
-const RELEASES_URL = 'https://github.com/tossi15-a11y/mini5planner-releases/releases/latest'
-const DOWNLOAD_MAC_URL = '/api/mini5planner-last-ned?plattform=mac'
-const DOWNLOAD_WINDOWS_URL = '/api/mini5planner-last-ned?plattform=windows'
-const BUY_PRO_URL = 'https://mini5planner-lisens.vercel.app/api/kjop'
 
 const jsonLd = {
   '@context': 'https://schema.org',
@@ -159,43 +164,29 @@ const drones = [
   { name: 'DJI Mavic 4 Pro', sensor: '4/3" 100 MP', class: 'C2' },
 ]
 
-function Arrow() {
-  return (
-    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-      <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
-    </svg>
-  )
-}
-
-function Check() {
-  return (
-    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
-      <path d="M2 7l3 3 7-7" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
-    </svg>
-  )
-}
-
 export default function Mini5planner() {
   return (
     <>
       <Seo
         title="Mini5Planner – Gratis flyveplan-app for DJI-droner | AnleggTech AS"
         description="Gratis Mac- og Windows-app som lager KMZ-flyveruter for 7 DJI-droner. Pro gir terrengfølging med Kartverkets høydedata og batterideling, som engangskjøp."
-        path="/mini5planner"
+        path={NB_PATH}
         jsonLd={jsonLd}
+        alternates={LANDING_ALTERNATES}
       />
       <Navbar />
       <main className={styles.main}>
 
         <section className={styles.hero}>
           <div className={`container ${styles.heroInner}`}>
-            <div className={styles.backRow}>
+            <div className={`${styles.backRow} ${styles.backRowSplit}`}>
               <Link to="/programvare" className={styles.backLink}>
                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
                   <path d="M11 4L7 8l4 4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
                 </svg>
                 Tilbake til Programvare
               </Link>
+              <LangSwitch current="nb" />
             </div>
             <span className={styles.tag}>Drone-fotogrammetri</span>
             <h1 className={styles.title}>

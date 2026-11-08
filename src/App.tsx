@@ -17,6 +17,10 @@ import Nettsider from './pages/Nettsider'
 import Notert from './pages/Notert'
 import NotertTakst from './pages/NotertTakst'
 import Mini5planner from './pages/Mini5planner'
+import Mini5plannerEn from './pages/en/Mini5plannerEn'
+import GuideSkippedPhotos from './pages/en/GuideSkippedPhotos'
+import GuideGridMission from './pages/en/GuideGridMission'
+import { EN_PATH, GUIDE_GRID_MISSION_PATH, GUIDE_SKIPPED_PHOTOS_PATH } from './lib/mini5planner'
 
 function Home() {
   return (
@@ -46,9 +50,10 @@ function Mini5plannerRedirect() {
   return <Navigate to={{ pathname: '/mini5planner', search, hash }} replace />
 }
 
-export default function App() {
+// Felles for nettleseren (BrowserRouter) og forhåndsrenderingen (StaticRouter i entry-server.tsx)
+export function AppRoutes() {
   return (
-    <BrowserRouter>
+    <>
       <ScrollToTop />
       <Routes>
         <Route path="/" element={<Home />} />
@@ -59,9 +64,22 @@ export default function App() {
         <Route path="/notert-takst" element={<NotertTakst />} />
         <Route path="/mini5planner" element={<Mini5planner />} />
         <Route path="/programvare/mini5planner" element={<Mini5plannerRedirect />} />
+        <Route path={EN_PATH} element={<Mini5plannerEn />} />
+        <Route path={GUIDE_SKIPPED_PHOTOS_PATH} element={<GuideSkippedPhotos />} />
+        <Route path={GUIDE_GRID_MISSION_PATH} element={<GuideGridMission />} />
+        <Route path={`${EN_PATH}/guides`} element={<Navigate to={`${EN_PATH}#guides`} replace />} />
+        <Route path="/en" element={<Navigate to={EN_PATH} replace />} />
       </Routes>
       <CookieBanner />
       <Analytics beforeSend={(event) => (analyseAvslatt() ? null : event)} />
+    </>
+  )
+}
+
+export default function App() {
+  return (
+    <BrowserRouter>
+      <AppRoutes />
     </BrowserRouter>
   )
 }

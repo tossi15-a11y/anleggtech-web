@@ -1,4 +1,5 @@
 import { Link, useLocation, useNavigate } from 'react-router-dom'
+import { EN_PATH } from '../lib/mini5planner'
 import styles from './Footer.module.css'
 
 const navLinks = [
@@ -18,7 +19,38 @@ const products = [
   { label: 'Mini5Planner', href: '/mini5planner', external: false },
 ]
 
-export default function Footer() {
+const TEXT = {
+  nb: {
+    tagline: 'Teknologi som jobber like hardt som deg',
+    orgNr: 'Org.nr: 936 032 265',
+    navigation: 'Navigasjon',
+    products: 'Produkter',
+    legal: 'Juridisk',
+    contact: 'Kontakt',
+    rights: 'Alle rettigheter forbeholdt',
+    madeWith: 'Bygget med ❤ for anleggsbransjen',
+  },
+  en: {
+    tagline: 'Technology that works as hard as you do',
+    orgNr: 'Org. no. 936 032 265 (Norway)',
+    navigation: 'Mini5Planner',
+    products: 'Products',
+    legal: 'Legal',
+    contact: 'Contact',
+    rights: 'All rights reserved',
+    madeWith: 'Built with ❤ in Norway',
+  },
+}
+
+const enLinks = [
+  { label: 'Download', href: `${EN_PATH}#download` },
+  { label: 'Pro', href: `${EN_PATH}#pro` },
+  { label: 'Guides', href: `${EN_PATH}#guides` },
+  { label: 'FAQ', href: `${EN_PATH}#faq` },
+]
+
+export default function Footer({ lang = 'nb' }: { lang?: 'nb' | 'en' }) {
+  const text = TEXT[lang]
   const year = new Date().getFullYear()
   const location = useLocation()
   const navigate = useNavigate()
@@ -56,30 +88,38 @@ export default function Footer() {
               </span>
             </a>
             <p className={styles.tagline}>
-              Teknologi som jobber like hardt som deg
+              {text.tagline}
             </p>
-            <p className={styles.orgNr}>Org.nr: 936 032 265</p>
+            <p className={styles.orgNr}>{text.orgNr}</p>
           </div>
 
           <div className={styles.linksGroup}>
-            <h4 className={styles.groupTitle}>Navigasjon</h4>
+            <h4 className={styles.groupTitle}>{text.navigation}</h4>
             <ul className={styles.linkList}>
-              {navLinks.map((link) => (
-                <li key={link.href}>
-                  <a
-                    href={link.href}
-                    className={styles.link}
-                    onClick={(e) => scrollTo(e, link.href)}
-                  >
-                    {link.label}
-                  </a>
-                </li>
-              ))}
+              {lang === 'en'
+                ? enLinks.map((link) => (
+                    <li key={link.href}>
+                      <Link to={link.href} className={styles.link}>
+                        {link.label}
+                      </Link>
+                    </li>
+                  ))
+                : navLinks.map((link) => (
+                    <li key={link.href}>
+                      <a
+                        href={link.href}
+                        className={styles.link}
+                        onClick={(e) => scrollTo(e, link.href)}
+                      >
+                        {link.label}
+                      </a>
+                    </li>
+                  ))}
             </ul>
           </div>
 
           <div className={styles.linksGroup}>
-            <h4 className={styles.groupTitle}>Produkter</h4>
+            <h4 className={styles.groupTitle}>{text.products}</h4>
             <ul className={styles.linkList}>
               {products.map((p) => (
                 <li key={p.href}>
@@ -96,7 +136,7 @@ export default function Footer() {
                       </svg>
                     </a>
                   ) : (
-                    <Link to={p.href} className={styles.link}>
+                    <Link to={lang === 'en' && p.href === '/mini5planner' ? EN_PATH : p.href} className={styles.link}>
                       {p.label}
                     </Link>
                   )}
@@ -106,27 +146,37 @@ export default function Footer() {
           </div>
 
           <div className={styles.linksGroup}>
-            <h4 className={styles.groupTitle}>Juridisk</h4>
+            <h4 className={styles.groupTitle}>{text.legal}</h4>
             <ul className={styles.linkList}>
-              <li>
-                <Link to="/personvern" className={styles.link}>
-                  Personvernerklæring
-                </Link>
-              </li>
-              <li>
-                <Link to="/personvern" className={styles.link}>
-                  Informasjonskapsler
-                </Link>
-              </li>
+              {lang === 'en' ? (
+                <li>
+                  <Link to="/personvern" className={styles.link} hrefLang="nb">
+                    Privacy and cookies (in Norwegian)
+                  </Link>
+                </li>
+              ) : (
+                <>
+                  <li>
+                    <Link to="/personvern" className={styles.link}>
+                      Personvernerklæring
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to="/personvern" className={styles.link}>
+                      Informasjonskapsler
+                    </Link>
+                  </li>
+                </>
+              )}
             </ul>
           </div>
 
           <div className={styles.linksGroup}>
-            <h4 className={styles.groupTitle}>Kontakt</h4>
+            <h4 className={styles.groupTitle}>{text.contact}</h4>
             <ul className={styles.linkList}>
               <li>
                 <a href="tel:+4741155515" className={styles.link}>
-                  41 15 55 15
+                  {lang === 'en' ? '+47 41 15 55 15' : '41 15 55 15'}
                 </a>
                 <a href="mailto:torstein@anleggtech.no" className={styles.link}>
                   torstein@anleggtech.no
@@ -134,11 +184,11 @@ export default function Footer() {
               </li>
               <li>
                 <a
-                  href="#kontakt"
+                  href={lang === 'en' ? 'mailto:torstein@anleggtech.no?subject=Mini5Planner' : '#kontakt'}
                   className={styles.ctaLink}
-                  onClick={(e) => scrollTo(e, '#kontakt')}
+                  onClick={lang === 'en' ? undefined : (e) => scrollTo(e, '#kontakt')}
                 >
-                  Send oss en melding
+                  {lang === 'en' ? 'Send us an email' : 'Send oss en melding'}
                   <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
                     <path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
                   </svg>
@@ -151,10 +201,10 @@ export default function Footer() {
 
         <div className={styles.bottom}>
           <p className={styles.copy}>
-            &copy; {year} AnleggTech AS — Alle rettigheter forbeholdt
+            &copy; {year} AnleggTech AS — {text.rights}
           </p>
           <p className={styles.madeWith}>
-            Bygget med ❤ for anleggsbransjen
+            {text.madeWith}
           </p>
         </div>
       </div>

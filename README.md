@@ -107,6 +107,18 @@ anleggtech-web/
 └── vercel.json
 ```
 
+## Forhåndsrendering
+
+`npm run build` renderer rutene i `scripts/forhandsrender-ruter.json` til `dist/<rute>/index.html`
+(`src/entry-server.tsx` bygges med `vite build --ssr`, og `scripts/forhandsrender.mjs` fyller
+`index.html` med innholdet, tittel, beskrivelse, canonical, `hreflang` og JSON-LD fra `<Seo>`).
+Da ser søkemotorer og KI-crawlere som ikke kjører JavaScript hele siden. Alle andre ruter får
+SPA-skallet `dist/index.html` som før.
+
+Ny forhåndsrendret rute: legg den i `scripts/forhandsrender-ruter.json`, i `vercel.json`
+(rett før `/(.*)`) og i `public/sitemap.xml`. `npm test` feiler hvis en av dem mangler.
+`npm run preview` bruker de samme omskrivingene som `vercel.json`.
+
 ## Seksjoner
 
 | ID | Seksjon | Beskrivelse |
