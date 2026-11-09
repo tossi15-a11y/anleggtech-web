@@ -501,6 +501,7 @@ export default function Mini5planner() {
           </div>
         </section>
 
+        <p className={styles.trademark}>Mini5Planner er et selvstendig produkt fra AnleggTech AS og er ikke tilknyttet, godkjent eller sponset av DJI. DJI, DJI Fly, DJI Mini og Mavic er varemerker for SZ DJI Technology Co., Ltd.</p>
       </main>
       <Footer />
     </>
