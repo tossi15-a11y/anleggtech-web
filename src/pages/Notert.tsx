@@ -55,7 +55,7 @@ const useCases = [
     title: 'HMS, NS 3420 og forskriftsflagg',
     tagline: 'Ett verktøy, alle kategorier',
     description:
-      'Velg per møte hvilke flagg-kategorier som skal aktiveres. Et byggemøte slår på HMS automatisk. Vernerunde kan kombinere kontrakt + HMS + TEK17 + plan- og bygningsloven.',
+      'Velg per møte hvilke flagg-kategorier som skal aktiveres. HMS er krysset av fra start for byggemøte, oppstartsmøte, vernerunde og befaring. Vernerunde kan kombinere kontrakt + HMS + TEK17 + plan- og bygningsloven.',
     points: [
       'HMS: nesten-ulykker, SHA-avvik, sprengningsvarsel, SJA-krav',
       'NS 3420: mengde-, enhetspris-, beskrivelses-avvik',
@@ -199,7 +199,7 @@ export default function NotertPage() {
             <div className={styles.productHeader}>
               <span className={styles.productLabel}>Slik fungerer det</span>
               <h2 className={styles.productHeading}>
-                Live transkripsjon → automatisk flagging → ferdig referat
+                Live transkripsjon → automatisk flagging → referatutkast
               </h2>
               <p className={styles.productLead}>
                 Notert lytter på møtet via mikrofonen på telefonen eller PCen, kjenner
@@ -265,7 +265,7 @@ export default function NotertPage() {
                 <li>
                   <span className={styles.howStep}>3</span>
                   <div>
-                    <strong>Få ferdig referat</strong>
+                    <strong>Få referatutkast</strong>
                     <p>Etter møtet får du et strukturert referatutkast på e-post, med flagg gruppert per kategori. Du kontrollerer det før det sendes videre.</p>
                   </div>
                 </li>

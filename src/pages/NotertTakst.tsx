@@ -9,7 +9,7 @@ const audiences = [
   {
     title: 'Takstmenn (boligsalg)',
     description:
-      'Slipp å skrive notatene på nytt om kvelden. Notert Takst lytter mens du går gjennom boligen, og leverer strukturert befaringsnotat med undersøkelsespunktene i den rekkefølgen du tok dem.',
+      'Slipp å skrive notatene på nytt om kvelden. Notert Takst lytter mens du går gjennom boligen, og lager et strukturert utkast til befaringsnotat med undersøkelsespunktene.',
   },
   {
     title: 'Skadetakstmenn',
@@ -33,7 +33,7 @@ const useCases = [
     title: 'Live befaring',
     tagline: 'Transkriberer mens du går gjennom boligen',
     description:
-      'Mobilen i lomma, trykk start. Notert Takst tar opp, transkriberer live med norsk fagspråk fra NS 3600 og våtromsnormen, og produserer ferdig befaringsnotat når du er ute igjen. Fungerer med hansker på i kjelleren.',
+      'Mobilen i lomma, trykk start. Notert Takst tar opp, transkriberer live med norsk fagspråk fra NS 3600 og våtromsnormen, og lager et utkast til befaringsnotat når du er ute igjen. Fungerer med hansker på i kjelleren.',
     points: [
       'Sanntids-transkripsjon med gjenkjenning av flere talere',
       'Mobile-first — bygget for å brukes stående, ikke ved skrivebordet',
@@ -47,7 +47,7 @@ const useCases = [
       'Notert Takst flagger forhold som bør vurderes for TG2 eller TG3, med det ordrette utsagnet som utløste flagget. Den setter aldri graden selv. Tilstandsgrader har rettsvirkning etter avhendingsloven, og ansvaret ligger hos takstmannen som signerer rapporten.',
     points: [
       'Kandidat til TG2 og TG3 — alltid merket som forslag som må verifiseres',
-      'Hvert flagg viser sitatet fra befaringen og hvor sikkert det er forankret',
+      'Hvert flagg viser hva det gjelder og hvor sikkert det er',
       'Henvisning til undersøkelsespunkt der det er entydig, f.eks. «NS 3600 pkt. 5.3»',
     ],
   },
@@ -188,7 +188,7 @@ export default function NotertTakstPage() {
             <div className={styles.productHeader}>
               <span className={styles.productLabel}>Slik fungerer det</span>
               <h2 className={styles.productHeading}>
-                Live transkripsjon → avviksflagging → ferdig befaringsnotat
+                Live transkripsjon → avviksflagging → utkast til befaringsnotat
               </h2>
               <p className={styles.productLead}>
                 Notert Takst lytter mens du går befaringen, kjenner igjen norsk
@@ -255,7 +255,7 @@ export default function NotertTakstPage() {
                   <span className={styles.howStep}>3</span>
                   <div>
                     <strong>Få notat med flagg</strong>
-                    <p>Strukturert befaringsnotat, flagg gruppert per kategori med sitat og kilde, og en liste over det som gjenstår.</p>
+                    <p>Strukturert befaringsnotat, flagg gruppert per kategori med kilde, og en liste over det som gjenstår.</p>
                   </div>
                 </li>
               </ol>
