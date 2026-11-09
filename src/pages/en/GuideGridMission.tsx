@@ -137,13 +137,17 @@ export default function GuideGridMission() {
         has the same steps as a checklist:
       </p>
       <ol>
-        <li>Power on the DJI RC 2.</li>
-        <li>Connect it to your computer with a USB-C data cable.</li>
-        <li>Swipe down on the controller and select “File Transfer”.</li>
+        <li>
+          Power on the DJI RC 2 and the drone, and wait until the drone has GPS. Waypoint
+          mode in DJI Fly needs a GPS fix.
+        </li>
         <li>
           Open DJI Fly on the controller, create a placeholder waypoint mission with 2–3
-          waypoints and save it as “PLACEHOLDER”.
+          waypoints and save it. Create one placeholder per route (for a split mission: one
+          per part).
         </li>
+        <li>Connect the controller to your computer with a USB-C data cable.</li>
+        <li>Swipe down on the controller and select “File Transfer”.</li>
         <li>
           On Windows, open File Explorer. On a Mac, open OpenMTP (free, from
           openmtp.ganeshrvel.com). The DJI RC 2 shows up as a device.
@@ -151,19 +155,26 @@ export default function GuideGridMission() {
         <li>
           Go to the waypoint folder: <code>{RC_PATH}</code>
         </li>
-        <li>Open the folder with the most recent modified date. That is your placeholder mission.</li>
-        <li>Delete the original template.kml inside that folder.</li>
-        <li>Copy your exported KMZ file into the folder.</li>
-        <li>Disconnect the cable, open DJI Fly and run the mission.</li>
+        <li>
+          Open the folder with the most recent modified date. That is your placeholder
+          mission. Inside is one .kmz file with the same name as the folder, a long code.
+        </li>
+        <li>
+          Copy that file name and paste it into the name field in Mini5Planner’s transfer
+          guide. The app then saves your route with exactly that name. If you rename the
+          file yourself, make sure Windows doesn’t turn it into “.kmz.kmz”.
+        </li>
+        <li>Delete the original .kmz file in the folder and copy yours in.</li>
+        <li>
+          Disconnect the cable, open the mission in DJI Fly and fly it. Don’t edit the
+          mission or create new missions before you have flown, or DJI Fly overwrites the
+          files.
+        </li>
       </ol>
       <h3>Good to know</h3>
       <ul>
         <li>
           Missions are stored on the remote controller, not on the drone’s memory card.
-        </li>
-        <li>
-          DJI Fly needs the drone connected with a GPS fix before it will open waypoint
-          mode, so do step 4 with the drone switched on and connected.
         </li>
         <li>
           DJI Fly rewrites imported missions into its own compact format, so the file gets
