@@ -9,7 +9,7 @@ const audiences = [
   {
     title: 'Takstmenn (boligsalg)',
     description:
-      'Slipp å skrive notatene på nytt om kvelden. Notert Takst lytter mens du går gjennom boligen, og lager et strukturert utkast til befaringsnotat med undersøkelsespunktene.',
+      'Slipp å skrive notatene på nytt om kvelden. Notert Takst skriver mens du går gjennom boligen, og lager et strukturert utkast til befaringsnotat med undersøkelsespunktene.',
   },
   {
     title: 'Skadetakstmenn',
@@ -33,11 +33,11 @@ const useCases = [
     title: 'Live befaring',
     tagline: 'Transkriberer mens du går gjennom boligen',
     description:
-      'Mobilen i lomma, trykk start. Notert Takst tar opp, transkriberer live med norsk fagspråk fra NS 3600 og våtromsnormen, og lager et utkast til befaringsnotat når du er ute igjen. Fungerer med hansker på i kjelleren.',
+      'Mobilen i lomma, trykk start. Notert Takst transkriberer live med norsk fagspråk fra NS 3600 og våtromsnormen, og lager et utkast til befaringsnotat når du er ute igjen. Fungerer med hansker på i kjelleren.',
     points: [
       'Sanntids-transkripsjon med gjenkjenning av flere talere',
       'Mobile-first — bygget for å brukes stående, ikke ved skrivebordet',
-      'Lydopptaket lagres ikke — lyden strømmes via Noterts relé og skrives aldri til disk',
+      'Lyden lagres ikke, bare teksten. Notert skriver aldri lyden til disk',
     ],
   },
   {
@@ -128,7 +128,7 @@ export default function NotertTakstPage() {
     <>
       <Seo
         title="Notert Takst – AI-befaringsassistent for takstmenn | AnleggTech AS"
-        description="Notert Takst transkriberer befaringen live og flagger fuktavvik, dokumentasjonsmangler og kandidater til TG2/TG3 mot NS 3600, NS 3424 og våtromsnormen. Lydopptaket lagres ikke."
+        description="Notert Takst transkriberer befaringen live og flagger fuktavvik, dokumentasjonsmangler og kandidater til TG2/TG3 mot NS 3600, NS 3424 og våtromsnormen. Lyden lagres ikke, bare teksten."
         path="/notert-takst"
         jsonLd={{
           '@context': 'https://schema.org',
@@ -161,7 +161,7 @@ export default function NotertTakstPage() {
               Notert Takst er en AI-assistent bygget for takstmenn. Live transkripsjon
               av boligsalgsbefaringer, skadetakst, våtromskontroll og tilstandsanalyse,
               med automatisk flagging av fuktavvik, dokumentasjonsmangler og kandidater
-              til TG2/TG3. Lydopptaket lagres ikke.
+              til TG2/TG3. Lyden lagres ikke, bare teksten.
             </p>
             <div className={styles.heroCtas}>
               <a
@@ -191,9 +191,9 @@ export default function NotertTakstPage() {
                 Live transkripsjon → avviksflagging → utkast til befaringsnotat
               </h2>
               <p className={styles.productLead}>
-                Notert Takst lytter mens du går befaringen, kjenner igjen norsk
-                takstfaglig språk fra NS 3600 og våtromsnormen, og produserer
-                strukturert notat med flagging av hva som må følges opp — før du
+                Notert Takst skriver mens du går befaringen, kjenner igjen norsk
+                takstfaglig språk fra NS 3600 og våtromsnormen, og lager et
+                strukturert utkast til notat med flagging av hva som må følges opp — før du
                 setter deg i bilen.
               </p>
             </div>
@@ -248,7 +248,7 @@ export default function NotertTakstPage() {
                   <span className={styles.howStep}>2</span>
                   <div>
                     <strong>Trykk start og gå befaringen</strong>
-                    <p>Snakk som du pleier. Lyden strømmes til tale-til-tekst via Noterts relé og lagres ikke som opptak.</p>
+                    <p>Snakk som du pleier. Lyden går via Noterts relé til tale-til-tekst og blir til tekst underveis. Lyden lagres ikke.</p>
                   </div>
                 </li>
                 <li>

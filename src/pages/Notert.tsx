@@ -9,7 +9,7 @@ const audiences = [
   {
     title: 'Anleggsledere',
     description:
-      'Slipp å skrive referat etter byggemøtet. Notert lytter, transkriberer og lager profesjonelt referat med automatisk flagging av endringer og fristforlengelser.',
+      'Slipp å skrive referat etter byggemøtet. Notert er en automatisk referent: den skriver mens dere snakker og lager et referatutkast med automatisk flagging av endringer og fristforlengelser.',
   },
   {
     title: 'Prosjektledere',
@@ -33,18 +33,18 @@ const useCases = [
     title: 'Live byggemøter',
     tagline: 'Transkriberer mens dere snakker',
     description:
-      'Sett mobilen på bordet og trykk start. Lyden strømmer via Noterts relé i RAM til Deepgram for live transkripsjon. Notert lagrer ingen avspillbar lydfil.',
+      'Sett mobilen på bordet og trykk start. Lyden går via Noterts relé til tale-til-tekst og blir til tekst mens dere snakker. Lyden lagres ikke, bare teksten.',
     points: [
       'Sanntids-transkripsjon som skiller mellom talerne',
       'Fungerer på 2-timers byggemøter med flere talere',
-      'Ingen avspillbar lydfil lagres hos Notert',
+      'Lyden lagres ikke, bare teksten',
     ],
   },
   {
     title: 'NS-kontrakt-flagging',
     tagline: 'Se varslingspliktige forhold mens det er tid',
     description:
-      'Notert lytter etter mulige endringer, fristforlengelser, vederlagsjusteringer og avvik fra spesifikasjon. Hvert flagg viser hva som ble sagt og hvilket punkt det kan treffe i den valgte kontrakten. Du kontrollerer og avgjør.',
+      'Referatutkastet merker mulige endringer, fristforlengelser, vederlagsjusteringer og avvik fra spesifikasjon. Hvert flagg viser hva som ble sagt og hvilket punkt det kan treffe i den valgte kontrakten. Du kontrollerer og avgjør.',
     points: [
       'Støtter NS 8405, 8406, 8407, 8408, 8415, 8416, 8417',
       'Punkthenvisning per flagg (f.eks. «NS 8405 pkt. 24.4»)',
@@ -130,7 +130,7 @@ export default function NotertPage() {
     <>
       <Seo
         title="Notert – AI-møtereferat med NS- og HMS-flagging | AnleggTech AS"
-        description="Notert transkriberer byggemøter live og flagger NS 8405–8417-forhold og HMS-avvik. Ingen avspillbar lydfil lagres hos Notert."
+        description="Notert er en automatisk referent: den transkriberer byggemøter live og flagger NS 8405–8417-forhold og HMS-avvik. Lyden lagres ikke, bare teksten."
         path="/notert"
         jsonLd={{
           '@context': 'https://schema.org',
@@ -160,11 +160,10 @@ export default function NotertPage() {
               Møtereferater <span className={styles.accent}>som forstår byggeplassen</span>
             </h1>
             <p className={styles.subtitle}>
-              Notert er en AI-referent bygget for anleggsbransjen. Live transkripsjon
+              Notert er en automatisk referent bygget for anleggsbransjen. Live transkripsjon
               av byggemøter, befaringer og vernerunder, med automatisk flagging av
               kontraktsmessige forhold (NS 8405–8417), HMS-avvik og forskriftspunkter.
-              Lyden strømmer via Noterts relé til tale-til-tekst; Notert lagrer ingen
-              avspillbar lydfil.
+              Den skriver mens dere snakker. Lyden lagres ikke, bare teksten.
             </p>
             <div className={styles.heroCtas}>
               <a
@@ -202,8 +201,8 @@ export default function NotertPage() {
                 Live transkripsjon → automatisk flagging → referatutkast
               </h2>
               <p className={styles.productLead}>
-                Notert lytter på møtet via mikrofonen på telefonen eller PCen, kjenner
-                igjen norsk fagspråk, og lager et referatutkast med strukturert flagging
+                Notert skriver møtet som tekst via mikrofonen på telefonen eller PCen,
+                kjenner igjen norsk fagspråk, og lager et referatutkast med strukturert flagging
                 av hva som krever oppfølging, få minutter etter at møtet er slutt.
               </p>
             </div>
@@ -259,7 +258,7 @@ export default function NotertPage() {
                   <span className={styles.howStep}>2</span>
                   <div>
                     <strong>Trykk start</strong>
-                    <p>Mobil på bordet. Lyden strømmer via Noterts relé til Deepgram for live transkripsjon; Notert lagrer ingen avspillbar lydfil.</p>
+                    <p>Mobil på bordet. Notert skriver mens dere snakker. Lyden lagres ikke, bare teksten.</p>
                   </div>
                 </li>
                 <li>
