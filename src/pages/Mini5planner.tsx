@@ -14,6 +14,7 @@ import {
   RELEASES_URL,
 } from '../lib/mini5planner'
 import styles from './Programvare.module.css'
+import media from './Mini5plannerMedia.module.css'
 
 const jsonLd = {
   '@context': 'https://schema.org',
@@ -164,6 +165,14 @@ const drones = [
   { name: 'DJI Mavic 4 Pro', sensor: '4/3" 100 MP', class: 'C2' },
 ]
 
+const SKJERMBILDER = [
+  { fil: 'no-1-enkelt-rutenett.jpg', tekst: 'Enkelt rutenett med statistikk mens du planlegger. Farten settes ned automatisk fordi kameraet på Mini 5 Pro trenger 5,2 s per 50 MP-bilde.', alt: 'Mini5Planner med enkelt rutenett over en tomt, med GSD, antall bilder og flytid' },
+  { fil: 'no-2-kryssrutenett-byggegrop.jpg', tekst: 'Kryssrutenett med malen Byggegrop: 50 m høyde, 85/75 % overlapp og skrått kamera for 3D.', alt: 'Mini5Planner med kryssrutenett og malen Byggegrop' },
+  { fil: 'no-3-grustak-batterideling.jpg', tekst: 'Malen Grustak over et stort område. Appen viser at oppdraget trenger rundt to batterier, og kan dele det opp (Pro).', alt: 'Mini5Planner med malen Grustak over et stort område og varsel om batterideling' },
+  { fil: 'no-4-bygningsfasade.jpg', tekst: 'Malen Bygningsfasade: lav høyde og 45° kameravinkel rundt et hus.', alt: 'Mini5Planner med malen Bygningsfasade rundt et hus' },
+  { fil: 'no-5-veitrase.jpg', tekst: 'Malen Veitrasé: en smal stripe langs en veg, fløyet som én linje.', alt: 'Mini5Planner med malen Veitrasé langs en veg' },
+]
+
 export default function Mini5planner() {
   return (
     <>
@@ -200,14 +209,14 @@ export default function Mini5planner() {
             <div className={`${styles.heroCtas} ${styles.downloadCtas}`}>
               <div className={styles.downloadOption}>
                 <a href={DOWNLOAD_MAC_URL} className={styles.ctaPrimary} onClick={() => track('Nedlasting', { plattform: 'mac' })}>
-                  Last ned for Mac
+                  Last ned gratis for Mac
                   <Arrow />
                 </a>
                 <p className={styles.downloadNote}>Apple-notarisert DMG.</p>
               </div>
               <div className={styles.downloadOption}>
                 <a href={DOWNLOAD_WINDOWS_URL} className={styles.ctaPrimary} onClick={() => track('Nedlasting', { plattform: 'windows' })}>
-                  Last ned for Windows
+                  Last ned gratis for Windows
                   <Arrow />
                 </a>
                 <p className={styles.downloadNote}>
@@ -223,6 +232,19 @@ export default function Mini5planner() {
               Gratis å laste ned og bruke. Filene ligger også på{' '}
               <a href={RELEASES_URL} target="_blank" rel="noopener noreferrer">GitHub</a>.
             </p>
+            <figure className={media.demo}>
+              <video
+                src="/videos/mini5planner-demo-no.mp4"
+                poster="/images/mini5planner/no-1-enkelt-rutenett.jpg"
+                autoPlay
+                muted
+                loop
+                playsInline
+                preload="metadata"
+                aria-label="Demo av Mini5Planner: tegner et område, bytter til kryssrutenett, velger malen Byggegrop og åpner overføringsveiviseren"
+              />
+              <figcaption>Tegn området, velg oppdragstype eller mal, og kopier KMZ-fila over til DJI RC 2.</figcaption>
+            </figure>
           </div>
         </section>
 
@@ -350,6 +372,25 @@ export default function Mini5planner() {
               </ol>
             </div>
 
+          </div>
+        </section>
+
+        <section id="skjermbilder" className={styles.product}>
+          <div className={`container ${styles.productInner}`}>
+            <div className={styles.productHeader}>
+              <span className={styles.productLabel}>Skjermbilder</span>
+              <h2 className={styles.productHeading}>Én app, fem typer oppdrag</h2>
+            </div>
+            <div className={media.gallery}>
+              {SKJERMBILDER.map((bilde) => (
+                <figure key={bilde.fil} className={media.shot}>
+                  <a href={`/images/mini5planner/${bilde.fil}`} target="_blank" rel="noopener noreferrer">
+                    <img src={`/images/mini5planner/${bilde.fil}`} alt={bilde.alt} width={1400} height={872} loading="lazy" />
+                  </a>
+                  <figcaption>{bilde.tekst}</figcaption>
+                </figure>
+              ))}
+            </div>
           </div>
         </section>
 

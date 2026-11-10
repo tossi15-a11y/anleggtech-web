@@ -17,6 +17,7 @@ import {
 } from '../../lib/mini5planner'
 import styles from '../Programvare.module.css'
 import own from './Mini5plannerEn.module.css'
+import media from '../Mini5plannerMedia.module.css'
 
 const PRO_DESCRIPTION =
   'One-time lifetime license: terrain following and battery split. Tax included.'
@@ -298,7 +299,7 @@ export default function Mini5plannerEn() {
               Free to download and use. The installers are also on{' '}
               <a href={RELEASES_URL} target="_blank" rel="noopener noreferrer">GitHub</a>.
             </p>
-            <figure className={own.demo}>
+            <figure className={media.demo}>
               <video
                 src="/videos/mini5planner-demo.mp4"
                 poster="/images/mini5planner/1-single-grid.jpg"
@@ -477,9 +478,9 @@ export default function Mini5plannerEn() {
               <span className={styles.productLabel}>Screenshots</span>
               <h2 className={styles.productHeading}>One app, five kinds of missions</h2>
             </div>
-            <div className={own.gallery}>
+            <div className={media.gallery}>
               {SCREENSHOTS.map((shot) => (
-                <figure key={shot.file} className={own.shot}>
+                <figure key={shot.file} className={media.shot}>
                   <a href={`/images/mini5planner/${shot.file}`} target="_blank" rel="noopener noreferrer">
                     <img src={`/images/mini5planner/${shot.file}`} alt={shot.alt} width={1400} height={872} loading="lazy" />
                   </a>
