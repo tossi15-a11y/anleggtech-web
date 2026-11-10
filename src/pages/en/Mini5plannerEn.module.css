@@ -53,3 +53,50 @@
   text-decoration: underline;
   text-underline-offset: 2px;
 }
+
+.demo {
+  margin: 2.5rem 0 0;
+  max-width: 980px;
+}
+
+.demo video {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1280 / 798;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: var(--bg-card);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.45);
+}
+
+.demo figcaption,
+.shot figcaption {
+  margin-top: 0.6rem;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: var(--text-secondary);
+}
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+.shot {
+  margin: 0;
+}
+
+.shot img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  transition: border-color 200ms ease;
+}
+
+.shot a:hover img {
+  border-color: var(--border-hover);
+}

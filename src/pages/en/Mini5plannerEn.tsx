@@ -234,6 +234,14 @@ const guides = [
   },
 ]
 
+const SCREENSHOTS = [
+  { file: '1-single-grid.jpg', caption: 'Single grid with live statistics. Speed drops automatically because the Mini 5 Pro camera needs 5.2 s per 50 MP photo.', alt: 'Mini5Planner single grid mission over a building plot with GSD, photo count and flight time' },
+  { file: '2-double-grid-excavation.jpg', caption: 'Double grid (crosshatch) with the Excavation site template: 50 m, 85/75 % overlap, oblique gimbal for 3D.', alt: 'Mini5Planner double grid crosshatch mission with the Excavation site template' },
+  { file: '3-gravel-pit-battery-split.jpg', caption: 'Gravel pit template over a large area. The app shows the mission needs about two batteries and can split it (Pro).', alt: 'Mini5Planner gravel pit template over a large area with a battery split warning' },
+  { file: '4-building-facade.jpg', caption: 'Building facade template: low altitude and a 45° gimbal around a house.', alt: 'Mini5Planner building facade template around a house' },
+  { file: '5-road-corridor.jpg', caption: 'Road corridor template: a narrow strip along a road, flown as a single line.', alt: 'Mini5Planner road corridor template along a road' },
+]
+
 export default function Mini5plannerEn() {
   return (
     <>
@@ -267,14 +275,14 @@ export default function Mini5plannerEn() {
             <div className={`${styles.heroCtas} ${styles.downloadCtas}`}>
               <div className={styles.downloadOption}>
                 <a href={DOWNLOAD_MAC_URL} className={styles.ctaPrimary} onClick={() => track('Nedlasting', { plattform: 'mac' })}>
-                  Download for Mac
+                  Download free for Mac
                   <Arrow />
                 </a>
                 <p className={styles.downloadNote}>Apple-notarized DMG.</p>
               </div>
               <div className={styles.downloadOption}>
                 <a href={DOWNLOAD_WINDOWS_URL} className={styles.ctaPrimary} onClick={() => track('Nedlasting', { plattform: 'windows' })}>
-                  Download for Windows
+                  Download free for Windows
                   <Arrow />
                 </a>
                 <p className={styles.downloadNote}>
@@ -290,6 +298,19 @@ export default function Mini5plannerEn() {
               Free to download and use. The installers are also on{' '}
               <a href={RELEASES_URL} target="_blank" rel="noopener noreferrer">GitHub</a>.
             </p>
+            <figure className={own.demo}>
+              <video
+                src="/videos/mini5planner-demo.mp4"
+                poster="/images/mini5planner/1-single-grid.jpg"
+                autoPlay
+                muted
+                loop
+                playsInline
+                preload="metadata"
+                aria-label="Mini5Planner demo: drawing an area, switching to a double grid, picking the Excavation site template and opening the transfer guide"
+              />
+              <figcaption>Draw the area, pick a mission type or template, then copy the KMZ to the DJI RC 2.</figcaption>
+            </figure>
           </div>
         </section>
 
@@ -447,6 +468,25 @@ export default function Mini5plannerEn() {
               </ol>
             </div>
 
+          </div>
+        </section>
+
+        <section id="screenshots" className={styles.product}>
+          <div className={`container ${styles.productInner}`}>
+            <div className={styles.productHeader}>
+              <span className={styles.productLabel}>Screenshots</span>
+              <h2 className={styles.productHeading}>One app, five kinds of missions</h2>
+            </div>
+            <div className={own.gallery}>
+              {SCREENSHOTS.map((shot) => (
+                <figure key={shot.file} className={own.shot}>
+                  <a href={`/images/mini5planner/${shot.file}`} target="_blank" rel="noopener noreferrer">
+                    <img src={`/images/mini5planner/${shot.file}`} alt={shot.alt} width={1400} height={872} loading="lazy" />
+                  </a>
+                  <figcaption>{shot.caption}</figcaption>
+                </figure>
+              ))}
+            </div>
           </div>
         </section>
 
