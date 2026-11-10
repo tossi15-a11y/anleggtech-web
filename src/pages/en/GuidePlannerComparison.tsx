@@ -3,6 +3,7 @@ import GuideLayout from './GuideLayout'
 import Ext from './ExternalLink'
 import {
   EN_PATH,
+  GUIDE_AIR_3S_PATH,
   GUIDE_GRID_MISSION_PATH,
   GUIDE_LITCHI_ALTERNATIVE_PATH,
   GUIDE_PLANNER_COMPARISON_PATH,
@@ -153,6 +154,7 @@ export default function GuidePlannerComparison() {
       datePublished="2026-11-10"
       related={[
         { path: GUIDE_LITCHI_ALTERNATIVE_PATH, title: 'Litchi alternative for DJI Mini 5 Pro and the DJI RC 2' },
+        { path: GUIDE_AIR_3S_PATH, title: 'How to plan a mapping mission for the DJI Air 3S' },
         { path: GUIDE_GRID_MISSION_PATH, title: 'How to fly a grid mapping mission with a DJI Mini 5 Pro in DJI Fly' },
       ]}
       lead={

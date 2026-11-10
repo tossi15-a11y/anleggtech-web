@@ -11,6 +11,7 @@ import {
   DOWNLOAD_WINDOWS_URL,
   EN_PATH,
   GUIDE_GRID_MISSION_PATH,
+  GUIDE_AIR_3S_PATH,
   GUIDE_LITCHI_ALTERNATIVE_PATH,
   GUIDE_PLANNER_COMPARISON_PATH,
   GUIDE_SKIPPED_PHOTOS_PATH,
@@ -246,6 +247,12 @@ const guides = [
     title: 'DJI grid mapping planners compared (November 2026)',
     description:
       'Seven planners that make KMZ files for DJI Fly, side by side: price, platform, grids, terrain following and the DJI RC 2.',
+  },
+  {
+    path: GUIDE_AIR_3S_PATH,
+    title: 'How to plan a mapping mission for the DJI Air 3S',
+    description:
+      'DJI’s camera specs, GSD and photo spacing per altitude, waypoints on the DJI RC 2, and how to measure the real photo interval after the first flight.',
   },
 ]
 

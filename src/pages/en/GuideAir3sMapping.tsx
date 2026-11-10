@@ -28,13 +28,14 @@ const specs = [
   { label: 'Takeoff weight and class', value: '724 g, C1 (EU)' },
 ]
 
-// Fotavtrykk fra DJIs 84° diagonalt / 24 mm: 1,442 × høyden på tvers og 1,082 × høyden langs (4:3)
+// Som Air 3S-profilen i appen fra 1.3.8: Mini 5 Pro-geometrien (12,913 × 9,685 mm, f 8,67 mm),
+// 8192 px på tvers, 80/70 % overlapp og 5,2 s per bilde
 const altitudes = [
-  { alt: 50, gsd: '0.88', footprint: '72 × 54 m', line: '21.6 m', photo: '10.8 m', v2: '5.4 m/s', v5: '2.1 m/s' },
-  { alt: 60, gsd: '1.06', footprint: '87 × 65 m', line: '26.0 m', photo: '13.0 m', v2: '6.4 m/s', v5: '2.5 m/s' },
-  { alt: 80, gsd: '1.41', footprint: '115 × 87 m', line: '34.6 m', photo: '17.3 m', v2: '8.6 m/s', v5: '3.4 m/s' },
-  { alt: 100, gsd: '1.76', footprint: '144 × 108 m', line: '43.3 m', photo: '21.6 m', v2: '10.8 m/s', v5: '4.3 m/s' },
-  { alt: 120, gsd: '2.11', footprint: '173 × 130 m', line: '51.9 m', photo: '26.0 m', v2: '12.9 m/s', v5: '5.1 m/s' },
+  { alt: 50, gsd: '0.91', footprint: '74 × 56 m', line: '22.3 m', photo: '11.2 m', v2: '5.6 m/s', v5: '2.1 m/s' },
+  { alt: 60, gsd: '1.09', footprint: '89 × 67 m', line: '26.8 m', photo: '13.4 m', v2: '6.7 m/s', v5: '2.6 m/s' },
+  { alt: 80, gsd: '1.45', footprint: '119 × 89 m', line: '35.7 m', photo: '17.9 m', v2: '8.9 m/s', v5: '3.4 m/s' },
+  { alt: 100, gsd: '1.82', footprint: '149 × 112 m', line: '44.7 m', photo: '22.3 m', v2: '11.2 m/s', v5: '4.3 m/s' },
+  { alt: 120, gsd: '2.18', footprint: '179 × 134 m', line: '53.6 m', photo: '26.8 m', v2: '13.4 m/s', v5: '5.2 m/s' },
 ]
 
 export default function GuideAir3sMapping() {
@@ -71,10 +72,11 @@ export default function GuideAir3sMapping() {
       <div className={styles.callout}>
         <p>
           <strong>We have not flown the Air 3S ourselves.</strong> Mini5Planner’s Air 3S profile
-          has not been tested in the field. Its photo interval of 2.0 seconds is an assumption
-          we have not measured, and its image size doesn’t match DJI’s specs (more on that
-          below). If you fly an Air 3S, the check after your first flight can correct both for
-          your drone, and we would like to hear what you find.
+          has not been tested in the field. Since version 1.3.8 it uses DJI’s 50 MP image size,
+          the field of view we measured on the Mini 5 Pro (DJI lists both drones at 84°) and
+          5.2 seconds per photo. None of that has been measured on an Air 3S. If you fly one,
+          the check after your first flight corrects the profile for your drone, and we would
+          like to hear what you find.
         </p>
       </div>
 
@@ -104,8 +106,11 @@ export default function GuideAir3sMapping() {
       <p>
         Sensor width divided by focal length is the footprint width per metre of altitude.
         DJI gives the field of view instead of the sensor size: 84° across the diagonal, or
-        24 mm in 35 mm terms. For a 4:3 photo that is a footprint of about 1.44 × the altitude
-        across and 1.08 × the altitude along. With 8192 pixels across at 50 MP:
+        24 mm in 35 mm terms, the same as for the Mini 5 Pro. On our Mini 5 Pro the photos
+        covered about 3% more ground than that when we measured them against ground control
+        points, and Mini5Planner uses the measured geometry for the Air 3S too. That is a
+        footprint of about 1.49 × the altitude across and 1.12 × the altitude along. With 8192
+        pixels across at 50 MP:
       </p>
       <div className={styles.tableWrap}>
         <table>
@@ -132,9 +137,8 @@ export default function GuideAir3sMapping() {
         coarse.
       </p>
       <p>
-        These numbers use DJI’s nominal field of view. On our Mini 5 Pro, which DJI also lists
-        at 84° and 24 mm, the photos covered about 3% more ground than that when we measured
-        them against ground control points. The Air 3S hasn’t been measured.
+        With DJI’s nominal 84° the numbers come out about 3% smaller, for example 1.41 cm/px
+        at 80 m. Which of the two fits the Air 3S hasn’t been measured.
       </p>
 
       <h2>Overlap, photo spacing and speed</h2>
@@ -155,7 +159,7 @@ export default function GuideAir3sMapping() {
               <th scope="col">Line spacing</th>
               <th scope="col">Photo spacing</th>
               <th scope="col">Max speed at 2 s per photo</th>
-              <th scope="col">Max speed at 5 s per photo</th>
+              <th scope="col">Max speed at 5.2 s per photo</th>
             </tr>
           </thead>
           <tbody>
@@ -165,7 +169,7 @@ export default function GuideAir3sMapping() {
                 <td data-label="Line spacing">{a.line}</td>
                 <td data-label="Photo spacing">{a.photo}</td>
                 <td data-label="Max speed at 2 s">{a.v2}</td>
-                <td data-label="Max speed at 5 s">{a.v5}</td>
+                <td data-label="Max speed at 5.2 s">{a.v5}</td>
               </tr>
             ))}
           </tbody>
@@ -179,16 +183,17 @@ export default function GuideAir3sMapping() {
       </p>
       <p>
         What we don’t know yet is how long the Air 3S needs per photo in a waypoint mission.
-        The profile assumes 2.0 seconds, the shortest timed-shot interval DJI lists for 12 MP.
-        For 50 MP, DJI’s timed mode starts at 5 seconds, and our Mini 5 Pro needs about 5.2
-        seconds per 50 MP photo on a mapping flight. Waypoint photos aren’t timed shots, so none
-        of these numbers proves what the Air 3S does. Until you have measured it:
+        DJI’s timed mode starts at 2 seconds for 12 MP and 5 seconds for 50 MP, and our Mini 5
+        Pro needs about 5.2 seconds per 50 MP photo on a mapping flight. The profile uses 5.2
+        seconds, so Mini5Planner keeps the speed within the right-hand column. Waypoint photos
+        aren’t timed shots, so none of these numbers proves what the Air 3S does. Until you
+        have measured it:
       </p>
       <ul>
         <li>Make your first flight a small area, at the speed Mini5Planner suggests.</li>
         <li>
-          If you shoot 50 MP on a job that matters, set <strong>Speed</strong> in the side panel
-          to no more than the <strong>Photo spacing</strong> in the statistics divided by 5.
+          If you shoot 12 MP, the camera may keep up at a higher speed. Measure it before you
+          raise <strong>Speed</strong> in the side panel.
         </li>
       </ul>
 
@@ -209,13 +214,10 @@ export default function GuideAir3sMapping() {
       </ol>
       <div className={styles.callout}>
         <p>
-          <strong>The built-in profile and DJI’s specs differ.</strong> In Mini5Planner 1.3.7
-          the Air 3S profile uses an image size of 5280 × 3956 pixels, not the 8192 × 6144 DJI
-          lists for the wide-angle camera. The flight lines come out about 2% further apart
-          than DJI’s numbers give, and the photos about 10% closer, so the route itself is
-          close. But the GSD the app shows is too coarse for 50 MP photos: 2.22 cm/px at 80 m,
-          against 1.41 in the table above. Calibrating from your first flight replaces these
-          values with the ones from your own photos.
+          <strong>Use Mini5Planner 1.3.8 or newer.</strong> Older versions had the wrong image
+          size and 2 seconds per photo for the Air 3S. The GSD they showed was too coarse for
+          50 MP photos, and the speed they allowed was too high. The app updates itself, or use{' '}
+          <strong>Help › Check for updates</strong>. Plan any older Air 3S routes again.
         </p>
       </div>
 
@@ -276,9 +278,9 @@ export default function GuideAir3sMapping() {
         </li>
       </ol>
       <p>
-        If the statistics said the speed was reduced for the camera, the flight is a fair test
-        of the 2-second assumption: if the camera needs longer, you get fewer photos than
-        planned, and the check shows the real interval.
+        If the statistics said the speed was reduced for the camera, the flight tests the
+        5.2-second setting: if the camera needs longer, you get fewer photos than planned, and
+        the check shows the real interval.
       </p>
 
       <h2>Tell us what you measured</h2>
