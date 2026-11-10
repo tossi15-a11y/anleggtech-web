@@ -61,6 +61,24 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://www.anleggtech.no/en/mini5planner/guides/litchi-alternative-mini-5-pro-rc-2</loc>
+    <lastmod>2026-11-10</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.anleggtech.no/en/mini5planner/guides/air-3s-mapping-mission</loc>
+    <lastmod>2026-11-10</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.anleggtech.no/en/mini5planner/guides/dji-mapping-planner-comparison</loc>
+    <lastmod>2026-11-10</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://www.anleggtech.no/personvern</loc>
     <lastmod>2026-04-03</lastmod>
     <changefreq>yearly</changefreq>

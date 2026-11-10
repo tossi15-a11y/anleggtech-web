@@ -168,6 +168,14 @@
   border-radius: var(--radius-md);
 }
 
+/* Sammenligningstabellen bryter ut av den smale tekstspalten */
+.wideTable {
+  position: relative;
+  left: 50%;
+  width: min(1100px, calc(100vw - 2 * var(--container-pad)));
+  transform: translateX(-50%);
+}
+
 .prose table {
   width: 100%;
   border-collapse: collapse;
@@ -197,6 +205,11 @@
 .prose tr:last-child th,
 .prose tr:last-child td {
   border-bottom: 0;
+}
+
+.prose .sourceNote {
+  font-size: 0.9375rem;
+  color: var(--text-muted);
 }
 
 /* ─── Nedlasting og neste artikkel ──────────────────────────────────────── */
@@ -272,6 +285,11 @@
   margin-bottom: 0.5rem;
 }
 
+.relatedList {
+  display: grid;
+  gap: 0.75rem;
+}
+
 .relatedLink {
   font-size: 1.0625rem;
   line-height: 1.5;
@@ -323,6 +341,12 @@
   }
   .stackTable td {
     text-align: right;
+  }
+  /* Sammenligningen har lange celler: etiketten over verdien leses lettere */
+  .wideTable .stackTable td {
+    flex-direction: column;
+    gap: 0.1rem;
+    text-align: left;
   }
 }
 

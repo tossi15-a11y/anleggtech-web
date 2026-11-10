@@ -14,7 +14,7 @@ type GuideLayoutProps = {
   description: string
   lead: ReactNode
   datePublished: string
-  related: { path: string; title: string }
+  related: { path: string; title: string }[]
   children: ReactNode
 }
 
@@ -117,11 +117,17 @@ export default function GuideLayout({ path, title, description, lead, datePublis
             </Link>
           </aside>
 
-          <nav className={styles.related} aria-label="Related guide">
-            <p className={styles.relatedLabel}>Next guide</p>
-            <Link to={related.path} className={styles.relatedLink}>
-              {related.title} <Arrow />
-            </Link>
+          <nav className={styles.related} aria-label="Related guides">
+            <p className={styles.relatedLabel}>{related.length > 1 ? 'More guides' : 'Next guide'}</p>
+            <ul className={styles.relatedList}>
+              {related.map((r) => (
+                <li key={r.path}>
+                  <Link to={r.path} className={styles.relatedLink}>
+                    {r.title} <Arrow />
+                  </Link>
+                </li>
+              ))}
+            </ul>
           </nav>
         </article>
         <p className={styles.trademark}>Mini5Planner is an independent product by AnleggTech AS. It is not affiliated with, endorsed by or sponsored by DJI. DJI, DJI Fly, DJI Mini and Mavic are trademarks of SZ DJI Technology Co., Ltd.</p>

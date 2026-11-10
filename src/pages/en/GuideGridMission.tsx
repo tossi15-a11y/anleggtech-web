@@ -20,10 +20,10 @@ export default function GuideGridMission() {
       title="How to fly a grid mapping mission with a DJI Mini 5 Pro in DJI Fly"
       description="DJI Fly has waypoints but no grid tool. Step by step: draw the area, pick a template, export a KMZ, load it on the DJI RC 2, fly, and check the overlap afterwards."
       datePublished="2026-11-08"
-      related={{
+      related={[{
         path: GUIDE_SKIPPED_PHOTOS_PATH,
         title: 'Why your DJI Mini 5 Pro skips photos on mapping flights (and how to fix it)',
-      }}
+      }]}
       lead={
         <>
           <p>

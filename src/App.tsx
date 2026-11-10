@@ -20,7 +20,17 @@ import Mini5planner from './pages/Mini5planner'
 import Mini5plannerEn from './pages/en/Mini5plannerEn'
 import GuideSkippedPhotos from './pages/en/GuideSkippedPhotos'
 import GuideGridMission from './pages/en/GuideGridMission'
-import { EN_PATH, GUIDE_GRID_MISSION_PATH, GUIDE_SKIPPED_PHOTOS_PATH } from './lib/mini5planner'
+import GuideLitchiAlternative from './pages/en/GuideLitchiAlternative'
+import GuideAir3sMapping from './pages/en/GuideAir3sMapping'
+import GuidePlannerComparison from './pages/en/GuidePlannerComparison'
+import {
+  EN_PATH,
+  GUIDE_AIR_3S_PATH,
+  GUIDE_GRID_MISSION_PATH,
+  GUIDE_LITCHI_ALTERNATIVE_PATH,
+  GUIDE_PLANNER_COMPARISON_PATH,
+  GUIDE_SKIPPED_PHOTOS_PATH,
+} from './lib/mini5planner'
 
 function Home() {
   return (
@@ -67,6 +77,9 @@ export function AppRoutes() {
         <Route path={EN_PATH} element={<Mini5plannerEn />} />
         <Route path={GUIDE_SKIPPED_PHOTOS_PATH} element={<GuideSkippedPhotos />} />
         <Route path={GUIDE_GRID_MISSION_PATH} element={<GuideGridMission />} />
+        <Route path={GUIDE_LITCHI_ALTERNATIVE_PATH} element={<GuideLitchiAlternative />} />
+        <Route path={GUIDE_AIR_3S_PATH} element={<GuideAir3sMapping />} />
+        <Route path={GUIDE_PLANNER_COMPARISON_PATH} element={<GuidePlannerComparison />} />
         <Route path={`${EN_PATH}/guides`} element={<Navigate to={`${EN_PATH}#guides`} replace />} />
         <Route path="/en" element={<Navigate to={EN_PATH} replace />} />
       </Routes>

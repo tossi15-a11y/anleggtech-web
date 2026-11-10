@@ -10,10 +10,10 @@ export default function GuideSkippedPhotos() {
       title="Why your DJI Mini 5 Pro skips photos on mapping flights (and how to fix it)"
       description="A 50 MP photo takes the Mini 5 Pro about 5 s to save. Fly faster than that allows and photos are skipped silently: 154 planned became 89, overlap fell to 57%."
       datePublished="2026-11-08"
-      related={{
+      related={[{
         path: GUIDE_GRID_MISSION_PATH,
         title: 'How to fly a grid mapping mission with a DJI Mini 5 Pro in DJI Fly',
-      }}
+      }]}
       lead={
         <>
           <p>
