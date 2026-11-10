@@ -10,7 +10,6 @@ import {
   DOWNLOAD_MAC_URL,
   DOWNLOAD_WINDOWS_URL,
   EN_PATH,
-  GUIDE_AIR_3S_PATH,
   GUIDE_GRID_MISSION_PATH,
   GUIDE_LITCHI_ALTERNATIVE_PATH,
   GUIDE_PLANNER_COMPARISON_PATH,
@@ -212,7 +211,7 @@ const processingDeliveries = [
 ]
 
 const PROCESSING_MAILTO =
-  'mailto:post@anleggtech.no?subject=' +
+  'mailto:torstein@anleggtech.no?subject=' +
   encodeURIComponent('[Mini5Planner] Processing') +
   '&body=' +
   encodeURIComponent(
@@ -241,12 +240,6 @@ const guides = [
     title: 'Litchi alternative for DJI Mini 5 Pro and the DJI RC 2',
     description:
       'Third-party flight apps need a DJI SDK, and the Mini 5 Pro has none. What Litchi Hub and Dronelink can do with it, and how KMZ files for DJI Fly fill the gap.',
-  },
-  {
-    path: GUIDE_AIR_3S_PATH,
-    title: 'How to plan a mapping mission for the DJI Air 3S',
-    description:
-      'DJI’s camera specs, GSD and photo spacing per altitude, and how to measure the real photo interval after your first flight.',
   },
   {
     path: GUIDE_PLANNER_COMPARISON_PATH,

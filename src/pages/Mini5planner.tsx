@@ -144,7 +144,7 @@ const processingDeliveries = [
 ]
 
 const PROCESSING_MAILTO =
-  'mailto:post@anleggtech.no?subject=' +
+  'mailto:torstein@anleggtech.no?subject=' +
   encodeURIComponent('[Mini5Planner] Bearbeiding') +
   '&body=' +
   encodeURIComponent(

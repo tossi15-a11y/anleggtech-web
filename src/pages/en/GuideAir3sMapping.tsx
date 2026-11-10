@@ -13,7 +13,7 @@ import styles from './Guide.module.css'
 const DJI_SPECS_URL = 'https://www.dji.com/air-3s/specs'
 const DJI_WAYPOINT_URL =
   'https://support.dji.com/help/content?customId=en-us03400007343&spaceId=34&re=US&lang=en&documentType=artical&paperDocType=paper'
-const FEEDBACK_MAILTO = 'mailto:post@anleggtech.no?subject=Air%203S%20photo%20interval'
+const FEEDBACK_MAILTO = 'mailto:torstein@anleggtech.no?subject=Air%203S%20photo%20interval'
 
 const specs = [
   { label: 'Image sensor', value: '1-inch CMOS, 50 MP effective pixels' },
@@ -286,7 +286,7 @@ export default function GuideAir3sMapping() {
         We want the Air 3S profile to be measured, like the Mini 5 Pro’s. If you fly it, send
         us the photo size (12 or 50 MP), photos planned and taken, the speed, the interval the
         check showed, and your DJI Fly and firmware versions. Email{' '}
-        <a href={FEEDBACK_MAILTO}>post@anleggtech.no</a>. A single flight helps.
+        <a href={FEEDBACK_MAILTO}>torstein@anleggtech.no</a>. A single flight helps.
       </p>
     </GuideLayout>
   )

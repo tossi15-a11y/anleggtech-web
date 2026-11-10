@@ -9,7 +9,6 @@
     { "source": "/en/mini5planner/guides/mini-5-pro-skipped-photos", "destination": "/en/mini5planner/guides/mini-5-pro-skipped-photos/index.html" },
     { "source": "/en/mini5planner/guides/mini-5-pro-grid-mapping-dji-fly", "destination": "/en/mini5planner/guides/mini-5-pro-grid-mapping-dji-fly/index.html" },
     { "source": "/en/mini5planner/guides/litchi-alternative-mini-5-pro-rc-2", "destination": "/en/mini5planner/guides/litchi-alternative-mini-5-pro-rc-2/index.html" },
-    { "source": "/en/mini5planner/guides/air-3s-mapping-mission", "destination": "/en/mini5planner/guides/air-3s-mapping-mission/index.html" },
     { "source": "/en/mini5planner/guides/dji-mapping-planner-comparison", "destination": "/en/mini5planner/guides/dji-mapping-planner-comparison/index.html" },
     { "source": "/(.*)", "destination": "/index.html" }
   ]
