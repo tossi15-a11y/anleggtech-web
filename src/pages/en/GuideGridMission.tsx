@@ -142,9 +142,10 @@ export default function GuideGridMission() {
           mode in DJI Fly needs a GPS fix.
         </li>
         <li>
-          Open DJI Fly on the controller, create a placeholder waypoint mission with 2–3
-          waypoints and save it. Create one placeholder per route (for a split mission: one
-          per part).
+          Open DJI Fly on the controller, create a new placeholder waypoint mission with 2–3
+          waypoints and save it. Create one new placeholder per route (for a split mission:
+          one per part). Never use a mission you have flown or saved before: DJI Fly then
+          flies the route it has stored for that mission, not the file you put in.
         </li>
         <li>Connect the controller to your computer with a USB-C data cable.</li>
         <li>Swipe down on the controller and select “File Transfer”.</li>
@@ -156,8 +157,11 @@ export default function GuideGridMission() {
           Go to the waypoint folder: <code>{RC_PATH}</code>
         </li>
         <li>
-          Open the folder with the most recent modified date. That is your placeholder
-          mission. Inside is one .kmz file with the same name as the folder, a long code.
+          Open the folder of the placeholder you just created. It has the most recent
+          modified date, with today’s date and time. If unsure, open <code>map_preview</code>{' '}
+          and the folder with the same name: the image there should show your 2–3
+          placeholder waypoints, not an old route. In the mission folder is one .kmz file
+          with the same name as the folder, a long code.
         </li>
         <li>
           Copy that file name and paste it into the name field in Mini5Planner’s transfer
@@ -166,9 +170,11 @@ export default function GuideGridMission() {
         </li>
         <li>Delete the original .kmz file in the folder and copy yours in.</li>
         <li>
-          Disconnect the cable, open the mission in DJI Fly and fly it. Don’t edit the
-          mission or create new missions before you have flown, or DJI Fly overwrites the
-          files.
+          Disconnect the cable and open the mission in DJI Fly. Before takeoff, check that
+          the map shows your route where it should be. If it shows the placeholder waypoints
+          or an old route, DJI Fly has not read your file: check the folder and the name.
+          Don’t edit the mission or create new missions before you have flown, or DJI Fly
+          overwrites the files.
         </li>
       </ol>
       <h3>Good to know</h3>
