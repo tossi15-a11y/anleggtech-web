@@ -30,15 +30,16 @@ const NAV = {
   },
 }
 
-export default function Navbar({ lang = 'nb' }: { lang?: 'nb' | 'en' }) {
+export default function Navbar({ lang = 'nb', basePath }: { lang?: 'nb' | 'en'; basePath?: string }) {
   const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
   const location = useLocation()
   const navigate = useNavigate()
   const nav = NAV[lang]
-  const onHome = location.pathname === nav.base
+  const base = basePath ?? nav.base
+  const onHome = location.pathname === base
   // Engelske lenker får full sti, så de virker uten JavaScript og fra artiklene
-  const hrefFor = (hash: string) => (lang === 'en' ? nav.base + hash : hash)
+  const hrefFor = (hash: string) => (lang === 'en' ? base + hash : hash)
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 60)
@@ -71,7 +72,7 @@ export default function Navbar({ lang = 'nb' }: { lang?: 'nb' | 'en' }) {
       const el = document.querySelector(href)
       if (el) el.scrollIntoView({ behavior: 'smooth' })
     } else {
-      navigate(nav.base + href)
+      navigate(base + href)
     }
   }
 
@@ -81,7 +82,7 @@ export default function Navbar({ lang = 'nb' }: { lang?: 'nb' | 'en' }) {
     if (onHome) {
       window.scrollTo({ top: 0, behavior: 'smooth' })
     } else {
-      navigate(nav.base)
+      navigate(base)
     }
   }
 
@@ -89,7 +90,7 @@ export default function Navbar({ lang = 'nb' }: { lang?: 'nb' | 'en' }) {
     <>
       <nav className={`${styles.nav} ${scrolled ? styles.scrolled : ''}`}>
         <div className={`${styles.inner} container`}>
-          <a href={lang === 'en' ? nav.base : '#'} className={styles.logo} onClick={scrollToTop}>
+          <a href={lang === 'en' ? base : '#'} className={styles.logo} onClick={scrollToTop}>
             <span className={styles.logoMark}>
               <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <polygon points="14,2 26,8.5 26,19.5 14,26 2,19.5 2,8.5" stroke="#4a9eff" strokeWidth="1.8" fill="rgba(74,158,255,0.08)"/>

@@ -49,6 +49,38 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.anleggtech.no/en/mini5planner" />
   </url>
   <url>
+    <loc>https://www.anleggtech.no/de/mini5planner</loc>
+    <lastmod>2026-11-16</lastmod><changefreq>monthly</changefreq><priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.anleggtech.no/fr/mini5planner</loc>
+    <lastmod>2026-11-16</lastmod><changefreq>monthly</changefreq><priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.anleggtech.no/es/mini5planner</loc>
+    <lastmod>2026-11-16</lastmod><changefreq>monthly</changefreq><priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.anleggtech.no/pt/mini5planner</loc>
+    <lastmod>2026-11-16</lastmod><changefreq>monthly</changefreq><priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.anleggtech.no/it/mini5planner</loc>
+    <lastmod>2026-11-16</lastmod><changefreq>monthly</changefreq><priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.anleggtech.no/nl/mini5planner</loc>
+    <lastmod>2026-11-16</lastmod><changefreq>monthly</changefreq><priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.anleggtech.no/pl/mini5planner</loc>
+    <lastmod>2026-11-16</lastmod><changefreq>monthly</changefreq><priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.anleggtech.no/ja/mini5planner</loc>
+    <lastmod>2026-11-16</lastmod><changefreq>monthly</changefreq><priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://www.anleggtech.no/en/mini5planner/guides/mini-5-pro-skipped-photos</loc>
     <lastmod>2026-11-08</lastmod>
     <changefreq>yearly</changefreq>

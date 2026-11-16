@@ -18,6 +18,7 @@ import Notert from './pages/Notert'
 import NotertTakst from './pages/NotertTakst'
 import Mini5planner from './pages/Mini5planner'
 import Mini5plannerEn from './pages/en/Mini5plannerEn'
+import LocalizedMini5planner from './pages/LocalizedMini5planner'
 import GuideSkippedPhotos from './pages/en/GuideSkippedPhotos'
 import GuideGridMission from './pages/en/GuideGridMission'
 import GuideLitchiAlternative from './pages/en/GuideLitchiAlternative'
@@ -75,6 +76,14 @@ export function AppRoutes() {
         <Route path="/mini5planner" element={<Mini5planner />} />
         <Route path="/programvare/mini5planner" element={<Mini5plannerRedirect />} />
         <Route path={EN_PATH} element={<Mini5plannerEn />} />
+        <Route path="/de/mini5planner" element={<LocalizedMini5planner language="de" />} />
+        <Route path="/fr/mini5planner" element={<LocalizedMini5planner language="fr" />} />
+        <Route path="/es/mini5planner" element={<LocalizedMini5planner language="es" />} />
+        <Route path="/pt/mini5planner" element={<LocalizedMini5planner language="pt" />} />
+        <Route path="/it/mini5planner" element={<LocalizedMini5planner language="it" />} />
+        <Route path="/nl/mini5planner" element={<LocalizedMini5planner language="nl" />} />
+        <Route path="/pl/mini5planner" element={<LocalizedMini5planner language="pl" />} />
+        <Route path="/ja/mini5planner" element={<LocalizedMini5planner language="ja" />} />
         <Route path={GUIDE_SKIPPED_PHOTOS_PATH} element={<GuideSkippedPhotos />} />
         <Route path={GUIDE_GRID_MISSION_PATH} element={<GuideGridMission />} />
         <Route path={GUIDE_LITCHI_ALTERNATIVE_PATH} element={<GuideLitchiAlternative />} />

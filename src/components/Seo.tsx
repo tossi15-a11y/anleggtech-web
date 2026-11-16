@@ -3,7 +3,7 @@ import { createContext, useContext, useEffect } from 'react'
 export const BASE_URL = 'https://www.anleggtech.no'
 const DEFAULT_OG_IMAGE = `${BASE_URL}/og-image.jpg`
 
-export type SeoLang = 'nb' | 'en'
+export type SeoLang = 'nb' | 'en' | 'de' | 'fr' | 'es' | 'pt' | 'it' | 'nl' | 'pl' | 'ja'
 
 export type SeoAlternate = { hreflang: string; path: string }
 
@@ -17,7 +17,10 @@ export type SeoProps = {
   type?: 'website' | 'article'
 }
 
-export const OG_LOCALE: Record<SeoLang, string> = { nb: 'nb_NO', en: 'en_US' }
+export const OG_LOCALE: Record<SeoLang, string> = {
+  nb: 'nb_NO', en: 'en_US', de: 'de_DE', fr: 'fr_FR', es: 'es_ES',
+  pt: 'pt_PT', it: 'it_IT', nl: 'nl_NL', pl: 'pl_PL', ja: 'ja_JP',
+}
 
 // Forhåndsrenderingen (src/entry-server.tsx) samler Seo-verdiene her i stedet for å vente på useEffect
 export const SeoCollector = createContext<{ head?: SeoProps } | null>(null)
