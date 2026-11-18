@@ -28,7 +28,7 @@ const PRO_DESCRIPTION =
 const faq = [
   {
     q: 'Does Mini5Planner make the map or the 3D model?',
-    a: 'No. Mini5Planner plans the flight and exports the route as a KMZ file. Stitching the photos into an orthophoto, point cloud or 3D model is done afterwards in photogrammetry software such as WebODM/ODM, or by us if you send us the photos.',
+    a: 'No. Mini5Planner plans the flight and exports the route as a mission file (KMZ for DJI, .plan or .waypoints for PX4 and ArduPilot). Stitching the photos into an orthophoto, point cloud or 3D model is done afterwards in photogrammetry software such as WebODM/ODM, or by us if you send us the photos.',
   },
   {
     q: 'Do I need a DJI RC 2?',
@@ -36,11 +36,11 @@ const faq = [
   },
   {
     q: 'Which drones does it support?',
-    a: 'Seven DJI drones: Mini 5 Pro, Mini 4 Pro, Air 3, Air 3S, Mavic 3, Mavic 3 Pro and Mavic 4 Pro, all in the free version. Only the Mini 5 Pro profile has been measured in the field. The others use published camera specs and an estimated photo interval, and you can calibrate them from your own photos with Calibrate / check flight.',
+    a: 'Seven DJI Fly drones (Mini 5 Pro, Mini 4 Pro, Air 3, Air 3S, Mavic 3, Mavic 3 Pro and Mavic 4 Pro), three DJI Enterprise drones for DJI Pilot 2 (Mavic 3 Enterprise, Mavic 3 Multispectral and Matrice 4E), and any other drone as a custom drone. For a custom drone you enter the camera or read it from your photos, and save the route as .plan for QGroundControl (PX4 and ArduPilot), .waypoints for Mission Planner, or GeoJSON and CSV. All of it is in the free version. Only the Mini 5 Pro profile has been measured in the field, and the ArduPilot export has been flown in ArduPilot’s simulator (SITL), not yet on a real PX4 or ArduPilot drone. The other profiles use published camera specs and an estimated photo interval, and you can calibrate them from your own photos with Calibrate / check flight.',
   },
   {
     q: 'Is it really free?',
-    a: 'Yes. The app is free to download and use, also commercially, and all seven drones are included. Terrain following and battery split require Pro, which is a one-time purchase.',
+    a: 'Yes. The app is free to download and use, also commercially, and all drones are included. Terrain following and battery split require Pro, which is a one-time purchase.',
   },
   {
     q: 'Mac or Windows?',
@@ -72,7 +72,7 @@ const jsonLd = {
       url: `${BASE_URL}${EN_PATH}`,
       downloadUrl: RELEASES_URL,
       description:
-        'Free Mac and Windows app that creates KMZ grid mapping missions for DJI Fly, built around the DJI Mini 5 Pro. Pro adds terrain following and battery split as a one-time purchase.',
+        'Free Mac and Windows app that creates grid mapping missions for DJI Fly, built around the DJI Mini 5 Pro, with export for DJI Pilot 2, PX4 and ArduPilot. Pro adds terrain following and battery split as a one-time purchase.',
       offers: [
         { '@type': 'Offer', name: 'Mini5Planner', price: '0', priceCurrency: 'USD' },
         ...[
@@ -122,7 +122,7 @@ const useCases = [
     points: [
       'Altitude, overlap, speed and gimbal angle are set for each job type',
       'Excavation sites are flown as a double grid with an oblique gimbal',
-      'English or Norwegian interface, following your computer’s language',
+      'Interface in ten languages, following your computer’s language',
     ],
   },
   {
@@ -132,8 +132,19 @@ const useCases = [
       'Exports WPML 1.0.2 KMZ files that DJI Fly can run. A step-by-step guide in the app shows how to copy the KMZ to the DJI RC 2 over USB-C, on Windows and on Mac.',
     points: [
       'WPML 1.0.2, the same format DJI Pilot 2 uses',
-      '7 DJI drones (Mini 5 Pro, Mini 4 Pro, Air 3/3S, Mavic 3/3 Pro/4 Pro)',
+      '7 DJI Fly drones and 3 DJI Enterprise drones for DJI Pilot 2',
       'Updates install automatically',
+    ],
+  },
+  {
+    title: 'PX4, ArduPilot and other drones',
+    tagline: 'Custom drone and open formats',
+    description:
+      'Enter your drone’s camera, or read it from the photos of a previous flight. Save the route as .plan for QGroundControl or .waypoints for Mission Planner, with the camera triggered by distance along each line, or as GeoJSON and CSV for QGIS.',
+    points: [
+      '.plan (PX4 and ArduPilot) and .waypoints (Mission Planner)',
+      'GeoJSON and CSV with every planned photo position',
+      'Warns when the route has more mission items than the autopilot usually accepts',
     ],
   },
 ]
@@ -169,6 +180,10 @@ const drones = [
   { name: 'DJI Mavic 3', sensor: '4/3" CMOS', class: 'C2' },
   { name: 'DJI Mavic 3 Pro', sensor: '4/3" Hasselblad', class: 'C2' },
   { name: 'DJI Mavic 4 Pro', sensor: '4/3" 100 MP', class: 'C2' },
+  { name: 'DJI Mavic 3 Enterprise', sensor: '4/3" CMOS', class: 'DJI Pilot 2' },
+  { name: 'DJI Mavic 3 Multispectral', sensor: '4/3" CMOS', class: 'DJI Pilot 2' },
+  { name: 'DJI Matrice 4E', sensor: '4/3" CMOS', class: 'DJI Pilot 2' },
+  { name: 'Custom drone', sensor: 'Your camera', class: 'PX4, ArduPilot and others' },
 ]
 
 const audiences = [
@@ -269,7 +284,7 @@ export default function Mini5plannerEn() {
     <>
       <Seo
         title="Mini5Planner – DJI Mini 5 Pro mapping and grid missions for DJI Fly"
-        description="Free drone mapping planner for Mac and Windows. Draw an area and get a KMZ grid mission for DJI Fly. Built for the DJI Mini 5 Pro, works with 7 DJI drones."
+        description="Free drone mapping planner for Mac and Windows. Draw an area and get a grid mission for DJI Fly, DJI Pilot 2, PX4 or ArduPilot. Built for the DJI Mini 5 Pro."
         path={EN_PATH}
         lang="en"
         alternates={LANDING_ALTERNATES}
@@ -292,7 +307,8 @@ export default function Mini5plannerEn() {
               Mini5Planner is a free drone mapping planner for Mac and Windows, built
               around the DJI Mini 5 Pro. Draw an area on the map and pick a template, and it
               creates a KMZ grid mission that you load on your remote controller and fly as a
-              waypoint mission in DJI Fly.
+              waypoint mission in DJI Fly. It also saves routes for DJI Pilot 2, PX4 and
+              ArduPilot.
             </p>
             <div className={`${styles.heroCtas} ${styles.downloadCtas}`}>
               <div className={styles.downloadOption}>
@@ -421,10 +437,11 @@ export default function Mini5plannerEn() {
             </div>
 
             <div id="drones" className={styles.audienceBlock}>
-              <h2 className={styles.audienceHeading}>Supported DJI drones</h2>
+              <h2 className={styles.audienceHeading}>Supported drones</h2>
               <p className={styles.audienceLead}>
-                Seven models, all free. The app knows each drone’s camera and maximum speed
-                and calculates GSD and footprint. Speed is set by how fast the camera saves
+                Seven DJI Fly drones, three DJI Enterprise drones and a custom drone for PX4,
+                ArduPilot and anything else, all free. The app knows each drone’s camera and
+                maximum speed and calculates GSD and footprint. Speed is set by how fast the camera saves
                 photos. So far that has only been measured on the Mini 5 Pro; the other
                 profiles are estimates until you calibrate them from your own photos.
               </p>

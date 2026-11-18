@@ -59,10 +59,10 @@ const COPY: Record<LocalizedLanguage, Copy> = {
     howIntro: 'DJI Fly hat Wegpunkte, aber keinen Rastergenerator. Mini5Planner berechnet Route, Abstand und Fotoüberlappung.',
     cards: [
       { title: 'Rastermissionen', text: 'Abstand und Fotointervall werden aus Kamera, Höhe und gewünschter Überlappung berechnet.', points: ['Einfach- oder Kreuzraster', 'GSD und Flugzeit live', 'Senkrechte oder schräge Kamera'] },
-      { title: 'Vorlagen', text: 'Vorlagen für Baustellen, Gruben, Fassaden und Straßenkorridore.', points: ['Schneller Start', 'Einstellungen bleiben anpassbar', 'Sieben DJI-Drohnen'] },
+      { title: 'Vorlagen', text: 'Vorlagen für Baustellen, Gruben, Fassaden und Straßenkorridore.', points: ['Schneller Start', 'Einstellungen bleiben anpassbar', 'DJI, PX4 und ArduPilot'] },
       { title: 'Direkt zum DJI RC 2', text: 'Die integrierte Anleitung zeigt die Übertragung per USB-C.', points: ['WPML-1.0.2-KMZ', 'Windows und Mac', 'Automatische Updates'] },
     ],
-    dronesHeading: 'Unterstützte Drohnen', dronesText: 'DJI Mini 5 Pro, Mini 4 Pro, Air 3, Air 3S, Mavic 3, Mavic 3 Pro und Mavic 4 Pro.',
+    dronesHeading: 'Unterstützte Drohnen', dronesText: 'DJI Mini 5 Pro, Mini 4 Pro, Air 3, Air 3S, Mavic 3, Mavic 3 Pro und Mavic 4 Pro für DJI Fly, Mavic 3 Enterprise, Mavic 3 Multispectral und Matrice 4E für DJI Pilot 2 sowie eigene Drohnen mit PX4 oder ArduPilot (.plan, .waypoints, GeoJSON und CSV).',
     proLabel: 'Einmalkauf', proHeading: 'Mini5Planner Pro', proText: 'Pro ergänzt Geländefolge und automatische Aufteilung auf mehrere Akkus.',
     proPoints: ['Geländefolge weltweit', 'Aufteilung nach Akku', 'Lebenslange Lizenz, kein Abo'], buy: 'Pro kaufen', lifetime: 'Einmal zahlen. Dauerhaft nutzen.',
   },
@@ -75,10 +75,10 @@ const COPY: Record<LocalizedLanguage, Copy> = {
     howIntro: 'DJI Fly propose des points de passage, mais pas de générateur de grille. Mini5Planner calcule la route et le recouvrement photo.',
     cards: [
       { title: 'Missions quadrillées', text: 'Espacement et intervalle photo calculés selon la caméra, l’altitude et le recouvrement.', points: ['Grille simple ou croisée', 'GSD et durée en direct', 'Caméra verticale ou oblique'] },
-      { title: 'Modèles de mission', text: 'Modèles pour chantier, excavation, carrière, façade et corridor routier.', points: ['Démarrage rapide', 'Réglages modifiables', 'Sept drones DJI'] },
+      { title: 'Modèles de mission', text: 'Modèles pour chantier, excavation, carrière, façade et corridor routier.', points: ['Démarrage rapide', 'Réglages modifiables', 'DJI, PX4 et ArduPilot'] },
       { title: 'Vers la DJI RC 2', text: 'Le guide intégré explique le transfert par USB-C.', points: ['KMZ WPML 1.0.2', 'Windows et Mac', 'Mises à jour automatiques'] },
     ],
-    dronesHeading: 'Drones compatibles', dronesText: 'DJI Mini 5 Pro, Mini 4 Pro, Air 3, Air 3S, Mavic 3, Mavic 3 Pro et Mavic 4 Pro.', proLabel: 'Achat unique', proHeading: 'Mini5Planner Pro',
+    dronesHeading: 'Drones compatibles', dronesText: 'DJI Mini 5 Pro, Mini 4 Pro, Air 3, Air 3S, Mavic 3, Mavic 3 Pro et Mavic 4 Pro pour DJI Fly, Mavic 3 Enterprise, Mavic 3 Multispectral et Matrice 4E pour DJI Pilot 2, ainsi que votre propre drone sous PX4 ou ArduPilot (.plan, .waypoints, GeoJSON et CSV).', proLabel: 'Achat unique', proHeading: 'Mini5Planner Pro',
     proText: 'Pro ajoute le suivi du terrain et la répartition automatique sur plusieurs batteries.', proPoints: ['Suivi du terrain mondial', 'Répartition par batterie', 'Licence à vie, sans abonnement'], buy: 'Acheter Pro', lifetime: 'Un seul paiement. Utilisation permanente.',
   },
   es: {
@@ -90,9 +90,9 @@ const COPY: Record<LocalizedLanguage, Copy> = {
     howIntro: 'DJI Fly tiene puntos de ruta, pero no genera cuadrículas. Mini5Planner calcula la ruta y el solape fotográfico.',
     cards: [
       { title: 'Misiones de cuadrícula', text: 'Calcula separación e intervalo según cámara, altura y solape.', points: ['Cuadrícula simple o cruzada', 'GSD y tiempo en directo', 'Cámara vertical u oblicua'] },
-      { title: 'Plantillas', text: 'Plantillas para obra, excavación, cantera, fachada y corredor vial.', points: ['Inicio rápido', 'Ajustes editables', 'Siete drones DJI'] },
+      { title: 'Plantillas', text: 'Plantillas para obra, excavación, cantera, fachada y corredor vial.', points: ['Inicio rápido', 'Ajustes editables', 'DJI, PX4 y ArduPilot'] },
       { title: 'Directo al DJI RC 2', text: 'La guía integrada explica la transferencia por USB-C.', points: ['KMZ WPML 1.0.2', 'Windows y Mac', 'Actualizaciones automáticas'] },
-    ], dronesHeading: 'Drones compatibles', dronesText: 'DJI Mini 5 Pro, Mini 4 Pro, Air 3, Air 3S, Mavic 3, Mavic 3 Pro y Mavic 4 Pro.', proLabel: 'Pago único', proHeading: 'Mini5Planner Pro',
+    ], dronesHeading: 'Drones compatibles', dronesText: 'DJI Mini 5 Pro, Mini 4 Pro, Air 3, Air 3S, Mavic 3, Mavic 3 Pro y Mavic 4 Pro para DJI Fly, Mavic 3 Enterprise, Mavic 3 Multispectral y Matrice 4E para DJI Pilot 2, y tu propio dron con PX4 o ArduPilot (.plan, .waypoints, GeoJSON y CSV).', proLabel: 'Pago único', proHeading: 'Mini5Planner Pro',
     proText: 'Pro añade seguimiento del terreno y división automática por baterías.', proPoints: ['Seguimiento del terreno mundial', 'División por batería', 'Licencia de por vida, sin suscripción'], buy: 'Comprar Pro', lifetime: 'Un pago. Uso permanente.',
   },
   pt: {
@@ -102,9 +102,9 @@ const COPY: Record<LocalizedLanguage, Copy> = {
     howLabel: 'Como funciona', howHeading: 'Desenhar → exportar KMZ → voar', howIntro: 'O DJI Fly tem pontos de passagem, mas não cria grelhas. O Mini5Planner calcula a rota e a sobreposição das fotografias.',
     cards: [
       { title: 'Missões em grelha', text: 'Calcula espaçamento e intervalo a partir da câmara, altitude e sobreposição.', points: ['Grelha simples ou cruzada', 'GSD e tempo em direto', 'Câmara vertical ou oblíqua'] },
-      { title: 'Modelos', text: 'Modelos para obra, escavação, pedreira, fachada e corredor rodoviário.', points: ['Início rápido', 'Definições editáveis', 'Sete drones DJI'] },
+      { title: 'Modelos', text: 'Modelos para obra, escavação, pedreira, fachada e corredor rodoviário.', points: ['Início rápido', 'Definições editáveis', 'DJI, PX4 e ArduPilot'] },
       { title: 'Direto para o DJI RC 2', text: 'O guia integrado explica a transferência por USB-C.', points: ['KMZ WPML 1.0.2', 'Windows e Mac', 'Atualizações automáticas'] },
-    ], dronesHeading: 'Drones compatíveis', dronesText: 'DJI Mini 5 Pro, Mini 4 Pro, Air 3, Air 3S, Mavic 3, Mavic 3 Pro e Mavic 4 Pro.', proLabel: 'Compra única', proHeading: 'Mini5Planner Pro', proText: 'O Pro adiciona seguimento do terreno e divisão automática por baterias.', proPoints: ['Seguimento do terreno mundial', 'Divisão por bateria', 'Licença vitalícia, sem subscrição'], buy: 'Comprar Pro', lifetime: 'Um pagamento. Utilização permanente.',
+    ], dronesHeading: 'Drones compatíveis', dronesText: 'DJI Mini 5 Pro, Mini 4 Pro, Air 3, Air 3S, Mavic 3, Mavic 3 Pro e Mavic 4 Pro para DJI Fly, Mavic 3 Enterprise, Mavic 3 Multispectral e Matrice 4E para DJI Pilot 2, e o seu próprio drone com PX4 ou ArduPilot (.plan, .waypoints, GeoJSON e CSV).', proLabel: 'Compra única', proHeading: 'Mini5Planner Pro', proText: 'O Pro adiciona seguimento do terreno e divisão automática por baterias.', proPoints: ['Seguimento do terreno mundial', 'Divisão por bateria', 'Licença vitalícia, sem subscrição'], buy: 'Comprar Pro', lifetime: 'Um pagamento. Utilização permanente.',
   },
   it: {
     title: 'Mini5Planner – missioni di mappatura DJI', description: 'Pianificatore di volo gratuito per Mac e Windows. Disegna un’area e crea una missione a griglia KMZ per DJI Fly.', maker: 'Di AnleggTech AS, Norvegia', tag: 'Mappatura con droni DJI',
@@ -112,34 +112,34 @@ const COPY: Record<LocalizedLanguage, Copy> = {
     howLabel: 'Come funziona', howHeading: 'Disegna → esporta KMZ → vola', howIntro: 'DJI Fly offre waypoint ma non genera griglie. Mini5Planner calcola rotta e sovrapposizione delle foto.',
     cards: [
       { title: 'Missioni a griglia', text: 'Calcola spaziatura e intervallo da fotocamera, quota e sovrapposizione.', points: ['Griglia singola o incrociata', 'GSD e durata in tempo reale', 'Fotocamera verticale o obliqua'] },
-      { title: 'Modelli', text: 'Modelli per cantiere, scavo, cava, facciata e corridoio stradale.', points: ['Avvio rapido', 'Impostazioni modificabili', 'Sette droni DJI'] },
+      { title: 'Modelli', text: 'Modelli per cantiere, scavo, cava, facciata e corridoio stradale.', points: ['Avvio rapido', 'Impostazioni modificabili', 'DJI, PX4 e ArduPilot'] },
       { title: 'Direttamente sul DJI RC 2', text: 'La guida integrata spiega il trasferimento USB-C.', points: ['KMZ WPML 1.0.2', 'Windows e Mac', 'Aggiornamenti automatici'] },
-    ], dronesHeading: 'Droni supportati', dronesText: 'DJI Mini 5 Pro, Mini 4 Pro, Air 3, Air 3S, Mavic 3, Mavic 3 Pro e Mavic 4 Pro.', proLabel: 'Acquisto singolo', proHeading: 'Mini5Planner Pro', proText: 'Pro aggiunge il volo a quota costante sul terreno e la divisione automatica per batterie.', proPoints: ['Seguimento del terreno globale', 'Divisione per batteria', 'Licenza a vita, nessun abbonamento'], buy: 'Acquista Pro', lifetime: 'Un solo pagamento. Uso permanente.',
+    ], dronesHeading: 'Droni supportati', dronesText: 'DJI Mini 5 Pro, Mini 4 Pro, Air 3, Air 3S, Mavic 3, Mavic 3 Pro e Mavic 4 Pro per DJI Fly, Mavic 3 Enterprise, Mavic 3 Multispectral e Matrice 4E per DJI Pilot 2, e il tuo drone con PX4 o ArduPilot (.plan, .waypoints, GeoJSON e CSV).', proLabel: 'Acquisto singolo', proHeading: 'Mini5Planner Pro', proText: 'Pro aggiunge il volo a quota costante sul terreno e la divisione automatica per batterie.', proPoints: ['Seguimento del terreno globale', 'Divisione per batteria', 'Licenza a vita, nessun abbonamento'], buy: 'Acquista Pro', lifetime: 'Un solo pagamento. Uso permanente.',
   },
   nl: {
     title: 'Mini5Planner – DJI-karteringsmissies', description: 'Gratis vluchtplanner voor Mac en Windows. Teken een gebied en maak een KMZ-rastermissie voor DJI Fly.', maker: 'Door AnleggTech AS, Noorwegen', tag: 'DJI-dronekartering', heading: 'Teken het gebied.', accent: 'Vlieg het raster in DJI Fly.',
     intro: 'Mini5Planner is een gratis vluchtplanner voor Mac en Windows. Teken een gebied, kies een sjabloon en exporteer een KMZ-missie voor DJI Fly.', mac: 'Gratis voor Mac', windows: 'Gratis voor Windows', proLink: 'Bekijk Mini5Planner Pro', free: 'Gratis te downloaden en te gebruiken. De installers staan ook op GitHub.', demoCaption: 'Teken het gebied, kies de missie en kopieer de KMZ naar de DJI RC 2.', howLabel: 'Zo werkt het', howHeading: 'Tekenen → KMZ exporteren → vliegen', howIntro: 'DJI Fly heeft waypoints, maar geen rastergenerator. Mini5Planner berekent de route en foto-overlap.',
     cards: [
       { title: 'Rastermissies', text: 'Berekent afstand en foto-interval uit camera, hoogte en overlap.', points: ['Enkel of gekruist raster', 'Live GSD en vliegtijd', 'Verticale of schuine camera'] },
-      { title: 'Missiesjablonen', text: 'Sjablonen voor bouwplaats, uitgraving, groeve, gevel en wegcorridor.', points: ['Snel beginnen', 'Instellingen aanpasbaar', 'Zeven DJI-drones'] },
+      { title: 'Missiesjablonen', text: 'Sjablonen voor bouwplaats, uitgraving, groeve, gevel en wegcorridor.', points: ['Snel beginnen', 'Instellingen aanpasbaar', 'DJI, PX4 en ArduPilot'] },
       { title: 'Rechtstreeks naar DJI RC 2', text: 'De ingebouwde gids toont de USB-C-overdracht.', points: ['WPML 1.0.2 KMZ', 'Windows en Mac', 'Automatische updates'] },
-    ], dronesHeading: 'Ondersteunde drones', dronesText: 'DJI Mini 5 Pro, Mini 4 Pro, Air 3, Air 3S, Mavic 3, Mavic 3 Pro en Mavic 4 Pro.', proLabel: 'Eenmalige aankoop', proHeading: 'Mini5Planner Pro', proText: 'Pro voegt terreinvolging en automatische batterijverdeling toe.', proPoints: ['Wereldwijde terreinvolging', 'Verdeling per batterij', 'Levenslange licentie, geen abonnement'], buy: 'Koop Pro', lifetime: 'Eenmalig betalen. Blijvend gebruiken.',
+    ], dronesHeading: 'Ondersteunde drones', dronesText: 'DJI Mini 5 Pro, Mini 4 Pro, Air 3, Air 3S, Mavic 3, Mavic 3 Pro en Mavic 4 Pro voor DJI Fly, Mavic 3 Enterprise, Mavic 3 Multispectral en Matrice 4E voor DJI Pilot 2, en uw eigen drone met PX4 of ArduPilot (.plan, .waypoints, GeoJSON en CSV).', proLabel: 'Eenmalige aankoop', proHeading: 'Mini5Planner Pro', proText: 'Pro voegt terreinvolging en automatische batterijverdeling toe.', proPoints: ['Wereldwijde terreinvolging', 'Verdeling per batterij', 'Levenslange licentie, geen abonnement'], buy: 'Koop Pro', lifetime: 'Eenmalig betalen. Blijvend gebruiken.',
   },
   pl: {
     title: 'Mini5Planner – misje mapowania DJI', description: 'Darmowy planer lotu dla Mac i Windows. Narysuj obszar i utwórz misję siatki KMZ dla DJI Fly.', maker: 'AnleggTech AS, Norwegia', tag: 'Mapowanie dronami DJI', heading: 'Narysuj obszar.', accent: 'Wykonaj siatkę w DJI Fly.', intro: 'Mini5Planner to darmowy planer dla Mac i Windows. Narysuj obszar, wybierz szablon i wyeksportuj misję KMZ do DJI Fly.', mac: 'Pobierz dla Mac', windows: 'Pobierz dla Windows', proLink: 'Zobacz Mini5Planner Pro', free: 'Pobieranie i używanie jest bezpłatne. Instalatory są też na GitHubie.', demoCaption: 'Narysuj obszar, wybierz misję i skopiuj KMZ do DJI RC 2.', howLabel: 'Jak to działa', howHeading: 'Narysuj → eksportuj KMZ → leć', howIntro: 'DJI Fly ma punkty trasy, ale nie generator siatki. Mini5Planner oblicza trasę i pokrycie zdjęć.',
     cards: [
       { title: 'Misje siatkowe', text: 'Oblicza odstęp i interwał na podstawie kamery, wysokości i pokrycia.', points: ['Siatka pojedyncza lub krzyżowa', 'GSD i czas lotu na żywo', 'Kamera pionowa lub ukośna'] },
-      { title: 'Szablony', text: 'Szablony dla budowy, wykopu, kopalni, elewacji i korytarza drogowego.', points: ['Szybki start', 'Edytowalne ustawienia', 'Siedem dronów DJI'] },
+      { title: 'Szablony', text: 'Szablony dla budowy, wykopu, kopalni, elewacji i korytarza drogowego.', points: ['Szybki start', 'Edytowalne ustawienia', 'DJI, PX4 i ArduPilot'] },
       { title: 'Prosto do DJI RC 2', text: 'Wbudowany przewodnik pokazuje transfer przez USB-C.', points: ['KMZ WPML 1.0.2', 'Windows i Mac', 'Automatyczne aktualizacje'] },
-    ], dronesHeading: 'Obsługiwane drony', dronesText: 'DJI Mini 5 Pro, Mini 4 Pro, Air 3, Air 3S, Mavic 3, Mavic 3 Pro i Mavic 4 Pro.', proLabel: 'Zakup jednorazowy', proHeading: 'Mini5Planner Pro', proText: 'Pro dodaje lot ze śledzeniem terenu i automatyczny podział na akumulatory.', proPoints: ['Śledzenie terenu na całym świecie', 'Podział według akumulatora', 'Licencja wieczysta, bez abonamentu'], buy: 'Kup Pro', lifetime: 'Jedna płatność. Stałe użytkowanie.',
+    ], dronesHeading: 'Obsługiwane drony', dronesText: 'DJI Mini 5 Pro, Mini 4 Pro, Air 3, Air 3S, Mavic 3, Mavic 3 Pro i Mavic 4 Pro dla DJI Fly, Mavic 3 Enterprise, Mavic 3 Multispectral i Matrice 4E dla DJI Pilot 2 oraz własny dron z PX4 lub ArduPilot (.plan, .waypoints, GeoJSON i CSV).', proLabel: 'Zakup jednorazowy', proHeading: 'Mini5Planner Pro', proText: 'Pro dodaje lot ze śledzeniem terenu i automatyczny podział na akumulatory.', proPoints: ['Śledzenie terenu na całym świecie', 'Podział według akumulatora', 'Licencja wieczysta, bez abonamentu'], buy: 'Kup Pro', lifetime: 'Jedna płatność. Stałe użytkowanie.',
   },
   ja: {
     title: 'Mini5Planner – DJIマッピング飛行プランナー', description: 'MacとWindows対応の無料飛行プランナー。エリアを描画し、DJI Fly用のKMZグリッドミッションを作成できます。', maker: 'ノルウェー AnleggTech AS 開発', tag: 'DJIドローンマッピング', heading: 'エリアを描画。', accent: 'DJI Flyでグリッド飛行。', intro: 'Mini5PlannerはMacとWindows対応の無料プランナーです。エリアとテンプレートを選び、DJI Fly用KMZミッションを出力します。', mac: 'Mac版を無料ダウンロード', windows: 'Windows版を無料ダウンロード', proLink: 'Mini5Planner Proを見る', free: '無料でダウンロード・利用できます。インストーラーはGitHubにもあります。', demoCaption: 'エリアとミッションを選び、KMZをDJI RC 2にコピーします。', howLabel: '使い方', howHeading: '描画 → KMZ出力 → 飛行', howIntro: 'DJI Flyにはウェイポイントはありますが、グリッド生成機能はありません。Mini5Plannerが飛行経路と写真のオーバーラップを計算します。',
     cards: [
       { title: 'グリッドミッション', text: 'カメラ、高度、オーバーラップから間隔と撮影間隔を計算します。', points: ['シングルまたはクロスグリッド', 'GSDと飛行時間をリアルタイム表示', '垂直または斜め撮影'] },
-      { title: 'ミッションテンプレート', text: '建設現場、掘削、採石場、建物外観、道路用のテンプレートを用意。', points: ['すぐに開始', '設定は調整可能', 'DJIドローン7機種に対応'] },
+      { title: 'ミッションテンプレート', text: '建設現場、掘削、採石場、建物外観、道路用のテンプレートを用意。', points: ['すぐに開始', '設定は調整可能', 'DJI・PX4・ArduPilot に対応'] },
       { title: 'DJI RC 2へ直接転送', text: '内蔵ガイドがUSB-C転送を案内します。', points: ['WPML 1.0.2 KMZ', 'WindowsとMac', '自動アップデート'] },
-    ], dronesHeading: '対応ドローン', dronesText: 'DJI Mini 5 Pro、Mini 4 Pro、Air 3、Air 3S、Mavic 3、Mavic 3 Pro、Mavic 4 Pro。', proLabel: '買い切り', proHeading: 'Mini5Planner Pro', proText: 'Proでは地形追従とバッテリー単位の自動分割が使えます。', proPoints: ['世界対応の地形追従', 'バッテリー別に分割', 'サブスクリプション不要の永続ライセンス'], buy: 'Proを購入', lifetime: '一度の支払いで永続利用。',
+    ], dronesHeading: '対応ドローン', dronesText: 'DJI Fly 用の DJI Mini 5 Pro、Mini 4 Pro、Air 3、Air 3S、Mavic 3、Mavic 3 Pro、Mavic 4 Pro、DJI Pilot 2 用の Mavic 3 Enterprise、Mavic 3 Multispectral、Matrice 4E、そして PX4 や ArduPilot のカスタムドローン（.plan、.waypoints、GeoJSON、CSV）。', proLabel: '買い切り', proHeading: 'Mini5Planner Pro', proText: 'Proでは地形追従とバッテリー単位の自動分割が使えます。', proPoints: ['世界対応の地形追従', 'バッテリー別に分割', 'サブスクリプション不要の永続ライセンス'], buy: 'Proを購入', lifetime: '一度の支払いで永続利用。',
   },
 }
 
