@@ -380,6 +380,27 @@
   margin: 0;
 }
 
+.howList p + p {
+  margin-top: 0.6rem;
+}
+
+.inlineLink {
+  color: var(--blue);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.inlineCode {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.875em;
+  color: var(--text-primary);
+  overflow-wrap: anywhere;
+}
+
+.faqAnchor {
+  scroll-margin-top: 6rem;
+}
+
 /* ─── CTA ─────────────────────────────────────────────────────────────────── */
 .cta {
   padding: 5rem 0;

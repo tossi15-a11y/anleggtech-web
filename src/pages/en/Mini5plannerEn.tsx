@@ -1,3 +1,4 @@
+import type { ReactNode } from 'react'
 import { Link } from 'react-router-dom'
 import { track } from '@vercel/analytics'
 import Navbar from '../../components/Navbar'
@@ -25,7 +26,13 @@ import media from '../Mini5plannerMedia.module.css'
 const PRO_DESCRIPTION =
   'One-time lifetime license: terrain following and battery split. Tax included.'
 
-const faq = [
+const WINDOWS_INSTALL_ID = 'windows-install'
+const LOG_FOLDER = '%LOCALAPPDATA%\\SquirrelTemp'
+const INSTALL_LOG_MAILTO =
+  'mailto:torstein@anleggtech.no?subject=' + encodeURIComponent('Mini5Planner: Windows installation failed')
+
+// a er ren tekst til FAQPage i strukturert data; body vises på siden når svaret trenger lenker eller kode
+const faq: { q: string; a: string; id?: string; body?: ReactNode }[] = [
   {
     q: 'Does Mini5Planner make the map or the 3D model?',
     a: 'No. Mini5Planner plans the flight and exports the route as a KMZ file. Stitching the photos into an orthophoto, point cloud or 3D model is done afterwards in photogrammetry software such as WebODM/ODM, or by us if you send us the photos.',
@@ -45,6 +52,27 @@ const faq = [
   {
     q: 'Mac or Windows?',
     a: 'Both. The buttons at the top of the page download the right file for Mac or Windows. The Mac version is a universal app for Apple silicon and Intel and needs macOS 11 or later.',
+  },
+  {
+    id: WINDOWS_INSTALL_ID,
+    q: 'Windows says “Installation has failed”. What now?',
+    a: `We have seen this on Windows 11, also when the installer was run as administrator. What solved it there: right-click the Setup.exe file you downloaded, choose “Troubleshoot compatibility” and follow the steps. If it is not in the menu, click “Show more options” first. If the installation still fails, send the installation log to torstein@anleggtech.no. It is the file SquirrelSetup.log in ${LOG_FOLDER}. Paste that path into the address bar in File Explorer to open the folder.`,
+    body: (
+      <>
+        <p>
+          We have seen this on Windows 11, also when the installer was run as administrator.
+          What solved it there: right-click the Setup.exe file you downloaded, choose
+          “Troubleshoot compatibility” and follow the steps. If it is not in the menu, click
+          “Show more options” first.
+        </p>
+        <p>
+          If the installation still fails, send the installation log to{' '}
+          <a href={INSTALL_LOG_MAILTO} className={styles.inlineLink}>torstein@anleggtech.no</a>. It
+          is the file SquirrelSetup.log in <code className={styles.inlineCode}>{LOG_FOLDER}</code>.
+          Paste that path into the address bar in File Explorer to open the folder.
+        </p>
+      </>
+    ),
   },
   {
     q: 'Does it work outside Norway?',
@@ -309,7 +337,8 @@ export default function Mini5plannerEn() {
                 </a>
                 <p className={styles.downloadNote}>
                   Windows shows a SmartScreen warning the first time. Click “More info”
-                  and then “Run anyway”.
+                  and then “Run anyway”. If it then says “Installation has failed”,{' '}
+                  <a href={`#${WINDOWS_INSTALL_ID}`} className={styles.inlineLink}>here is what to do</a>.
                 </p>
               </div>
               <a href="#pro" className={styles.ctaSecondary}>
@@ -647,11 +676,11 @@ export default function Mini5plannerEn() {
             <div className={styles.howBlock}>
               <ol className={styles.howList}>
                 {faq.map((f) => (
-                  <li key={f.q}>
+                  <li key={f.q} id={f.id} className={f.id ? styles.faqAnchor : undefined}>
                     <span className={styles.howStep}>?</span>
                     <div>
                       <h3 className={own.faqQuestion}>{f.q}</h3>
-                      <p>{f.a}</p>
+                      {f.body ?? <p>{f.a}</p>}
                     </div>
                   </li>
                 ))}

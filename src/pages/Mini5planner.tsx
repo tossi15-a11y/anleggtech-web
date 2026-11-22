@@ -16,6 +16,11 @@ import {
 import styles from './Programvare.module.css'
 import media from './Mini5plannerMedia.module.css'
 
+const WINDOWS_INSTALLASJON_ID = 'windows-installasjon'
+const LOGGMAPPE = '%LOCALAPPDATA%\\SquirrelTemp'
+const INSTALLASJONSLOGG_MAILTO =
+  'mailto:torstein@anleggtech.no?subject=' + encodeURIComponent('Mini5Planner: Windows-installasjonen feilet')
+
 const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'SoftwareApplication',
@@ -221,7 +226,8 @@ export default function Mini5planner() {
                 </a>
                 <p className={styles.downloadNote}>
                   Windows viser en SmartScreen-advarsel første gang. Klikk «Mer info» og
-                  deretter «Kjør likevel».
+                  deretter «Kjør likevel». Står det etterpå «Installation has failed»,{' '}
+                  <a href={`#${WINDOWS_INSTALLASJON_ID}`} className={styles.inlineLink}>se hva du gjør</a>.
                 </p>
               </div>
               <a href="#pro" className={styles.ctaSecondary}>
@@ -521,6 +527,25 @@ export default function Mini5planner() {
                   <div>
                     <strong>Mac eller Windows?</strong>
                     <p>Begge støttes. Knappene øverst på siden laster ned riktig fil for Mac eller Windows.</p>
+                  </div>
+                </li>
+                <li id={WINDOWS_INSTALLASJON_ID} className={styles.faqAnchor}>
+                  <span className={styles.howStep}>?</span>
+                  <div>
+                    <strong>Windows sier «Installation has failed». Hva gjør jeg?</strong>
+                    <p>
+                      Det har vi sett på Windows 11, også når installasjonsfila ble kjørt som
+                      administrator. Det som løste det: høyreklikk på Setup.exe-fila du lastet ned,
+                      velg «Feilsøk kompatibilitet» (på engelsk Windows: «Troubleshoot
+                      compatibility») og følg stegene. Står det ikke i menyen, velg «Vis flere
+                      alternativer» først.
+                    </p>
+                    <p>
+                      Feiler installasjonen fortsatt, send installasjonsloggen til{' '}
+                      <a href={INSTALLASJONSLOGG_MAILTO} className={styles.inlineLink}>torstein@anleggtech.no</a>.
+                      Det er fila SquirrelSetup.log i <code className={styles.inlineCode}>{LOGGMAPPE}</code>.
+                      Lim inn den stien i adressefeltet i Filutforsker for å åpne mappa.
+                    </p>
                   </div>
                 </li>
                 <li>
