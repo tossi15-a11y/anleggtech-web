@@ -212,6 +212,26 @@
   color: var(--text-muted);
 }
 
+.prose code.fileName {
+  white-space: nowrap;
+  overflow-wrap: normal;
+}
+
+.figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+}
+
+.figure figcaption {
+  margin-top: 0.6rem;
+  font-size: 0.9375rem;
+  line-height: 1.55;
+  color: var(--text-muted);
+}
+
 /* ─── Nedlasting og neste artikkel ──────────────────────────────────────── */
 .ctaBox {
   margin-top: 3.5rem;

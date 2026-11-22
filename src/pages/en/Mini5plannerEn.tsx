@@ -13,9 +13,11 @@ import {
   EN_PATH,
   GUIDE_GRID_MISSION_PATH,
   GUIDE_AIR_3S_PATH,
+  GUIDE_BATTERY_SPLIT_PATH,
   GUIDE_LITCHI_ALTERNATIVE_PATH,
   GUIDE_PLANNER_COMPARISON_PATH,
   GUIDE_SKIPPED_PHOTOS_PATH,
+  GUIDE_TERRAIN_FOLLOW_PATH,
   LANDING_ALTERNATES,
   RELEASES_URL,
 } from '../../lib/mini5planner'
@@ -263,6 +265,18 @@ const guides = [
     title: 'How to fly a grid mapping mission with a DJI Mini 5 Pro in DJI Fly',
     description:
       'From drawing the area to checking the overlap afterwards: export a KMZ, load it on the DJI RC 2 and fly it in DJI Fly.',
+  },
+  {
+    path: GUIDE_TERRAIN_FOLLOW_PATH,
+    title: 'DJI Mini 5 Pro terrain follow mapping: constant height above ground',
+    description:
+      'Why GSD and overlap change when the ground rises or falls, how terrain follow sets a height for every waypoint, and what to check before flying steep terrain.',
+  },
+  {
+    path: GUIDE_BATTERY_SPLIT_PATH,
+    title: 'Split a large mapping mission across multiple batteries in DJI Fly',
+    description:
+      'How the mission is divided into legs that fit one battery each, one KMZ per leg, and how to load, fly and check them from one takeoff point.',
   },
   {
     path: GUIDE_LITCHI_ALTERNATIVE_PATH,

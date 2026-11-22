@@ -111,6 +111,18 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://www.anleggtech.no/en/mini5planner/guides/mini-5-pro-terrain-follow-mapping</loc>
+    <lastmod>2026-11-22</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.anleggtech.no/en/mini5planner/guides/split-mapping-mission-multiple-batteries</loc>
+    <lastmod>2026-11-22</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://www.anleggtech.no/personvern</loc>
     <lastmod>2026-04-03</lastmod>
     <changefreq>yearly</changefreq>

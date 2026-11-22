@@ -1,6 +1,12 @@
 import { Link } from 'react-router-dom'
 import GuideLayout from './GuideLayout'
-import { EN_PATH, GUIDE_GRID_MISSION_PATH, GUIDE_SKIPPED_PHOTOS_PATH } from '../../lib/mini5planner'
+import {
+  EN_PATH,
+  GUIDE_BATTERY_SPLIT_PATH,
+  GUIDE_GRID_MISSION_PATH,
+  GUIDE_SKIPPED_PHOTOS_PATH,
+  GUIDE_TERRAIN_FOLLOW_PATH,
+} from '../../lib/mini5planner'
 import styles from './Guide.module.css'
 
 const templates = [
@@ -20,10 +26,14 @@ export default function GuideGridMission() {
       title="How to fly a grid mapping mission with a DJI Mini 5 Pro in DJI Fly"
       description="DJI Fly has waypoints but no grid tool. Step by step: draw the area, pick a template, export a KMZ, load it on the DJI RC 2, fly, and check the overlap afterwards."
       datePublished="2026-11-08"
-      related={[{
-        path: GUIDE_SKIPPED_PHOTOS_PATH,
-        title: 'Why your DJI Mini 5 Pro skips photos on mapping flights (and how to fix it)',
-      }]}
+      related={[
+        {
+          path: GUIDE_SKIPPED_PHOTOS_PATH,
+          title: 'Why your DJI Mini 5 Pro skips photos on mapping flights (and how to fix it)',
+        },
+        { path: GUIDE_TERRAIN_FOLLOW_PATH, title: 'DJI Mini 5 Pro terrain follow mapping: constant height above ground' },
+        { path: GUIDE_BATTERY_SPLIT_PATH, title: 'Split a large mapping mission across multiple batteries in DJI Fly' },
+      ]}
       lead={
         <>
           <p>
@@ -124,9 +134,11 @@ export default function GuideGridMission() {
         WPML 1.0.2 format, which DJI Fly reads.
       </p>
       <p>
-        With Pro, two more options come into play here. Terrain following needs a confirmed
-        takeoff point and finished elevation data before you can export. Battery split saves
-        one KMZ per battery when the mission is too long for one.
+        With Pro, two more options come into play here.{' '}
+        <Link to={GUIDE_TERRAIN_FOLLOW_PATH}>Terrain following</Link> needs a confirmed
+        takeoff point and finished elevation data before you can export.{' '}
+        <Link to={GUIDE_BATTERY_SPLIT_PATH}>Battery split</Link> saves one KMZ per battery when
+        the mission is too long for one.
       </p>
 
       <h2>Step 4: Copy the KMZ to the DJI RC 2</h2>

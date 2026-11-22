@@ -29,6 +29,8 @@ export const GUIDE_GRID_MISSION_PATH = '/en/mini5planner/guides/mini-5-pro-grid-
 export const GUIDE_LITCHI_ALTERNATIVE_PATH = '/en/mini5planner/guides/litchi-alternative-mini-5-pro-rc-2'
 export const GUIDE_AIR_3S_PATH = '/en/mini5planner/guides/air-3s-mapping-mission'
 export const GUIDE_PLANNER_COMPARISON_PATH = '/en/mini5planner/guides/dji-mapping-planner-comparison'
+export const GUIDE_TERRAIN_FOLLOW_PATH = '/en/mini5planner/guides/mini-5-pro-terrain-follow-mapping'
+export const GUIDE_BATTERY_SPLIT_PATH = '/en/mini5planner/guides/split-mapping-mission-multiple-batteries'
 
 export const LANDING_ALTERNATES = [
   ...MINI5PLANNER_LANGUAGES.map(({ code, path }) => ({ hreflang: code, path })),
