@@ -7,56 +7,40 @@ import styles from './Programvare.module.css'
 
 const siteviewTiers: PricingTier[] = [
   {
-    name: 'Per prosjekt',
-    price: '1 490',
-    unit: 'kr / prosjekt',
-    description: 'For enkeltprosjekter — selges direkte til byggherre eller kalkuleres inn i tilbudet.',
+    name: 'Gratis',
+    price: '0',
+    unit: 'kr',
+    description: 'Prøv hele arbeidsflyten på et ekte prosjekt før du bestemmer deg.',
     features: [
-      'Ubegrenset dokumentasjons-runder',
-      'Lagring i 2 år',
-      'Sluttdokumentasjon som PDF',
-      'Delbar lenke uten innlogging',
-      'Branding fra ditt firma',
+      'Én tur med inntil 60 bilder',
+      'Kart, merknader og PDF-rapport',
+      'Deling med lenke og eksport til HTML',
+      'Merket «Made with SiteView360»',
+      'Alt lagres på din egen maskin',
     ],
     cta: {
-      label: 'Bestill demo',
-      href: 'mailto:torstein@anleggtech.no?subject=SiteView360%20%E2%80%94%20per%20prosjekt%20demo',
+      label: 'Last ned for Mac',
+      href: 'https://github.com/tossi15-a11y/siteview360-releases/releases/latest',
     },
   },
   {
-    name: 'Bedrifts­pakke',
-    price: '4 990',
-    unit: 'kr / mnd',
-    description: 'For entreprenører med flere parallelle prosjekter. Inntil 8 aktive prosjekter.',
+    name: 'Pro',
+    price: '990',
+    unit: 'kr — engangskjøp',
+    priceNote: 'Ingen abonnement. Prisen er inkludert mva.',
+    description: 'For deg som dokumenterer flere prosjekter og vil ha ditt eget firmanavn på leveransen.',
     features: [
-      'Inntil 8 aktive prosjekter samtidig',
-      'Ubegrenset dokumentasjons-runder',
-      'Lagring i 5 år',
-      'Custom PDF-mal med firmalogo',
-      'Settings-mal for alle prosjekter',
-      'Prioritert support',
+      'Ubegrenset antall turer og bilder',
+      'Før/etter-sammenligning av samme sted',
+      'Eget firmanavn og logo på deling, eksport og rapport',
+      'Alle 1.x-oppdateringer',
+      'Lisensnøkkel på e-post, virker uten nett',
     ],
     highlighted: true,
-    badge: 'Best verdi',
+    badge: 'Engangskjøp',
     cta: {
-      label: 'Bestill demo',
-      href: 'mailto:torstein@anleggtech.no?subject=SiteView360%20%E2%80%94%20bedriftspakke%20demo',
-    },
-  },
-  {
-    name: 'Pilot',
-    price: '0',
-    unit: 'kr — 3 prosjekter',
-    description: 'For de første referansekundene som vil hjelpe å forme produktet.',
-    features: [
-      '3 gratis dokumentasjons-prosjekter',
-      'Tett oppfølging fra AnleggTech',
-      'Påvirker produktveikartet direkte',
-      'Krav: lov til å lage case study',
-    ],
-    cta: {
-      label: 'Søk om pilot',
-      href: 'mailto:torstein@anleggtech.no?subject=SiteView360%20Pilot%20%E2%80%94%20s%C3%B8knad',
+      label: 'Kjøp Pro',
+      href: 'https://siteview360-lisens.vercel.app/api/kjop',
     },
   },
 ]
@@ -237,9 +221,8 @@ export default function Programvare() {
 
         <Pricing
           heading="Priser for SiteView360"
-          lead="Velg det som passer ditt prosjektvolum — eller start med en gratis pilot."
+          lead="Start gratis. Kjøp Pro én gang når du trenger mer — programmet kjører på macOS (Apple Silicon og Intel)."
           tiers={siteviewTiers}
-          pilotNote="3 gratis pilot-prosjekter tilgjengelig ut 2026 — perfekt for første dokumentasjons-runde."
           accentColor="#22d3ee"
         />
 
