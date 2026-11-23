@@ -124,7 +124,9 @@ export default function GuideTerrainFollow() {
       <h2>How terrain follow works in Mini5Planner</h2>
       <p>
         Terrain follow is a Pro feature. With it turned on, the altitude you set becomes the
-        height above the ground instead of the height above the takeoff point.
+        height above the ground instead of the height above the takeoff point. From version
+        1.3.11 you can turn it on without Pro and see the heights, warnings and elevation
+        sources for your site; saving the route needs Pro.
       </p>
       <ol>
         <li>Draw the area and pick a template or your own settings, as for any grid.</li>
@@ -146,8 +148,10 @@ export default function GuideTerrainFollow() {
           elevation data was used, and any warnings.
         </li>
         <li>
-          Save the KMZ and load it on the controller with a new placeholder mission, as
-          described in the <Link to={GUIDE_GRID_MISSION_PATH}>grid mission guide</Link>.
+          Save the KMZ. Before it writes the file, the app checks the height above the ground
+          along the whole route (see below). Then load it on the controller with a new
+          placeholder mission, as described in the{' '}
+          <Link to={GUIDE_GRID_MISSION_PATH}>grid mission guide</Link>.
         </li>
       </ol>
       <p>
@@ -211,14 +215,17 @@ export default function GuideTerrainFollow() {
           register.
         </li>
         <li>
-          <strong>Only the photo positions are adjusted.</strong> Between two of them the
-          drone flies a straight line, and the ground under that line isn’t checked. Along a
-          flight line the positions are close together, but watch the long legs: from the
-          takeoff point to the first photo, between the line ends in an irregular area, and in
-          a double grid from the end of the first pass to the start of the second. A hill under
-          one of those legs can bring the drone much closer to the ground than the height you
-          set. In steep terrain, look for long legs over high ground on the map, and fly a
-          single grid or move the takeoff point if you find one.
+          <strong>The whole route is checked, not just the photo positions.</strong> Between
+          two waypoints the drone flies a straight line, so a hill under a long leg can bring it
+          much closer to the ground than the height you set: from the takeoff point to the first
+          photo, between the line ends in an irregular area, or in a double grid from the end of
+          the first pass to the start of the second. From version 1.3.11, Mini5Planner looks up
+          the ground every 10 m along the route when you save. With terrain follow it adds
+          waypoints without photos where the route would come lower than 80 % of your height
+          above the ground or 20 m, whichever is more. A route that would go into the ground
+          can’t be saved. The added waypoints have not been flown in DJI Fly yet, so check the
+          route on the map before takeoff. Version 1.3.8 and earlier only checked the photo
+          positions: update before you fly terrain follow in hilly terrain.
         </li>
         <li>
           <strong>Set the return-to-home altitude in DJI Fly.</strong> Return to home uses its
@@ -226,10 +233,10 @@ export default function GuideTerrainFollow() {
           highest ground and obstacles between the area and the takeoff point.
         </li>
         <li>
-          <strong>Read the warnings.</strong> When some waypoints are less than 20 m above the
-          takeoff point, the app says “check for obstacles”. Above 120 m relative to the
-          takeoff point, it tells you to raise the max altitude limit in DJI Fly. Check the
-          height rules where you fly before you do.
+          <strong>Read the warnings.</strong> Less than 20 m above the ground anywhere along the
+          route, more than 120 m above the takeoff point, and missing elevation data all have to
+          be confirmed before the route is saved. Above 120 m, raise the max altitude limit in
+          DJI Fly, and check the height rules where you fly before you do.
         </li>
         <li>
           <strong>Keep the drone in sight.</strong> A ridge can block your view and the radio

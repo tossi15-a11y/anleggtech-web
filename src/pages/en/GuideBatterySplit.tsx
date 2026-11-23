@@ -120,7 +120,7 @@ export default function GuideBatterySplit() {
         </a>
         <figcaption>
           The Gravel pit template over a large area. The export panel says “Mission requires ~2
-          batteries” and offers to split it into two KMZ files. The lock means it needs Pro.
+          batteries” and offers to split it into two KMZ files. The lock marks a Pro feature.
         </figcaption>
       </figure>
 
@@ -133,8 +133,9 @@ export default function GuideBatterySplit() {
         </li>
         <li>
           In the export panel the app says “Mission requires ~N batteries”. Tick{' '}
-          <strong>Split into N KMZ files (one per battery)</strong>. This needs Pro; without
-          it, the box opens the upgrade window.
+          <strong>Split into N KMZ files (one per battery)</strong>. Saving the legs needs
+          Pro. From version 1.3.11 you can tick the box without Pro and see the legs; when you
+          save, the app shows the price or lets you save the route as one file instead.
         </li>
         <li>
           Click <strong>Save KMZ</strong> and choose a name. The app saves one file per leg,
@@ -187,10 +188,10 @@ export default function GuideBatterySplit() {
         <li>
           <strong>DJI Fly and 200 waypoints.</strong> DJI’s support article says you can pin up
           to 200 waypoints in a DJI Fly route. Mini5Planner puts a waypoint at every photo
-          position, so a long leg can have more than that. We haven’t tested how DJI Fly
-          handles an imported route with more than 200 waypoints. If a leg doesn’t show in full
-          on the map in DJI Fly, don’t fly it; plan the area as several smaller missions
-          instead.
+          position, so a long leg can have more than that. The most we have flown in one DJI
+          Fly route is 154 waypoints, and from version 1.3.11 the app warns above that. If a
+          leg doesn’t show in full on the map in DJI Fly, don’t fly it; plan the area as
+          several smaller missions instead.
         </li>
         <li>
           <strong>Other drones.</strong> The split works the same way for all seven DJI drones
@@ -210,8 +211,8 @@ export default function GuideBatterySplit() {
 
       <h2>Battery split is part of Mini5Planner Pro</h2>
       <p>
-        Planning, the battery estimate and the flight check are free. Splitting the mission
-        into one KMZ per battery comes with Pro, together with terrain follow: a $19 one-time
+        Planning, the battery estimate and the flight check are free, and so is trying the
+        split. Saving the mission as one KMZ per battery comes with Pro, together with terrain follow: a $19 one-time
         purchase with no subscription. See <Link to={`${EN_PATH}#pro`}>Mini5Planner Pro</Link>.
       </p>
     </GuideLayout>
