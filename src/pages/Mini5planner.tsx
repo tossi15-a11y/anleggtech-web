@@ -45,7 +45,7 @@ const jsonLd = {
     },
   ],
   description:
-    'Gratis flyveplan-app som lager KMZ-flyveruter for DJI-droner med maler for anleggsbransjen. Pro med terrengfølging og batterideling er et engangskjøp.',
+    'Gratis flyveplan-app som lager flyveruter for DJI-, PX4- og ArduPilot-droner med maler for anleggsbransjen. Pro med terrengfølging og batterideling er et engangskjøp.',
   publisher: { '@type': 'Organization', name: 'AnleggTech AS', url: 'https://www.anleggtech.no' },
 }
 
@@ -87,7 +87,7 @@ const useCases = [
     points: [
       'Høyde, overlapp, fart og gimbal-vinkel er satt for hver oppdragstype',
       'Byggegrop flys som kryssrutenett med skrå gimbal',
-      'Norsk grensesnitt med adressesøk fra Geonorge',
+      'Grensesnitt på ti språk, med adressesøk fra Geonorge i Norge',
     ],
   },
   {
@@ -97,8 +97,19 @@ const useCases = [
       'WPML 1.0.2-eksport som DJI Fly forstår. Innebygd veiviser viser deg steg-for-steg hvordan du flytter KMZ-en til DJI RC 2 via USB-C — også på Mac.',
     points: [
       'WPML 1.0.2 — samme format som DJI Pilot 2 bruker',
-      'Støtter 7 DJI-modeller (Mini 5 Pro, Mini 4 Pro, Air 3/3S, Mavic 3/3 Pro/4 Pro)',
+      '7 DJI Fly-droner og 3 DJI Enterprise-droner for DJI Pilot 2',
       'Du får oppdateringer automatisk',
+    ],
+  },
+  {
+    title: 'PX4, ArduPilot og andre droner',
+    tagline: 'Egendefinert drone og åpne formater',
+    description:
+      'Fyll inn kameraet på dronen, eller hent det fra bildene etter en tidligere flyging. Lagre ruta som .plan for QGroundControl eller .waypoints for Mission Planner, der kameraet utløses etter avstand langs hver linje, eller som GeoJSON og CSV til QGIS.',
+    points: [
+      '.plan (PX4 og ArduPilot) og .waypoints (Mission Planner)',
+      'GeoJSON og CSV med alle planlagte bildeposisjoner',
+      'Sier fra når ruta har flere oppdragspunkter enn autopiloten vanligvis tar',
     ],
   },
 ]
@@ -168,6 +179,10 @@ const drones = [
   { name: 'DJI Mavic 3', sensor: '4/3" CMOS', class: 'C2' },
   { name: 'DJI Mavic 3 Pro', sensor: '4/3" Hasselblad', class: 'C2' },
   { name: 'DJI Mavic 4 Pro', sensor: '4/3" 100 MP', class: 'C2' },
+  { name: 'DJI Mavic 3 Enterprise', sensor: '4/3" CMOS', class: 'DJI Pilot 2' },
+  { name: 'DJI Mavic 3 Multispectral', sensor: '4/3" CMOS', class: 'DJI Pilot 2' },
+  { name: 'DJI Matrice 4E', sensor: '4/3" CMOS', class: 'DJI Pilot 2' },
+  { name: 'Egendefinert drone', sensor: 'Ditt kamera', class: 'PX4, ArduPilot og andre' },
 ]
 
 const SKJERMBILDER = [
@@ -183,7 +198,7 @@ export default function Mini5planner() {
     <>
       <Seo
         title="Mini5Planner – Gratis flyveplan-app for DJI-droner | AnleggTech AS"
-        description="Gratis Mac- og Windows-app som lager KMZ-flyveruter for 7 DJI-droner. Pro gir terrengfølging med Kartverkets høydedata og batterideling, som engangskjøp."
+        description="Gratis Mac- og Windows-app som lager flyveruter for DJI, PX4 og ArduPilot. Pro gir terrengfølging med Kartverkets høydedata og batterideling, som engangskjøp."
         path={NB_PATH}
         jsonLd={jsonLd}
         alternates={LANDING_ALTERNATES}
@@ -207,8 +222,8 @@ export default function Mini5planner() {
               Tegn området. <span className={styles.accent}>Fly ruta i DJI Fly.</span>
             </h1>
             <p className={styles.subtitle}>
-              Mini5Planner er en gratis Mac- og Windows-app som lager KMZ-flyveruter
-              for DJI-droner. Tegn et område på kartet, velg en mal, eksporter til
+              Mini5Planner er en gratis Mac- og Windows-app som lager flyveruter for
+              DJI-, PX4- og ArduPilot-droner. Tegn et område på kartet, velg en mal, eksporter til
               fjernkontrollen — og fly. Laget av AnleggTech AS i Bjørnafjorden.
             </p>
             <div className={`${styles.heroCtas} ${styles.downloadCtas}`}>
@@ -310,9 +325,10 @@ export default function Mini5planner() {
             </div>
 
             <div id="droner" className={styles.audienceBlock}>
-              <h2 className={styles.audienceHeading}>Støttede DJI-droner</h2>
+              <h2 className={styles.audienceHeading}>Støttede droner</h2>
               <p className={styles.audienceLead}>
-                7 modeller, alle gratis. Appen kjenner kameraet og maksfarten til hver
+                Sju DJI Fly-droner, tre DJI Enterprise-droner og en egendefinert drone for
+                PX4, ArduPilot og andre, alle gratis. Appen kjenner kameraet og maksfarten til hver
                 drone og regner ut GSD og fotavtrykk. Farten settes etter hvor fort
                 kameraet lagrer bildene. Foreløpig er det bare målt på Mini 5 Pro.
               </p>
