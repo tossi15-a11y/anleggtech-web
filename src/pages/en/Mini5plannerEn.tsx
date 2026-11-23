@@ -10,6 +10,7 @@ import {
   BUY_PRO_URL,
   DOWNLOAD_MAC_URL,
   DOWNLOAD_WINDOWS_URL,
+  DOWNLOAD_WINDOWS_ZIP_URL,
   EN_PATH,
   GUIDE_GRID_MISSION_PATH,
   GUIDE_AIR_3S_PATH,
@@ -58,7 +59,7 @@ const faq: { q: string; a: string; id?: string; body?: ReactNode }[] = [
   {
     id: WINDOWS_INSTALL_ID,
     q: 'Windows says “Installation has failed”. What now?',
-    a: `We have seen this on Windows 11, also when the installer was run as administrator. What solved it there: right-click the Setup.exe file you downloaded, choose “Troubleshoot compatibility” and follow the steps. If it is not in the menu, click “Show more options” first. If the installation still fails, send the installation log to torstein@anleggtech.no. It is the file SquirrelSetup.log in ${LOG_FOLDER}. Paste that path into the address bar in File Explorer to open the folder.`,
+    a: `We have seen this on Windows 11, also when the installer was run as administrator. What solved it there: right-click the Setup.exe file you downloaded, choose “Troubleshoot compatibility” and follow the steps. If it is not in the menu, click “Show more options” first. Or skip the installer: download the zip version, unzip it and start Mini5Planner.exe in the folder. It uses the same settings and Pro key and tells you when a new version is out. If the installation still fails, send the installation log to torstein@anleggtech.no. It is the file SquirrelSetup.log in ${LOG_FOLDER}. Paste that path into the address bar in File Explorer to open the folder.`,
     body: (
       <>
         <p>
@@ -66,6 +67,14 @@ const faq: { q: string; a: string; id?: string; body?: ReactNode }[] = [
           What solved it there: right-click the Setup.exe file you downloaded, choose
           “Troubleshoot compatibility” and follow the steps. If it is not in the menu, click
           “Show more options” first.
+        </p>
+        <p>
+          Or skip the installer:{' '}
+          <a href={DOWNLOAD_WINDOWS_ZIP_URL} className={styles.inlineLink} onClick={() => track('Nedlasting', { plattform: 'windows-zip' })}>
+            download the zip version
+          </a>
+          , unzip it and start Mini5Planner.exe in the folder. It uses the same settings and Pro
+          key and tells you when a new version is out.
         </p>
         <p>
           If the installation still fails, send the installation log to{' '}

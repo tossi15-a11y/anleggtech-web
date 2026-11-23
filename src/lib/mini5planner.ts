@@ -1,6 +1,7 @@
 export const RELEASES_URL = 'https://github.com/tossi15-a11y/mini5planner-releases/releases/latest'
 export const DOWNLOAD_MAC_URL = '/api/mini5planner-last-ned?plattform=mac'
 export const DOWNLOAD_WINDOWS_URL = '/api/mini5planner-last-ned?plattform=windows'
+export const DOWNLOAD_WINDOWS_ZIP_URL = '/api/mini5planner-last-ned?plattform=windows-zip'
 export const BUY_PRO_URL = 'https://mini5planner-lisens.vercel.app/api/kjop'
 
 export const NB_PATH = '/mini5planner'

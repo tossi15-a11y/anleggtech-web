@@ -18,7 +18,7 @@ function release(tag, prerelease = false) {
     tag_name: tag,
     prerelease,
     draft: false,
-    assets: [`Mini5Planner-${versjon}-full.nupkg`, `Mini5Planner-${versjon}.Setup.exe`, 'Mini5Planner.dmg', 'RELEASES']
+    assets: [`Mini5Planner-${versjon}-full.nupkg`, `Mini5Planner-${versjon}.Setup.exe`, `Mini5Planner-${versjon}-Windows-portable.zip`, 'Mini5Planner.dmg', 'RELEASES']
       .map((name) => ({ name, browser_download_url: `${base}/${tag}/${name}` })),
   }
 }
@@ -105,4 +105,16 @@ test('GitHub-oppslaget gjenbrukes, men hvert kall logges', async (t) => {
 test('svaret caches ikke i CDN-et, så klikkene kan telles', async (t) => {
   const { res } = await kall(t, 'mac', ok)
   assert.equal(res.headers['cache-control'], 'no-store')
+})
+
+test('windows-zip går til zip-versjonen i siste ferdige release', async (t) => {
+  const { res, log } = await kall(t, 'windows-zip', ok)
+  assert.equal(res.headers.location, `${base}/v1.3.2/Mini5Planner-1.3.2-Windows-portable.zip`)
+  assert.equal(log.mock.calls[0].arguments[0], 'mini5planner-last-ned plattform=windows-zip versjon=v1.3.2')
+})
+
+test('windows-zip uten zip i release går til releases/latest', async (t) => {
+  const utenZip = releases.map((r) => ({ ...r, assets: r.assets.filter((a) => !a.name.endsWith('.zip')) }))
+  const { res } = await kall(t, 'windows-zip', async () => ({ ok: true, status: 200, json: async () => utenZip }))
+  assert.equal(res.headers.location, FALLBACK)
 })

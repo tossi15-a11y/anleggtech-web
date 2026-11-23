@@ -9,6 +9,7 @@ import {
   BUY_PRO_URL,
   DOWNLOAD_MAC_URL,
   DOWNLOAD_WINDOWS_URL,
+  DOWNLOAD_WINDOWS_ZIP_URL,
   LANDING_ALTERNATES,
   NB_PATH,
   RELEASES_URL,
@@ -555,6 +556,14 @@ export default function Mini5planner() {
                       velg «Feilsøk kompatibilitet» (på engelsk Windows: «Troubleshoot
                       compatibility») og følg stegene. Står det ikke i menyen, velg «Vis flere
                       alternativer» først.
+                    </p>
+                    <p>
+                      Eller hopp over installasjonen:{' '}
+                      <a href={DOWNLOAD_WINDOWS_ZIP_URL} className={styles.inlineLink} onClick={() => track('Nedlasting', { plattform: 'windows-zip' })}>
+                        last ned zip-versjonen
+                      </a>
+                      , pakk den ut og start Mini5Planner.exe i mappa. Den bruker de samme
+                      innstillingene og Pro-nøkkelen, og sier fra når det kommer en ny versjon.
                     </p>
                     <p>
                       Feiler installasjonen fortsatt, send installasjonsloggen til{' '}

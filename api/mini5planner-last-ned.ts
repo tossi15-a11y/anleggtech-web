@@ -4,13 +4,15 @@ const REPO = 'tossi15-a11y/mini5planner-releases'
 const FALLBACK_URL = `https://github.com/${REPO}/releases/latest`
 const CACHE_MS = 10 * 60 * 1000
 
-type Plattform = 'mac' | 'windows'
+type Plattform = 'mac' | 'windows' | 'windows-zip'
 type Release = { tag_name?: string, prerelease?: boolean, draft?: boolean, assets?: { name?: string, browser_download_url?: string }[] }
 type Nedlasting = { versjon: string, url: string }
 
 const finnFil: Record<Plattform, (navn: string) => boolean> = {
   mac: (navn) => navn === 'Mini5Planner.dmg',
   windows: (navn) => navn.endsWith('Setup.exe'),
+  // Zip uten installasjon, fra 1.3.11. Mangler den, går lenken til releases/latest
+  'windows-zip': (navn) => navn.endsWith('-Windows-portable.zip'),
 }
 
 // GitHub-oppslaget caches i minnet, ikke svaret i CDN-et: da når hvert klikk funksjonen og havner i loggen.
@@ -47,7 +49,7 @@ async function hentNedlastinger() {
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
   const query = req.query?.plattform
-  const plattform = query === 'mac' || query === 'windows' ? query : undefined
+  const plattform = query === 'mac' || query === 'windows' || query === 'windows-zip' ? query : undefined
   const nedlasting = plattform ? (await hentNedlastinger())[plattform] : undefined
 
   console.log(`mini5planner-last-ned plattform=${plattform ?? 'ukjent'} versjon=${nedlasting?.versjon ?? 'ukjent'}`)
