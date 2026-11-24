@@ -19,7 +19,7 @@ const siteviewTiers: PricingTier[] = [
       'Alt lagres på din egen maskin',
     ],
     cta: {
-      label: 'Last ned for Mac',
+      label: 'Last ned for Mac eller Windows',
       href: 'https://github.com/tossi15-a11y/siteview360-releases/releases/latest',
     },
   },
@@ -221,7 +221,7 @@ export default function Programvare() {
 
         <Pricing
           heading="Priser for SiteView360"
-          lead="Start gratis. Kjøp Pro én gang når du trenger mer — programmet kjører på macOS (Apple Silicon og Intel)."
+          lead="Start gratis. Kjøp Pro én gang når du trenger mer — programmet kjører på Mac og Windows."
           tiers={siteviewTiers}
           accentColor="#22d3ee"
         />
