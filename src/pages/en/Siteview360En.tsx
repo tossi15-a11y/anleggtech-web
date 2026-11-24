@@ -233,6 +233,7 @@ const proPoints = [
   'Unlimited tours and images',
   'Before/after comparison of two tours side by side',
   'Your company name and logo on shared tours, exports and reports',
+  'Your logo on the patch that hides the pole and the person recording in 360 images',
   'All 1.x updates',
 ]
 

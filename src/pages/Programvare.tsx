@@ -34,6 +34,7 @@ const siteviewTiers: PricingTier[] = [
       'Ubegrenset antall turer og bilder',
       'Før/etter-sammenligning av samme sted',
       'Eget firmanavn og logo på deling, eksport og rapport',
+      'Egen logo på lappen som skjuler stang og fotograf i 360-bilder',
       'Alle 1.x-oppdateringer',
       'Lisensnøkkel på e-post, virker uten nett',
     ],
