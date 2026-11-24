@@ -1,0 +1,125 @@
+/* Demoturen: skjermbilde som plakat, iframen lastes først ved klikk */
+
+.demo {
+  margin: 0;
+  max-width: 980px;
+}
+
+.demoFrame {
+  position: relative;
+  aspect-ratio: 1400 / 868;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: var(--bg-card);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.45);
+  overflow: hidden;
+}
+
+.demoFrameOpen {
+  aspect-ratio: auto;
+  height: min(78vh, 620px);
+}
+
+.demoPoster {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.demoPoster img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: filter 200ms ease;
+}
+
+.demoPoster:hover img {
+  filter: brightness(0.8);
+}
+
+.demoPlay {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--amber);
+  color: #0a0a0a;
+  padding: 0.875rem 1.5rem;
+  border-radius: 0.75rem;
+  font-weight: 700;
+  font-size: 1rem;
+  white-space: nowrap;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+  transition: gap 200ms ease;
+}
+
+.demoPoster:hover .demoPlay {
+  gap: 0.75rem;
+}
+
+.demoFrame iframe {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.demoBar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 0.5rem 1.5rem;
+  margin-top: 0.75rem;
+}
+
+.demoBar figcaption {
+  flex: 1 1 22rem;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: var(--text-secondary);
+}
+
+.demoLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: var(--blue);
+  font-weight: 600;
+  font-size: 0.9375rem;
+  white-space: nowrap;
+  transition: gap 200ms ease;
+}
+
+.demoLink:hover {
+  gap: 0.65rem;
+}
+
+.proList + .proHeading {
+  margin-top: 1.5rem;
+}
+
+.note {
+  font-size: 0.9375rem;
+  color: var(--text-secondary);
+  line-height: 1.65;
+  max-width: 700px;
+  margin: 1.5rem 0 0;
+}
+
+@media (max-width: 640px) {
+  .demoFrame:not(.demoFrameOpen) {
+    aspect-ratio: 4 / 3;
+  }
+  .demoPoster img {
+    object-position: 60% 50%;
+  }
+  .demoPlay {
+    padding: 0.75rem 1.25rem;
+    font-size: 0.9375rem;
+  }
+}

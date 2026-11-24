@@ -6,7 +6,10 @@ import Seo, { BASE_URL } from '../../components/Seo'
 import Footer from '../../components/Footer'
 import { Arrow } from '../../components/Icons'
 import { DOWNLOAD_MAC_URL, DOWNLOAD_WINDOWS_URL, EN_PATH } from '../../lib/mini5planner'
+import { SV_EN_PATH, SV_RELEASES_URL, SV_TRADEMARK } from '../../lib/siteview360'
 import styles from './Guide.module.css'
+
+export type GuideProduct = 'mini5planner' | 'siteview360'
 
 type GuideLayoutProps = {
   path: string
@@ -16,6 +19,46 @@ type GuideLayoutProps = {
   datePublished: string
   related: { path: string; title: string }[]
   children: ReactNode
+  product?: GuideProduct
+}
+
+type ProductInfo = {
+  name: string
+  path: string
+  ctaTitle: string
+  ctaText: string
+  downloads: { label: string; href: string; onClick: () => void }[]
+  moreLabel: string
+  trademark: string
+}
+
+const PRODUCTS: Record<GuideProduct, ProductInfo> = {
+  mini5planner: {
+    name: 'Mini5Planner',
+    path: EN_PATH,
+    ctaTitle: 'Plan your next mapping flight with Mini5Planner',
+    ctaText:
+      'Free for Mac and Windows. Draw the area, pick a template and export a KMZ for DJI Fly. The speed is set so the camera keeps up.',
+    downloads: [
+      { label: 'Download for Mac', href: DOWNLOAD_MAC_URL, onClick: () => track('Nedlasting', { plattform: 'mac' }) },
+      { label: 'Download for Windows', href: DOWNLOAD_WINDOWS_URL, onClick: () => track('Nedlasting', { plattform: 'windows' }) },
+    ],
+    moreLabel: 'More about Mini5Planner and Pro',
+    trademark:
+      'Mini5Planner is an independent product by AnleggTech AS. It is not affiliated with, endorsed by or sponsored by DJI. DJI, DJI Fly, DJI Mini and Mavic are trademarks of SZ DJI Technology Co., Ltd.',
+  },
+  siteview360: {
+    name: 'SiteView360',
+    path: SV_EN_PATH,
+    ctaTitle: 'Turn your next site walk into a tour with SiteView360',
+    ctaText:
+      'For Mac and Windows. Import the 360 video from your camera and click through the site image by image. Everything stays on your computer. The free edition makes one tour with up to 60 images.',
+    downloads: [
+      { label: 'Download for Mac or Windows', href: SV_RELEASES_URL, onClick: () => track('SiteView360 nedlasting', { kilde: 'guide' }) },
+    ],
+    moreLabel: 'More about SiteView360, the demo and Pro',
+    trademark: SV_TRADEMARK,
+  },
 }
 
 const PUBLISHER = {
@@ -27,7 +70,7 @@ const PUBLISHER = {
 
 const jsonLdCache = new Map<string, Record<string, unknown>>()
 
-function guideJsonLd(path: string, title: string, description: string, datePublished: string) {
+function guideJsonLd(path: string, title: string, description: string, datePublished: string, product: ProductInfo) {
   const cached = jsonLdCache.get(path)
   if (cached) return cached
   const url = `${BASE_URL}${path}`
@@ -45,13 +88,13 @@ function guideJsonLd(path: string, title: string, description: string, datePubli
         dateModified: datePublished,
         author: PUBLISHER,
         publisher: PUBLISHER,
-        about: { '@type': 'SoftwareApplication', name: 'Mini5Planner', url: `${BASE_URL}${EN_PATH}` },
+        about: { '@type': 'SoftwareApplication', name: product.name, url: `${BASE_URL}${product.path}` },
       },
       {
         '@type': 'BreadcrumbList',
         itemListElement: [
-          { '@type': 'ListItem', position: 1, name: 'Mini5Planner', item: `${BASE_URL}${EN_PATH}` },
-          { '@type': 'ListItem', position: 2, name: 'Guides', item: `${BASE_URL}${EN_PATH}#guides` },
+          { '@type': 'ListItem', position: 1, name: product.name, item: `${BASE_URL}${product.path}` },
+          { '@type': 'ListItem', position: 2, name: 'Guides', item: `${BASE_URL}${product.path}#guides` },
           { '@type': 'ListItem', position: 3, name: title, item: url },
         ],
       },
@@ -67,7 +110,8 @@ function formatDate(iso: string) {
   return `${d} ${months[m - 1]} ${y}`
 }
 
-export default function GuideLayout({ path, title, description, lead, datePublished, related, children }: GuideLayoutProps) {
+export default function GuideLayout({ path, title, description, lead, datePublished, related, children, product = 'mini5planner' }: GuideLayoutProps) {
+  const info = PRODUCTS[product]
   return (
     <>
       <Seo
@@ -76,15 +120,15 @@ export default function GuideLayout({ path, title, description, lead, datePublis
         path={path}
         lang="en"
         type="article"
-        jsonLd={guideJsonLd(path, title, description, datePublished)}
+        jsonLd={guideJsonLd(path, title, description, datePublished, info)}
       />
-      <Navbar lang="en" />
+      <Navbar lang="en" basePath={info.path} />
       <main className={styles.main}>
         <article className={`container ${styles.article}`}>
           <nav className={styles.breadcrumb} aria-label="Breadcrumb">
-            <Link to={EN_PATH}>Mini5Planner</Link>
+            <Link to={info.path}>{info.name}</Link>
             <span aria-hidden="true">›</span>
-            <Link to={`${EN_PATH}#guides`}>Guides</Link>
+            <Link to={`${info.path}#guides`}>Guides</Link>
           </nav>
           <header className={styles.header}>
             <h1 className={styles.title}>{title}</h1>
@@ -96,24 +140,19 @@ export default function GuideLayout({ path, title, description, lead, datePublis
 
           <div className={styles.prose}>{children}</div>
 
-          <aside className={styles.ctaBox} aria-label="Download Mini5Planner">
-            <h2 className={styles.ctaTitle}>Plan your next mapping flight with Mini5Planner</h2>
-            <p>
-              Free for Mac and Windows. Draw the area, pick a template and export a KMZ for
-              DJI Fly. The speed is set so the camera keeps up.
-            </p>
+          <aside className={styles.ctaBox} aria-label={`Download ${info.name}`}>
+            <h2 className={styles.ctaTitle}>{info.ctaTitle}</h2>
+            <p>{info.ctaText}</p>
             <div className={styles.ctaButtons}>
-              <a href={DOWNLOAD_MAC_URL} className={styles.ctaPrimary} onClick={() => track('Nedlasting', { plattform: 'mac' })}>
-                Download for Mac
-                <Arrow />
-              </a>
-              <a href={DOWNLOAD_WINDOWS_URL} className={styles.ctaPrimary} onClick={() => track('Nedlasting', { plattform: 'windows' })}>
-                Download for Windows
-                <Arrow />
-              </a>
+              {info.downloads.map((d) => (
+                <a key={d.label} href={d.href} className={styles.ctaPrimary} onClick={d.onClick}>
+                  {d.label}
+                  <Arrow />
+                </a>
+              ))}
             </div>
-            <Link to={EN_PATH} className={styles.ctaLink}>
-              More about Mini5Planner and Pro <Arrow />
+            <Link to={info.path} className={styles.ctaLink}>
+              {info.moreLabel} <Arrow />
             </Link>
           </aside>
 
@@ -130,9 +169,9 @@ export default function GuideLayout({ path, title, description, lead, datePublis
             </ul>
           </nav>
         </article>
-        <p className={styles.trademark}>Mini5Planner is an independent product by AnleggTech AS. It is not affiliated with, endorsed by or sponsored by DJI. DJI, DJI Fly, DJI Mini and Mavic are trademarks of SZ DJI Technology Co., Ltd.</p>
+        <p className={styles.trademark}>{info.trademark}</p>
       </main>
-      <Footer lang="en" />
+      <Footer lang="en" product={product} />
     </>
   )
 }

@@ -21,6 +21,9 @@
     { "source": "/en/mini5planner/guides/air-3s-mapping-mission", "destination": "/en/mini5planner/guides/air-3s-mapping-mission/index.html" },
     { "source": "/en/mini5planner/guides/mini-5-pro-terrain-follow-mapping", "destination": "/en/mini5planner/guides/mini-5-pro-terrain-follow-mapping/index.html" },
     { "source": "/en/mini5planner/guides/split-mapping-mission-multiple-batteries", "destination": "/en/mini5planner/guides/split-mapping-mission-multiple-batteries/index.html" },
+    { "source": "/en/siteview360", "destination": "/en/siteview360/index.html" },
+    { "source": "/en/siteview360/guides/document-construction-site-360-camera", "destination": "/en/siteview360/guides/document-construction-site-360-camera/index.html" },
+    { "source": "/en/siteview360/guides/360-site-documentation-tools-compared", "destination": "/en/siteview360/guides/360-site-documentation-tools-compared/index.html" },
     { "source": "/(.*)", "destination": "/index.html" }
   ]
 }

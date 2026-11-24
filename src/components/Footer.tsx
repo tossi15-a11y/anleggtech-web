@@ -1,5 +1,6 @@
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { EN_PATH } from '../lib/mini5planner'
+import { SV_EN_PATH } from '../lib/siteview360'
 import styles from './Footer.module.css'
 
 const navLinks = [
@@ -33,7 +34,7 @@ const TEXT = {
   en: {
     tagline: 'Technology that works as hard as you do',
     orgNr: 'Org. no. 936 032 265 (Norway)',
-    navigation: 'Mini5Planner',
+    navigation: 'Product',
     products: 'Products',
     legal: 'Legal',
     contact: 'Contact',
@@ -42,15 +43,23 @@ const TEXT = {
   },
 }
 
-const enLinks = [
-  { label: 'Download', href: `${EN_PATH}#download` },
-  { label: 'Pro', href: `${EN_PATH}#pro` },
-  { label: 'Guides', href: `${EN_PATH}#guides` },
-  { label: 'FAQ', href: `${EN_PATH}#faq` },
-]
+type EnProduct = 'mini5planner' | 'siteview360'
 
-export default function Footer({ lang = 'nb' }: { lang?: 'nb' | 'en' }) {
+const EN_PRODUCT: Record<EnProduct, { name: string; path: string }> = {
+  mini5planner: { name: 'Mini5Planner', path: EN_PATH },
+  siteview360: { name: 'SiteView360', path: SV_EN_PATH },
+}
+
+// Engelske sider lenker til de engelske produktsidene
+const EN_PRODUCT_PATHS: Record<string, string> = { '/mini5planner': EN_PATH, '/programvare': SV_EN_PATH }
+
+export default function Footer({ lang = 'nb', product = 'mini5planner' }: { lang?: 'nb' | 'en'; product?: EnProduct }) {
   const text = TEXT[lang]
+  const enProduct = EN_PRODUCT[product]
+  const enLinks = ['Download', 'Pro', 'Guides', 'FAQ'].map((label) => ({
+    label,
+    href: `${enProduct.path}#${label.toLowerCase()}`,
+  }))
   const year = new Date().getFullYear()
   const location = useLocation()
   const navigate = useNavigate()
@@ -94,7 +103,7 @@ export default function Footer({ lang = 'nb' }: { lang?: 'nb' | 'en' }) {
           </div>
 
           <div className={styles.linksGroup}>
-            <h4 className={styles.groupTitle}>{text.navigation}</h4>
+            <h4 className={styles.groupTitle}>{lang === 'en' ? enProduct.name : text.navigation}</h4>
             <ul className={styles.linkList}>
               {lang === 'en'
                 ? enLinks.map((link) => (
@@ -136,7 +145,7 @@ export default function Footer({ lang = 'nb' }: { lang?: 'nb' | 'en' }) {
                       </svg>
                     </a>
                   ) : (
-                    <Link to={lang === 'en' && p.href === '/mini5planner' ? EN_PATH : p.href} className={styles.link}>
+                    <Link to={(lang === 'en' && EN_PRODUCT_PATHS[p.href]) || p.href} className={styles.link}>
                       {p.label}
                     </Link>
                   )}
@@ -184,7 +193,7 @@ export default function Footer({ lang = 'nb' }: { lang?: 'nb' | 'en' }) {
               </li>
               <li>
                 <a
-                  href={lang === 'en' ? 'mailto:torstein@anleggtech.no?subject=Mini5Planner' : '#kontakt'}
+                  href={lang === 'en' ? `mailto:torstein@anleggtech.no?subject=${enProduct.name}` : '#kontakt'}
                   className={styles.ctaLink}
                   onClick={lang === 'en' ? undefined : (e) => scrollTo(e, '#kontakt')}
                 >

@@ -29,3 +29,17 @@ test('sitemap lenker norsk og engelsk Mini5Planner-side til hverandre', () => {
     assert.equal(sitemap.split(lenke).length - 1, 2, `${hreflang} skal stå under begge språkversjonene`)
   }
 })
+
+test('sitemap lenker norsk og engelsk SiteView360-side til hverandre', () => {
+  for (const [hreflang, sti] of [['nb', '/programvare'], ['en', '/en/siteview360'], ['x-default', '/en/siteview360']]) {
+    const lenke = `<xhtml:link rel="alternate" hreflang="${hreflang}" href="https://www.anleggtech.no${sti}" />`
+    assert.equal(sitemap.split(lenke).length - 1, 2, `${hreflang} skal stå under begge språkversjonene`)
+  }
+})
+
+test('demoturen som SiteView360-siden viser, finnes i public/', async () => {
+  const side = await les('src/lib/siteview360.ts')
+  const demo = side.match(/SV_DEMO_URL = '([^']+)'/)[1]
+  const html = await les(`public${demo}`)
+  assert.match(html, /<title>[^<]*SiteView360<\/title>/)
+})

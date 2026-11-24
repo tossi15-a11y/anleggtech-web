@@ -8,9 +8,12 @@
   </url>
   <url>
     <loc>https://www.anleggtech.no/programvare</loc>
-    <lastmod>2026-06-11</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="nb" href="https://www.anleggtech.no/programvare" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.anleggtech.no/en/siteview360" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.anleggtech.no/en/siteview360" />
   </url>
   <url>
     <loc>https://www.anleggtech.no/nettsider</loc>
@@ -119,6 +122,27 @@
   <url>
     <loc>https://www.anleggtech.no/en/mini5planner/guides/split-mapping-mission-multiple-batteries</loc>
     <lastmod>2026-11-22</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.anleggtech.no/en/siteview360</loc>
+    <lastmod>2026-11-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="nb" href="https://www.anleggtech.no/programvare" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.anleggtech.no/en/siteview360" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.anleggtech.no/en/siteview360" />
+  </url>
+  <url>
+    <loc>https://www.anleggtech.no/en/siteview360/guides/document-construction-site-360-camera</loc>
+    <lastmod>2026-11-24</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.anleggtech.no/en/siteview360/guides/360-site-documentation-tools-compared</loc>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.7</priority>
   </url>

@@ -1,0 +1,255 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+<meta name="robots" content="noindex" />
+<title>Garden and plot survey, Sandsli – SiteView360</title>
+<link rel="stylesheet" href="lib/pannellum.css" />
+<link rel="stylesheet" href="lib/leaflet.css" />
+<style>
+*{box-sizing:border-box}html,body{margin:0;padding:0;height:100%;background:#1a1a2e;color:#e0e0e0;font-family:system-ui,-apple-system,"Segoe UI",sans-serif;overflow:hidden;touch-action:none}
+#panorama{position:absolute;inset:0}
+.hud{position:absolute;top:8px;left:44px;background:rgba(26,26,46,.85);padding:6px 10px;border-radius:6px;font-size:13px;z-index:10;backdrop-filter:blur(4px);max-width:60vw}
+.hud strong{color:#00b4d8}
+#tour-select{background:rgba(26,26,46,.9);color:#e0e0e0;border:1px solid #33334a;border-radius:6px;padding:6px 10px;font-size:12px;z-index:10;position:absolute;top:44px;left:44px;max-width:60vw}
+#minimap{position:absolute;top:8px;right:8px;width:38vw;max-width:260px;height:28vw;max-height:180px;border:1px solid #33334a;border-radius:6px;overflow:hidden;z-index:10;background:#22223b}
+#minimap .leaflet-control-attribution{font-size:9px;background:rgba(255,255,255,.75)}
+.timeline{position:absolute;bottom:0;left:0;right:0;padding:12px 16px 20px;background:linear-gradient(to top,rgba(0,0,0,.85),transparent);z-index:10}
+.timeline input{width:100%;accent-color:#00b4d8;height:28px}
+.controls{position:absolute;bottom:64px;left:50%;transform:translateX(-50%);display:flex;gap:8px;z-index:10}
+.controls button,.annot-toggle{background:rgba(0,180,216,.95);color:#1a1a2e;border:0;padding:10px 18px;border-radius:6px;font-weight:600;font-size:14px;cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,.4)}
+.controls button:active{transform:scale(.96)}
+.controls button:disabled{opacity:.4}
+.loading{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:#9a9aaa;z-index:5;padding:24px;text-align:center}
+.annot-toggle{position:absolute;bottom:64px;left:8px;padding:8px 12px;font-size:12px;z-index:11}
+.annot-panel{position:absolute;top:0;right:0;bottom:0;width:340px;max-width:90vw;background:rgba(26,26,46,.96);border-left:1px solid #33334a;z-index:20;display:none;flex-direction:column}
+.annot-header{display:flex;align-items:center;justify-content:space-between;padding:12px 16px;border-bottom:1px solid #33334a;font-weight:700}
+.annot-header button{background:none;border:0;color:#9a9aaa;font-size:22px;cursor:pointer;padding:0;line-height:1}
+.annot-list{flex:1;overflow:auto;padding:12px;display:flex;flex-direction:column;gap:8px;touch-action:pan-y}
+.annot-card{background:rgba(34,34,59,.7);border:1px solid #33334a;border-radius:8px;padding:12px;font-size:13px;cursor:pointer}
+.annot-card.nearby{border-color:rgba(0,180,216,.6);background:rgba(0,180,216,.08)}
+.annot-card h4{margin:0 0 4px;color:#fff;font-size:14px}
+.annot-card p{margin:0 0 8px;color:#b5b5c5;font-size:12px;line-height:1.5;white-space:pre-wrap}
+.annot-card img{width:100%;max-height:180px;object-fit:cover;border-radius:4px;border:1px solid #33334a;margin-bottom:6px}
+.annot-dist{font-size:10px;color:#9a9aaa;text-transform:uppercase;letter-spacing:.05em}
+.watermark{position:absolute;bottom:64px;right:8px;display:flex;align-items:center;gap:8px;padding:6px 10px;background:rgba(26,26,46,.78);border:1px solid #33334a;border-radius:6px;font-size:11px;line-height:1.3;z-index:10;max-width:240px;color:#e0e0e0;text-decoration:none}
+.watermark img{height:28px;width:auto;max-width:60px;object-fit:contain}
+.watermark b{display:block;color:#fff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.watermark span{color:#9a9aaa}
+.sv-hs{width:44px;height:44px;margin:-22px 0 0 -22px;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:700;box-shadow:0 2px 10px rgba(0,0,0,.5)}
+.sv-nav{background:rgba(255,255,255,.85);color:#1a1a2e;border:2px solid #00b4d8}
+.sv-note{background:#ffb703;color:#1a1a2e;border:2px solid #fff;width:32px;height:32px;margin:-16px 0 0 -16px;font-size:15px}
+.sv-note span{position:absolute;bottom:38px;left:50%;transform:translateX(-50%);background:rgba(26,26,46,.92);color:#fff;font-size:12px;font-weight:600;padding:4px 8px;border-radius:4px;white-space:nowrap;max-width:220px;overflow:hidden;text-overflow:ellipsis;display:none}
+.sv-note:hover span{display:block}
+@media(max-width:560px){.hud{font-size:11px}#minimap{width:42vw;height:30vw}.watermark{bottom:112px;font-size:10px}.controls button{padding:10px 14px}}
+</style>
+</head>
+<body>
+<div id="panorama"></div>
+<div class="loading" id="loading">Loading tour …</div>
+<div class="hud"><strong id="project-label"></strong> · <span id="frame-label"></span></div>
+<select id="tour-select" style="display:none"></select>
+<div id="minimap"></div>
+<div class="controls"><button id="btn-prev" type="button"></button><button id="btn-next" type="button"></button></div>
+<div class="timeline"><input id="slider" type="range" min="0" value="0" /></div>
+<a id="watermark" class="watermark" style="display:none"></a>
+<button id="annot-toggle" class="annot-toggle" style="display:none" type="button"></button>
+<div id="annot-panel" class="annot-panel">
+  <div class="annot-header"><span id="annot-title"></span><button id="annot-close" type="button">×</button></div>
+  <div id="annot-list" class="annot-list"></div>
+</div>
+<script id="tour-data" type="application/json">{"lang":"en","project":{"name":"Garden and plot survey, Sandsli","description":"Walk-through before groundworks, recorded with an Insta360 camera."},"firm":null,"madeWith":true,"tile":{"url":"https://tile.openstreetmap.org/{z}/{x}/{y}.png","attribution":"&copy; \u003ca href=\"https://www.openstreetmap.org/copyright\">OpenStreetMap\u003c/a> contributors"},"tours":[{"id":"e7177b4e-da95-4e6d-a227-56239a0f6e24","name":"13 November 2026","hasGps":true,"width":7680,"panoramas":[{"id":"575184d6-b4e7-422d-9fb5-6176ddf7b853","src":"data/panoramas/b782cbb3-048e-4e80-9722-3953ad660465/e7177b4e-da95-4e6d-a227-56239a0f6e24/full/frame_00001.webp","mob":"data/panoramas/b782cbb3-048e-4e80-9722-3953ad660465/e7177b4e-da95-4e6d-a227-56239a0f6e24/mobile/frame_00001.webp","lat":60.22709746,"lon":5.14695866,"heading":5.66919484476864},{"id":"f34819aa-cf6b-4fb6-81dd-e8e18f4b46e1","src":"data/panoramas/b782cbb3-048e-4e80-9722-3953ad660465/e7177b4e-da95-4e6d-a227-56239a0f6e24/full/frame_00002.webp","mob":"data/panoramas/b782cbb3-048e-4e80-9722-3953ad660465/e7177b4e-da95-4e6d-a227-56239a0f6e24/mobile/frame_00002.webp","lat":60.22709746666595,"lon":5.14695853476593,"heading":5.66919484476864},{"id":"83e22295-3c50-4a79-8caf-9b5a92370f1b","src":"data/panoramas/b782cbb3-048e-4e80-9722-3953ad660465/e7177b4e-da95-4e6d-a227-56239a0f6e24/full/frame_00003.webp","mob":"data/panoramas/b782cbb3-048e-4e80-9722-3953ad660465/e7177b4e-da95-4e6d-a227-56239a0f6e24/mobile/frame_00003.webp","lat":60.22709748928058,"lon":5.146958398591048,"heading":5.66919484476864},{"id":"24199231-2e14-4399-9ea9-5fade809151d","src":"data/panoramas/b782cbb3-048e-4e80-9722-3953ad660465/e7177b4e-da95-4e6d-a227-56239a0f6e24/full/frame_00004.webp","mob":"data/panoramas/b782cbb3-048e-4e80-9722-3953ad660465/e7177b4e-da95-4e6d-a227-56239a0f6e24/mobile/frame_00004.webp","lat":60.22709836535499,"lon":5.1469577735474905,"heading":5.66919484476864},{"id":"9f6dd744-ab2f-41b4-a082-0b577a2144e1","src":"data/panoramas/b782cbb3-048e-4e80-9722-3953ad660465/e7177b4e-da95-4e6d-a227-56239a0f6e24/full/frame_00005.webp","mob":"data/panoramas/b782cbb3-048e-4e80-9722-3953ad660465/e7177b4e-da95-4e6d-a227-56239a0f6e24/mobile/frame_00005.webp","lat":60.22710784183778,"lon":5.146959668035288,"heading":2.1846778730071037},{"id":"a81134fb-1381-412f-bc20-1692ce68f194","src":"data/panoramas/b782cbb3-048e-4e80-9722-3953ad660465/e7177b4e-da95-4e6d-a227-56239a0f6e24/full/frame_00006.webp","mob":"data/panoramas/b782cbb3-048e-4e80-9722-3953ad660465/e7177b4e-da95-4e6d-a227-56239a0f6e24/mobile/frame_00006.webp","lat":60.22713940270572,"lon":5.146962092690648,"heading":3.0222317193249637},{"id":"1ad04522-2f21-42f1-83e2-7b9c6ab849f0","src":"data/panoramas/b782cbb3-048e-4e80-9722-3953ad660465/e7177b4e-da95-4e6d-a227-56239a0f6e24/full/frame_00007.webp","mob":"data/panoramas/b782cbb3-048e-4e80-9722-3953ad660465/e7177b4e-da95-4e6d-a227-56239a0f6e24/mobile/frame_00007.webp","lat":60.22718400994416,"lon":5.1469668355458005,"heading":9.641287379253981},{"id":"cb3db7c5-c90a-481e-a12f-1acf8068730e","src":"data/panoramas/b782cbb3-048e-4e80-9722-3953ad660465/e7177b4e-da95-4e6d-a227-56239a0f6e24/full/frame_00008.webp","mob":"data/panoramas/b782cbb3-048e-4e80-9722-3953ad660465/e7177b4e-da95-4e6d-a227-56239a0f6e24/mobile/frame_00008.webp","lat":60.22718989994838,"lon":5.146968850572587,"heading":9.641285683437616},{"id":"656b3298-1fe5-4578-aae1-affe40a93faa","src":"data/panoramas/b782cbb3-048e-4e80-9722-3953ad660465/e7177b4e-da95-4e6d-a227-56239a0f6e24/full/frame_00009.webp","mob":"data/panoramas/b782cbb3-048e-4e80-9722-3953ad660465/e7177b4e-da95-4e6d-a227-56239a0f6e24/mobile/frame_00009.webp","lat":60.227195789952596,"lon":5.146970865599374,"heading":8.47476145943051},{"id":"b4fa6579-a08a-4281-9719-c178f51e55a5","src":"data/panoramas/b782cbb3-048e-4e80-9722-3953ad660465/e7177b4e-da95-4e6d-a227-56239a0f6e24/full/frame_00010.webp","mob":"data/panoramas/b782cbb3-048e-4e80-9722-3953ad660465/e7177b4e-da95-4e6d-a227-56239a0f6e24/mobile/frame_00010.webp","lat":60.22720393469938,"lon":5.1469733095504075,"heading":5.004114486347191},{"id":"ad7c8d2c-0c25-4da1-95ba-8654b7f16d43","src":"data/panoramas/b782cbb3-048e-4e80-9722-3953ad660465/e7177b4e-da95-4e6d-a227-56239a0f6e24/full/frame_00011.webp","mob":"data/panoramas/b782cbb3-048e-4e80-9722-3953ad660465/e7177b4e-da95-4e6d-a227-56239a0f6e24/mobile/frame_00011.webp","lat":60.22723347320858,"lon":5.146978518215281,"heading":338.8708460671729},{"id":"5117d7e5-b3ce-4bdd-8de5-d983376e8915","src":"data/panoramas/b782cbb3-048e-4e80-9722-3953ad660465/e7177b4e-da95-4e6d-a227-56239a0f6e24/full/frame_00012.webp","mob":"data/panoramas/b782cbb3-048e-4e80-9722-3953ad660465/e7177b4e-da95-4e6d-a227-56239a0f6e24/mobile/frame_00012.webp","lat":60.22727002489031,"lon":5.146950071566131,"heading":296.03473427069923},{"id":"2a6337bb-ed99-491b-9d3f-9a809f0826b0","src":"data/panoramas/b782cbb3-048e-4e80-9722-3953ad660465/e7177b4e-da95-4e6d-a227-56239a0f6e24/full/frame_00013.webp","mob":"data/panoramas/b782cbb3-048e-4e80-9722-3953ad660465/e7177b4e-da95-4e6d-a227-56239a0f6e24/mobile/frame_00013.webp","lat":60.22727888478675,"lon":5.1469135451702,"heading":296.03473427069923}]}],"annotations":[]}</script>
+<script id="tour-strings" type="application/json">{"loading":"Loading tour …","empty":"No panoramas in this project","image":"Image","prev":"← Previous","next":"Next →","notes":"notes","notesTitle":"Notes","close":"Close","forward":"Forward","back":"Back","away":"m away","here":"Here","deliveredBy":"Delivered by","images":"images","loadError":"Could not show the image. Try a newer browser."}</script>
+<script src="lib/pannellum.js"></script>
+<script src="lib/leaflet.js"></script>
+<script>
+(function(){
+  var D = JSON.parse(document.getElementById('tour-data').textContent);
+  var S = JSON.parse(document.getElementById('tour-strings').textContent);
+  var $ = function(id){ return document.getElementById(id); };
+  var tours = (D.tours || []).filter(function(t){ return t.panoramas && t.panoramas.length; });
+  var tour = null, panos = [], idx = 0, viewer = null, map = null, marker = null;
+  var loading = $('loading'), slider = $('slider');
+
+  $('project-label').textContent = D.project.name;
+  $('btn-prev').textContent = S.prev; $('btn-next').textContent = S.next;
+  $('annot-title').textContent = S.notesTitle; $('annot-close').setAttribute('aria-label', S.close);
+
+  var maxTex = 4096;
+  try {
+    var gl = document.createElement('canvas').getContext('webgl');
+    if (gl) maxTex = gl.getParameter(gl.MAX_TEXTURE_SIZE);
+  } catch (e) {}
+
+  function rad(d){ return d * Math.PI / 180; }
+  function dist(a, b){
+    var R = 6371000, dLat = rad(b.lat - a.lat), dLon = rad(b.lon - a.lon);
+    var h = Math.pow(Math.sin(dLat/2), 2) + Math.cos(rad(a.lat)) * Math.cos(rad(b.lat)) * Math.pow(Math.sin(dLon/2), 2);
+    return 2 * R * Math.asin(Math.sqrt(h));
+  }
+  function bearing(a, b){
+    var y = Math.sin(rad(b.lon - a.lon)) * Math.cos(rad(b.lat));
+    var x = Math.cos(rad(a.lat)) * Math.sin(rad(b.lat)) - Math.sin(rad(a.lat)) * Math.cos(rad(b.lat)) * Math.cos(rad(b.lon - a.lon));
+    return (Math.atan2(y, x) * 180 / Math.PI + 360) % 360;
+  }
+  function norm(y){ return ((y + 180) % 360 + 360) % 360 - 180; }
+  function yawTo(i, j, fallback){
+    var a = panos[i], b = panos[j];
+    if (!tour.hasGps || a.heading == null || dist(a, b) < 0.3) return fallback;
+    return norm(bearing(a, b) - a.heading);
+  }
+  function label(cls, text){
+    return function(div){ div.className += ' sv-hs ' + cls; div.textContent = text; };
+  }
+  function noteTip(div, a){
+    div.className += ' sv-hs sv-note'; div.textContent = '!';
+    var s = document.createElement('span'); s.textContent = a.title; div.appendChild(s);
+  }
+
+  function buildScenes(){
+    var scenes = {};
+    panos.forEach(function(p, i){
+      var hs = [];
+      if (i < panos.length - 1) hs.push({ pitch: -18, yaw: yawTo(i, i + 1, 0), cssClass: 'x', createTooltipFunc: label('sv-nav', '▲'), clickHandlerFunc: function(){ go(i + 1); } });
+      if (i > 0) hs.push({ pitch: -18, yaw: yawTo(i, i - 1, 180), cssClass: 'x', createTooltipFunc: label('sv-nav', '▼'), clickHandlerFunc: function(){ go(i - 1); } });
+      D.annotations.forEach(function(a){
+        if (a.panoramaId === p.id && a.pitch != null && a.yaw != null) {
+          hs.push({ pitch: a.pitch, yaw: a.yaw, cssClass: 'x', createTooltipFunc: noteTip, createTooltipArgs: a, clickHandlerFunc: function(){ openPanel(); } });
+        }
+      });
+      var small = p.mob && tour.width && tour.width > maxTex;
+      scenes['p' + i] = { type: 'equirectangular', panorama: small ? p.mob : p.src, northOffset: p.heading || 0, hotSpots: hs };
+    });
+    return scenes;
+  }
+
+  function loadTour(n){
+    tour = tours[n]; panos = tour.panoramas; idx = 0;
+    slider.max = panos.length - 1;
+    if (viewer) { viewer.destroy(); viewer = null; }
+    viewer = pannellum.viewer('panorama', {
+      default: { firstScene: 'p0', sceneFadeDuration: 250, autoLoad: true, compass: false, showControls: true, mouseZoom: true,
+        strings: { loadingLabel: S.loading, genericWebGLError: S.loadError, textureSizeError: S.loadError } },
+      scenes: buildScenes()
+    });
+    viewer.on('scenechange', function(id){ idx = parseInt(String(id).slice(1), 10); refresh(); });
+    initMap();
+    refresh();
+  }
+
+  function go(i){
+    if (!viewer || i < 0 || i >= panos.length || i === idx) return;
+    var yaw = viewer.getYaw();
+    var a = panos[idx], b = panos[i];
+    // Behold blikkretningen i terrenget når neste bilde er tatt med annen kjøreretning
+    if (tour.hasGps && a.heading != null && b.heading != null) yaw = norm(yaw + a.heading - b.heading);
+    viewer.loadScene('p' + i, viewer.getPitch(), yaw, viewer.getHfov());
+  }
+
+  function refresh(){
+    $('frame-label').textContent = S.image + ' ' + (idx + 1) + ' / ' + panos.length;
+    slider.value = idx;
+    $('btn-prev').disabled = idx === 0;
+    $('btn-next').disabled = idx === panos.length - 1;
+    if (map) {
+      if (marker) marker.remove();
+      marker = L.circleMarker([panos[idx].lat, panos[idx].lon], { radius: 8, color: '#ffb703', weight: 3, fillColor: '#ffb703', fillOpacity: .9 }).addTo(map);
+    }
+    renderNotes();
+  }
+
+  function initMap(){
+    if (map) { map.remove(); map = null; marker = null; }
+    var el = $('minimap');
+    if (!tour.hasGps || typeof L === 'undefined') { el.style.display = 'none'; return; }
+    el.style.display = 'block';
+    var coords = panos.map(function(p){ return [p.lat, p.lon]; });
+    map = L.map('minimap', { zoomControl: false }).fitBounds(coords, { maxZoom: 18 });
+    map.attributionControl.setPrefix(false);
+    L.tileLayer(D.tile.url, { maxZoom: 19, attribution: D.tile.attribution }).addTo(map);
+    L.polyline(coords, { color: '#00b4d8', weight: 3 }).addTo(map);
+    panos.forEach(function(p, i){
+      L.circleMarker([p.lat, p.lon], { radius: 3, color: '#00b4d8', fillOpacity: .7 }).on('click', function(){ go(i); }).addTo(map);
+    });
+  }
+
+  function notesForTour(){
+    var ids = {};
+    panos.forEach(function(p){ ids[p.id] = true; });
+    return D.annotations.filter(function(a){ return tour.hasGps || (a.panoramaId && ids[a.panoramaId]); });
+  }
+  function openPanel(){ $('annot-panel').style.display = 'flex'; $('annot-toggle').style.display = 'none'; }
+  function closePanel(){ $('annot-panel').style.display = 'none'; renderNotes(); }
+
+  function renderNotes(){
+    var list = notesForTour(), p = panos[idx], box = $('annot-list'), toggle = $('annot-toggle');
+    var open = $('annot-panel').style.display === 'flex';
+    toggle.style.display = list.length && !open ? 'block' : 'none';
+    toggle.textContent = list.length + ' ' + S.notes;
+    var rows = list.map(function(a){
+      return { a: a, d: tour.hasGps ? dist(p, a) : (a.panoramaId === p.id ? 0 : Infinity) };
+    }).sort(function(x, y){ return x.d - y.d; });
+    box.textContent = '';
+    rows.forEach(function(r){
+      var card = document.createElement('div');
+      card.className = 'annot-card' + (r.d < 5 ? ' nearby' : '');
+      var h = document.createElement('h4'); h.textContent = r.a.title; card.appendChild(h);
+      if (r.a.photo) { var img = document.createElement('img'); img.src = r.a.photo; img.alt = ''; card.appendChild(img); }
+      if (r.a.body) { var b = document.createElement('p'); b.textContent = r.a.body; card.appendChild(b); }
+      if (r.d !== Infinity) {
+        var s = document.createElement('span'); s.className = 'annot-dist';
+        s.textContent = r.d < 5 ? S.here : Math.round(r.d) + ' ' + S.away; card.appendChild(s);
+      }
+      card.addEventListener('click', function(){
+        var best = -1, bestD = Infinity;
+        panos.forEach(function(pp, i){
+          var d = pp.id === r.a.panoramaId ? -1 : (tour.hasGps ? dist(pp, r.a) : Infinity);
+          if (d < bestD) { bestD = d; best = i; }
+        });
+        if (best >= 0) {
+          if (best === idx && r.a.pitch != null) viewer.lookAt(r.a.pitch, r.a.yaw);
+          else go(best);
+        }
+      });
+      box.appendChild(card);
+    });
+  }
+
+  $('btn-next').addEventListener('click', function(){ go(idx + 1); });
+  $('btn-prev').addEventListener('click', function(){ go(idx - 1); });
+  slider.addEventListener('change', function(e){ go(parseInt(e.target.value, 10)); });
+  $('annot-toggle').addEventListener('click', openPanel);
+  $('annot-close').addEventListener('click', closePanel);
+  window.addEventListener('keydown', function(e){
+    if (e.key === 'ArrowRight') go(idx + 1);
+    else if (e.key === 'ArrowLeft') go(idx - 1);
+  });
+
+  var wm = $('watermark');
+  if (D.firm && (D.firm.name || D.firm.logo)) {
+    if (D.firm.logo) { var im = document.createElement('img'); im.src = D.firm.logo; im.alt = ''; wm.appendChild(im); }
+    var txt = document.createElement('div');
+    if (D.firm.name) { var bn = document.createElement('b'); bn.textContent = S.deliveredBy + ' ' + D.firm.name; txt.appendChild(bn); }
+    if (D.firm.contact) { var c = document.createElement('span'); c.textContent = D.firm.contact; txt.appendChild(c); }
+    wm.appendChild(txt); wm.style.display = 'flex';
+  } else if (D.madeWith) {
+    wm.textContent = 'Made with SiteView360'; wm.href = 'https://anleggtech.no/programvare'; wm.target = '_blank'; wm.rel = 'noopener';
+    wm.style.display = 'flex';
+  }
+
+  if (!tours.length) { loading.textContent = S.empty; return; }
+  if (typeof pannellum === 'undefined') { loading.textContent = S.loadError; return; }
+  var sel = $('tour-select');
+  tours.forEach(function(t, i){
+    var o = document.createElement('option'); o.value = String(i);
+    o.textContent = t.name + ' (' + t.panoramas.length + ' ' + S.images + ')'; sel.appendChild(o);
+  });
+  if (tours.length > 1) sel.style.display = 'block';
+  sel.addEventListener('change', function(){ loadTour(parseInt(sel.value, 10)); });
+  loading.style.display = 'none';
+  loadTour(0);
+})();
+</script>
+</body>
+</html>

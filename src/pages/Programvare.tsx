@@ -3,6 +3,7 @@ import Navbar from '../components/Navbar'
 import Seo from '../components/Seo'
 import Footer from '../components/Footer'
 import Pricing, { type PricingTier } from '../components/Pricing'
+import { SV_ALTERNATES, SV_DEMO_URL, SV_EN_PATH } from '../lib/siteview360'
 import styles from './Programvare.module.css'
 
 const siteviewTiers: PricingTier[] = [
@@ -111,6 +112,7 @@ export default function Programvare() {
         title="Programvare for anleggsbransjen – SiteView360 og mer | AnleggTech AS"
         description="Digital dokumentasjon av anleggsprosjekter: SiteView360 konverterer 360°-video til navigerbar Street View-opplevelse av byggeplassen. Se programvaren vi utvikler."
         path="/programvare"
+        alternates={SV_ALTERNATES}
       />
       <Navbar />
       <main className={styles.main}>
@@ -150,6 +152,21 @@ export default function Programvare() {
                 opplevelse av anleggsplassen — som å gå gjennom Google Street View, men på
                 ditt eget prosjekt. Kunden klikker seg fra punkt til punkt og ser akkurat
                 hvordan området så ut den dagen videoen ble spilt inn.
+              </p>
+              <div className={styles.heroCtas}>
+                <a href={SV_DEMO_URL} target="_blank" rel="noopener" className={styles.ctaPrimary}>
+                  Gå gjennom demoturen
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                    <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
+                </a>
+                <Link to={SV_EN_PATH} className={styles.ctaSecondary} hrefLang="en" lang="en">
+                  SiteView360 in English
+                </Link>
+              </div>
+              <p className={styles.heroSubnote}>
+                Demoturen er eksportert fra SiteView360: 13 bilder fra en kort runde i en hage,
+                med kart. Den åpnes i en ny fane, og brukerflaten er på engelsk.
               </p>
             </div>
 

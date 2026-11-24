@@ -26,6 +26,9 @@ import GuidePlannerComparison from './pages/en/GuidePlannerComparison'
 import GuideAir3sMapping from './pages/en/GuideAir3sMapping'
 import GuideTerrainFollow from './pages/en/GuideTerrainFollow'
 import GuideBatterySplit from './pages/en/GuideBatterySplit'
+import Siteview360En from './pages/en/Siteview360En'
+import GuideDocumentSite360 from './pages/en/GuideDocumentSite360'
+import GuideSiteDocumentationComparison from './pages/en/GuideSiteDocumentationComparison'
 import {
   EN_PATH,
   GUIDE_AIR_3S_PATH,
@@ -36,6 +39,7 @@ import {
   GUIDE_SKIPPED_PHOTOS_PATH,
   GUIDE_TERRAIN_FOLLOW_PATH,
 } from './lib/mini5planner'
+import { SV_EN_PATH, SV_GUIDE_COMPARISON_PATH, SV_GUIDE_DOCUMENT_SITE_PATH } from './lib/siteview360'
 
 function Home() {
   return (
@@ -96,6 +100,10 @@ export function AppRoutes() {
         <Route path={GUIDE_TERRAIN_FOLLOW_PATH} element={<GuideTerrainFollow />} />
         <Route path={GUIDE_BATTERY_SPLIT_PATH} element={<GuideBatterySplit />} />
         <Route path={`${EN_PATH}/guides`} element={<Navigate to={`${EN_PATH}#guides`} replace />} />
+        <Route path={SV_EN_PATH} element={<Siteview360En />} />
+        <Route path={SV_GUIDE_DOCUMENT_SITE_PATH} element={<GuideDocumentSite360 />} />
+        <Route path={SV_GUIDE_COMPARISON_PATH} element={<GuideSiteDocumentationComparison />} />
+        <Route path={`${SV_EN_PATH}/guides`} element={<Navigate to={`${SV_EN_PATH}#guides`} replace />} />
         <Route path="/en" element={<Navigate to={EN_PATH} replace />} />
       </Routes>
       <CookieBanner />
