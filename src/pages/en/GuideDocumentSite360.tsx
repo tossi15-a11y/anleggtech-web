@@ -37,8 +37,9 @@ export default function GuideDocumentSite360() {
       <ul>
         <li>
           A 360 camera whose app can export a stitched 360 video. We use an Insta360 camera
-          and Insta360 Studio. An ordinary video from a phone or a normal camera does not
-          work.
+          and Insta360 Studio. From version 1.3.0 SiteView360 also takes ordinary video
+          from a phone, but then you cannot look around at each stop, so this guide uses a
+          360 camera.
         </li>
         <li>
           The camera’s phone app, if you control the camera from your phone. With an

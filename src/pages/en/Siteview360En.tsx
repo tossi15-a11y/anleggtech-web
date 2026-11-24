@@ -30,7 +30,7 @@ const downloadEvent = (plattform: string) => () => track('SiteView360 nedlasting
 const faq: { q: string; a: string; body?: ReactNode }[] = [
   {
     q: 'Do I need a 360 camera?',
-    a: 'Yes. SiteView360 needs a stitched 360 video from a 360 camera. An ordinary video from a phone or a normal camera does not work. A phone is still useful: many 360 cameras are controlled from a phone app, and shared tours open in the phone’s browser.',
+    a: 'No. From version 1.3.0 you can also use ordinary video from a phone. A 360 camera gives a tour where you can look in every direction at each stop. Phone video gives a tour of ordinary images you step through, without looking around. Notes, sharing and export work the same way for both.',
   },
   {
     q: 'Which 360 cameras work?',
@@ -88,7 +88,7 @@ const jsonLd = {
       name: 'SiteView360',
       applicationCategory: 'BusinessApplication',
       operatingSystem: 'macOS 13 or later, Windows 10 and 11 (64-bit)',
-      softwareVersion: '1.2.0',
+      softwareVersion: '1.3.0',
       inLanguage: 'en',
       url: `${BASE_URL}${SV_EN_PATH}`,
       downloadUrl: SV_RELEASES_URL,
@@ -325,7 +325,7 @@ export default function Siteview360En() {
     <>
       <Seo
         title="SiteView360 – Street View-style 360 site documentation for Mac and Windows"
-        description="Walk the site with a 360 camera and get a tour you can click through. Desktop app for Mac and Windows: local, no account, Pro is a one-time purchase."
+        description="Walk the site with a 360 camera or your phone and get a tour you can click through. Desktop app for Mac and Windows: local, no account, Pro is a one-time purchase."
         path={SV_EN_PATH}
         lang="en"
         alternates={SV_ALTERNATES}
@@ -344,12 +344,12 @@ export default function Siteview360En() {
             </div>
             <span className={styles.tag}>360° site documentation</span>
             <h1 className={styles.title}>
-              Walk the site with a 360 camera. <span className={styles.accent}>Get a tour you can click through.</span>
+              Film the site with a 360 camera or your phone. <span className={styles.accent}>Get a tour you can click through.</span>
             </h1>
             <p className={styles.subtitle}>
-              SiteView360 turns a 360 video of a site walk into a Street View-style tour. You
-              step from place to place and look in every direction, and with a GPS track you
-              see on a map where each image was taken. Use it to record the condition before work starts, show
+              SiteView360 turns a video of a site walk into a Street View-style tour. You
+              step from place to place, with a 360 camera you can look in every direction, and
+              with a GPS track you see on a map where each image was taken. Use it to record the condition before work starts, show
               progress to the client and keep a record at handover. It is a desktop app for
               Mac and Windows, and everything stays on your own computer.
             </p>
@@ -411,8 +411,8 @@ export default function Siteview360En() {
               <span className={styles.productLabel}>How it works</span>
               <h2 className={styles.productHeading}>Record → import → share</h2>
               <p className={styles.productLead}>
-                You need a 360 camera whose app can export a stitched 360 video. The rest
-                happens on your computer, without an account or a cloud service.
+                You need a 360 camera whose app can export a stitched 360 video, or a phone
+                that records ordinary video. The rest happens on your computer, without an account or a cloud service.
               </p>
             </div>
 
@@ -421,7 +421,7 @@ export default function Siteview360En() {
                 <li>
                   <span className={styles.howStep}>1</span>
                   <div>
-                    <strong>Walk the site with a 360 camera</strong>
+                    <strong>Walk the site with a 360 camera or your phone</strong>
                     <p>
                       Record while you walk at a steady pace. If the camera or its app records
                       GPS, the images can be placed on the map afterwards.
@@ -601,8 +601,8 @@ export default function Siteview360En() {
               <span className={styles.productLabel}>System requirements</span>
               <h2 className={styles.productHeading}>What you need</h2>
               <p className={styles.productLead}>
-                SiteView360 1.2.0, released November 2026. It needs a 360 camera: the app
-                works from the camera’s exported 360 video.
+                SiteView360 1.3.0, released November 2026. It works from the exported 360
+                video from a 360 camera, or from ordinary video from a phone.
               </p>
             </div>
             <div className={styles.audienceGrid}>

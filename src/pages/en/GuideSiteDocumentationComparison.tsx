@@ -26,7 +26,7 @@ const tools: Tool[] = [
     name: 'SiteView360',
     price: 'Free edition: one tour, up to 60 images. Pro €89 / $99 / £79 one-time, tax included',
     runs: 'Desktop app for Mac and Windows. Data stays on your computer',
-    capture: 'Stitched 360 video (MP4, 2:1) exported from the 360 camera’s app',
+    capture: 'Stitched 360 video (MP4, 2:1) exported from the 360 camera’s app, or ordinary video from a phone (no look-around)',
     placement: 'On a map from a GPS track (GPX). No floor plans',
     compare: 'Two tours side by side (Pro). No BIM, no AI',
     offline: 'Yes. Only map tiles need the internet',
@@ -317,8 +317,9 @@ export default function GuideSiteDocumentationComparison() {
         <li>No cloud, no shared workspace and no mobile app. You share a tour with a QR code on the local Wi‑Fi, as an HTML folder for any web host, or as a PDF report.</li>
         <li>No face blurring.</li>
         <li>
-          It needs a 360 camera. The input is a stitched 360 video in MP4, 2:1, exported from
-          the camera’s own app. How we record and import a site walk is in{' '}
+          It works from video files only. The input is a stitched 360 video in MP4, 2:1,
+          exported from the camera’s own app, or ordinary video from a phone, which gives a
+          tour without look-around. How we record and import a site walk is in{' '}
           <Link to={SV_GUIDE_DOCUMENT_SITE_PATH}>How to document a construction site with a 360 camera</Link>.
         </li>
       </ul>

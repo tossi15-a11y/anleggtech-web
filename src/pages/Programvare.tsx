@@ -148,7 +148,7 @@ export default function Programvare() {
                 Street View-lignende dokumentasjon av byggeplasser
               </h2>
               <p className={styles.productLead}>
-                SiteView360 konverterer 360°-video fra et Insta360-kamera til en navigerbar
+                SiteView360 konverterer video fra 360-kamera eller telefon til en navigerbar
                 opplevelse av anleggsplassen — som å gå gjennom Google Street View, men på
                 ditt eget prosjekt. Kunden klikker seg fra punkt til punkt og ser akkurat
                 hvordan området så ut den dagen videoen ble spilt inn.
@@ -212,8 +212,8 @@ export default function Programvare() {
                 <li>
                   <span className={styles.howStep}>1</span>
                   <div>
-                    <strong>Spill inn med 360°-kamera</strong>
-                    <p>Gå gjennom prosjektet med et Insta360-kamera. Tar typisk 5–15 minutter for et helt anleggsområde.</p>
+                    <strong>Film med 360-kamera eller telefonen</strong>
+                    <p>Gå gjennom prosjektet mens du filmer. Med 360-kamera kan du se deg rundt i hvert bilde etterpå, med telefon får du vanlige bilder langs ruten. Tar typisk 5–15 minutter for et helt anleggsområde.</p>
                   </div>
                 </li>
                 <li>
