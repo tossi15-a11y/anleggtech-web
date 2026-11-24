@@ -240,6 +240,7 @@ export default function Programvare() {
           heading="Priser for SiteView360"
           lead="Start gratis. Kjøp Pro én gang når du trenger mer — programmet kjører på Mac og Windows."
           tiers={siteviewTiers}
+          footnote="Pro betales én gang. Prisen er inkludert mva. Ingen abonnement og ingen oppsigelsestid."
           accentColor="#22d3ee"
         />
 

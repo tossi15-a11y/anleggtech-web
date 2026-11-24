@@ -20,6 +20,7 @@ type Props = {
   tiers: PricingTier[]
   pilotNote?: string
   accentColor?: string
+  footnote?: string
 }
 
 export default function Pricing({
@@ -28,6 +29,7 @@ export default function Pricing({
   tiers,
   pilotNote,
   accentColor = '#22c55e',
+  footnote,
 }: Props) {
   const { ref, isVisible } = useScrollAnimation()
 
@@ -83,8 +85,12 @@ export default function Pricing({
         )}
 
         <p className={styles.footnote}>
-          Prisene er uten merverdiavgift · Anleggtech AS er ikke mva-registrert, så
-          ingenting kommer i tillegg · faktureres månedlig · oppsigelsestid 1 måned
+          {footnote ?? (
+            <>
+              Prisene er uten merverdiavgift · Anleggtech AS er ikke mva-registrert, så
+              ingenting kommer i tillegg · faktureres månedlig · oppsigelsestid 1 måned
+            </>
+          )}
         </p>
       </div>
     </section>
